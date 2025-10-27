@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-water-meter" 
+        version="1.0.0" 
+        xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <name>Water Meter Scanner</name>
+    <description>Cordova plugin for Water Meter OCR scanning using AI camera preview</description>
+    <keywords>cordova,water meter,ocr,camera,ai,scanner</keywords>
+    <license>MIT</license>
+    <author>EOV Solutions</author>
+    
+    <repo>https://github.com/EOV-Solutions/cordova-plugin-water-meter.git</repo>
+    <issue>https://github.com/EOV-Solutions/cordova-plugin-water-meter/issues</issue>
+    
+    <engines>
+        <engine name="cordova" version=">=9.0.0"/>
+        <engine name="cordova-android" version=">=9.0.0"/>
+    </engines>
+    
+    <!-- JavaScript Interface -->
+    <js-module src="www/WaterMeter.js" name="WaterMeter">
+        <clobbers target="WaterMeter" />
+    </js-module>
+    
+    <!-- Android Platform -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="WaterMeter">
+                <param name="android-package" value="com.eov.cordova.watermeter.WaterMeterPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        
+        <!-- Permissions -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+        </config-file>
+        
+        <!-- Plugin Java Source -->
+        <source-file src="src/android/WaterMeterPlugin.java" 
+                     target-dir="src/com/eov/cordova/watermeter" />
+        
+        <!-- Copy SDK AAR to libs -->
+        <lib-file src="libs/water_meter_sdk.aar" />
+        
+        <!-- Gradle Dependencies -->
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        
+    </platform>
+    
+</plugin>
