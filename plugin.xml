@@ -43,8 +43,8 @@
         <source-file src="src/android/WaterMeterPlugin.java" 
                      target-dir="src/com/eov/cordova/watermeter" />
         
-        <!-- Copy SDK AAR to libs -->
-        <lib-file src="libs/water_meter_sdk.aar" />
+        <!-- Note: AAR must be manually copied to app/libs/ by build script -->
+        <!-- Cordova <lib-file> only works with .jar, not .aar -->
         
         <!-- Gradle Dependencies -->
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
