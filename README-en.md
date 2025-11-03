@@ -19,14 +19,14 @@
 - 📱 **Android support** - Android 6.0+ (API 23+)
 - 🎨 **Customizable UI** - settings for detection parameters
 
-## � Requirements
+## 🛠️ Requirements
 
 - Cordova >= 9.0.0
 - cordova-android >= 9.0.0
 - Android SDK API Level >= 23 (Android 6.0)
 - Camera permission
 
-## �🚀 Installation
+## 🚀 Installation
 
 ### Prerequisites
 
@@ -392,110 +392,6 @@ These are configured in the native SDK (not exposed to JS):
 
 2. Uninstall app from device before reinstalling
 
-## 🛠️ Development
-
-### Rebuilding the SDK
-
-If you need to modify the native Android SDK (Water_SDK):
-
-1. Navigate to SDK directory:
-
-   ```bash
-   cd Water_SDK
-   ```
-
-2. Build SDK:
-
-   ```bash
-   ./gradlew assembleRelease
-   ```
-
-3. Copy AAR to plugin:
-
-   ```bash
-   cp app/build/outputs/aar/app-release.aar \
-      ../cordova-plugin-water-meter/libs/water_meter_sdk.aar
-   ```
-
-4. Update plugin in your Cordova app:
-
-   ```bash
-   cd ../cordova_water_meter_app
-   cordova plugin remove cordova-plugin-water-meter
-   cordova plugin add ../cordova-plugin-water-meter
-   cordova build android
-   ```
-
-### Build Script (Automated)
-
-Use the provided build script for complete rebuild:
-
-```bash
-cd /path/to/SDK
-./build_ultra_simple.sh
-```
-
-This script:
-1. Builds the Android SDK (AAR)
-2. Copies AAR to plugin libs/
-3. Builds and installs Cordova app
-
-### Project Structure
-
-```text
-Water_SDK/                           # Native Android SDK
-├── app/src/main/java/com/eov/watermeter/
-│   ├── camera/                      # Camera2 API implementation
-│   │   ├── CameraManager.java       # Flash, zoom, preview
-│   │   └── CameraHelper.java
-│   ├── ml/                          # PaddleOCR integration
-│   │   └── Predictor.java
-│   └── ui/
-│       └── CameraScanActivity.java  # Main scanner UI
-├── build.gradle
-└── app/build/outputs/aar/           # Output AAR file
-
-cordova-plugin-water-meter/          # Cordova plugin wrapper
-├── src/android/
-│   ├── WaterMeterPlugin.java        # Cordova bridge
-│   └── build.gradle                 # AAR auto-copy task
-├── www/
-│   └── WaterMeter.js                # JavaScript API
-├── libs/
-│   └── water_meter_sdk.aar          # Native SDK (AAR)
-└── plugin.xml                       # Plugin manifest
-
-cordova_water_meter_app/             # Example Cordova app
-├── www/
-│   ├── index.html
-│   └── js/index.js
-├── platforms/android/               # Android platform
-└── plugins/                         # Installed plugins
-```
-
-### Key Files
-
-- **CameraManager.java**: Camera2 API implementation with flash/zoom control
-- **CameraScanActivity.java**: Scanner UI with real-time detection overlay
-- **Predictor.java**: PaddleOCR integration for meter number recognition
-- **WaterMeterPlugin.java**: Cordova plugin bridge (Java ↔ JavaScript)
-- **WaterMeter.js**: JavaScript API exposed to Cordova apps
-- **build.gradle** (plugin): Auto-copy AAR during Android build
-
-## 📝 Changelog
-
-### Version 1.0.0 (Current)
-
-- ✅ Real-time water meter detection using PaddleOCR
-- ✅ Flash toggle with zoom preservation fix
-- ✅ Zoom controls (1.0x - 4.0x)
-- ✅ Auto-capture when confidence > 90%
-- ✅ Confidence overlay display
-- ✅ Permission handling (check/request)
-- ✅ Customizable UI (title, close button, auto-close)
-- ✅ Gradle task for automatic AAR deployment
-- ✅ Support Android 6.0+ (API 23+)
-
 ## 📄 License
 
 MIT License - See [LICENSE](LICENSE) file for details.
@@ -518,7 +414,7 @@ For issues, questions, or contributions:
 
 ---
 
-**Made with ❤️ by EOV Solutions**
+**Made by EOV Solutions**
 - **Cordova Android**: >= 9.0.0
 - **Android**: >= 6.0 (API 23)
 - **Permissions**: CAMERA
