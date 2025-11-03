@@ -9,7 +9,7 @@
 ## ✨ Features
 
 - 📷 **Real-time camera preview** with live AI detection overlay
-- 🤖 **AI-powered OCR** using PaddleOCR for accurate meter reading
+- 🤖 **AI-powered OCR** using AI for accurate meter reading
 - 🎯 **Auto-detection** with confidence threshold and IoU filtering
 - ⚡ **Auto-capture** when meter is properly aligned in frame
 - 🔦 **Flash control** - toggle flashlight on/off
@@ -400,7 +400,7 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 **EOV Solutions**
 
-- **SDK**: PaddleOCR-based water meter recognition
+- **SDK**: AI-based water meter recognition
 - **Plugin**: Cordova integration wrapper
 - **Contact**: [Your contact information]
 

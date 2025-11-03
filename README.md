@@ -9,7 +9,7 @@
 ## ✨ Tính năng
 
 - 📷 Xem trước camera thời gian thực với lớp phủ AI
-- 🤖 Nhận diện số đồng hồ bằng PaddleOCR
+- 🤖 Nhận diện số đồng hồ bằng AI
 - 🎯 Tự động phát hiện với ngưỡng độ tin cậy
 - ⚡ Tự động chụp khi căn chỉnh đúng
 - 🔦 Điều khiển đèn flash
@@ -301,14 +301,6 @@ WaterMeter.requestPermission(
   cordova build android
   ```
 
-### Không nhận diện được số
-
-- Đảm bảo đủ ánh sáng
-- Giữ camera ổn định
-- Đặt số đồng hồ vào khung xanh
-- Đợi chỉ số độ tin cậy > 50%
-- Bật flash nếu thiếu sáng
-
 ### Code plugin cũ vẫn chạy
 
 - Xoá và cài lại plugin, clean và build lại
@@ -324,7 +316,7 @@ WaterMeter.requestPermission(
 
 ### Phiên bản 1.0.0
 
-- Nhận diện số đồng hồ thời gian thực bằng PaddleOCR
+- Nhận diện số đồng hồ thời gian thực bằng AI
 - Sửa lỗi flash khi zoom
 - Điều khiển zoom (1.0x - 4.0x)
 - Tự động chụp khi độ tin cậy > 90%
