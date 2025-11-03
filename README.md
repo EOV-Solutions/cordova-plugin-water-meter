@@ -1,135 +1,168 @@
 # 📱 Cordova Plugin Water Meter Scanner
 
-Cordova plugin for scanning water meter numbers using AI-powered OCR with camera preview.
+> AI-powered OCR plugin for scanning water meter readings in Cordova/PhoneGap applications.
+
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com/)
+[![Cordova](https://img.shields.io/badge/cordova-%3E%3D9.0.0-blue.svg)](https://cordova.apache.org/)
+[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 
 ## ✨ Features
 
-- 📷 **Real-time camera preview** with AI detection
-- 🤖 **AI-powered OCR** for accurate water meter reading
-- ⚡ **Auto-return results** - automatically closes after successful scan
-- 🎯 **Easy integration** - simple JavaScript API
-- 🔒 **Permission handling** - built-in camera permission management
+- 📷 **Real-time camera preview** with live AI detection overlay
+- 🤖 **AI-powered OCR** using PaddleOCR for accurate meter reading
+- 🎯 **Auto-detection** with confidence threshold and IoU filtering
+- ⚡ **Auto-capture** when meter is properly aligned in frame
+- 🔦 **Flash control** - toggle flashlight on/off
+- 🔍 **Zoom control** - manual and auto-zoom for optimal reading
+- 📐 **OBB detection** - oriented bounding box visualization
+- 🔒 **Permission handling** - automatic camera permission management
 - 📱 **Android support** - Android 6.0+ (API 23+)
+- 🎨 **Customizable UI** - settings for detection parameters
 
-## 🚀 Installation
+## � Requirements
 
-### From local path (development)
+- Cordova >= 9.0.0
+- cordova-android >= 9.0.0
+- Android SDK API Level >= 23 (Android 6.0)
+- Camera permission
+
+## �🚀 Installation
+
+### Prerequisites
+
+Make sure the Water Meter SDK AAR file is available in `libs/water_meter_sdk.aar`:
 
 ```bash
+# The AAR file should be at:
+# cordova-plugin-water-meter/libs/water_meter_sdk.aar
+```
+
+### Install Plugin
+
+#### Option 1: Local Path (Recommended for development)
+
+```bash
+cd YourCordovaApp
 cordova plugin add /path/to/cordova-plugin-water-meter
 ```
 
-### From git repository
+#### Option 2: Git Repository (For team sharing)
 
 ```bash
 cordova plugin add https://github.com/EOV-Solutions/cordova-plugin-water-meter.git
 ```
 
-### From npm (when published)
+#### Option 3: Private Git Repository
 
 ```bash
-cordova plugin add cordova-plugin-water-meter
+cordova plugin add git+https://github.com/EOV-Solutions/cordova-plugin-water-meter.git
 ```
 
-## 📦 Setup
-
-### 1. Copy SDK AAR file
-
-Copy the Water Meter SDK AAR file to the plugin:
+### Verify Installation
 
 ```bash
-cp /path/to/app-release.aar cordova-plugin-water-meter/libs/water_meter_sdk.aar
+cordova plugin list
+# Should show: cordova-plugin-water-meter 1.0.0 "Water Meter Scanner"
 ```
 
-### 2. Add plugin to your Cordova project
+### Build and Run
 
 ```bash
-cd YourCordovaApp
-cordova plugin add cordova-plugin-water-meter
-```
-
-### 3. Build your app
-
-```bash
+cordova prepare
 cordova build android
+cordova run android
 ```
 
 ## 💻 Usage
 
-### Basic Usage
+### Basic Example
 
 ```javascript
-// Open camera scanner
+// Simple scan - auto closes after successful reading
 WaterMeter.scan(
     function(result) {
         // Success callback
-        if (result.success) {
-            console.log('Scanned number: ' + result.text);
-            console.log('Confidence: ' + (result.confidence * 100) + '%');
-            
-            // Display result
-            document.getElementById('result').innerText = result.text;
-        } else {
-            alert('No meter number detected. Please try again.');
-        }
+        console.log('✓ Scanned:', result.text);
+        console.log('  Confidence:', (result.confidence * 100).toFixed(1) + '%');
+        
+        // Display result in your UI
+        document.getElementById('meter-value').innerText = result.text;
+        document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
     },
     function(error) {
-        // Error callback
-        console.error('Scan failed: ' + error);
-        alert('Scan cancelled or failed: ' + error);
+        // Error callback (user cancelled or scan failed)
+        console.error('Scan error:', error);
+        alert('Scan cancelled: ' + error);
     }
 );
 ```
 
-### With Options
+### Advanced Example with Options
 
 ```javascript
 WaterMeter.scan(
     function(result) {
-        console.log('Result:', result);
+        console.log('Success:', result);
+        // result = {
+        //   text: "00012345",
+        //   confidence: 0.95
+        // }
     },
     function(error) {
         console.error('Error:', error);
     },
     {
-        title: 'Quét số đồng hồ nước',           // Custom title
-        showCloseButton: true,                   // Show close (X) button
-        autoCloseOnResult: true                  // Auto close after scan
+        title: 'Quét số đồng hồ nước',      // Custom title (Vietnamese example)
+        showCloseButton: true,               // Show X button to close
+        autoCloseOnResult: true              // Auto close after successful scan (default: true)
     }
 );
 ```
 
-### Permission Handling
+### Complete Integration Example
 
-```javascript
-// Check if camera permission is granted
-WaterMeter.checkPermission(
-    function(result) {
-        if (result.granted) {
-            console.log('Camera permission granted');
-            // Open scanner
-            WaterMeter.scan(onSuccess, onError);
-        } else {
-            console.log('Camera permission not granted');
-            // Request permission
-            WaterMeter.requestPermission(
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Meter Scanner</title>
+    <script type="text/javascript" src="cordova.js"></script>
+</head>
+<body>
+    <h1>Water Meter Scanner</h1>
+    
+    <button onclick="startScan()">Scan Meter</button>
+    
+    <div id="result-container" style="display:none;">
+        <h2>Result:</h2>
+        <p>Meter Value: <strong id="meter-value">-</strong></p>
+        <p>Confidence: <strong id="confidence">-</strong></p>
+    </div>
+    
+    <script>
+        function startScan() {
+            WaterMeter.scan(
                 function(result) {
-                    if (result.granted) {
-                        WaterMeter.scan(onSuccess, onError);
-                    } else {
-                        alert('Camera permission is required');
-                    }
+                    // Success
+                    document.getElementById('meter-value').innerText = result.text;
+                    document.getElementById('confidence').innerText = 
+                        (result.confidence * 100).toFixed(1) + '%';
+                    document.getElementById('result-container').style.display = 'block';
                 },
                 function(error) {
-                    console.error('Permission error:', error);
+                    // Error
+                    alert('Scan failed: ' + error);
+                },
+                {
+                    title: 'Scan Water Meter',
+                    showCloseButton: true,
+                    autoCloseOnResult: true
                 }
             );
         }
-    },
-    function(error) {
-        console.error('Check permission error:', error);
-    }
-);
+    </script>
+</body>
+</html>
 ```
 
 ## 📖 API Reference
@@ -227,147 +260,265 @@ WaterMeter.requestPermission(
 );
 ```
 
-## 📱 Complete Example
+## ⚙️ Configuration Options
 
-### HTML
+### Scanner UI Options
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Water Meter Scanner</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            text-align: center;
-        }
-        #result {
-            font-size: 24px;
-            font-weight: bold;
-            color: #4CAF50;
-            margin: 20px 0;
-        }
-        button {
-            background: #2196F3;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:active {
-            background: #0b7dda;
-        }
-    </style>
-</head>
-<body>
-    <h1>Water Meter Scanner</h1>
-    <button id="scanBtn">📷 Scan Meter</button>
-    <div id="result"></div>
-    
-    <script src="cordova.js"></script>
-    <script src="js/index.js"></script>
-</body>
-</html>
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `title` | string | "Quét số đồng hồ" | Title displayed on scanner screen |
+| `showCloseButton` | boolean | true | Show X button to close scanner |
+| `autoCloseOnResult` | boolean | true | Auto close camera after successful scan |
+
+### Camera Features
+
+The scanner includes built-in camera controls:
+
+- **Flash Toggle**: Tap flash icon to turn on/off flashlight
+- **Zoom**: Use +/- buttons to zoom in/out (1.0x - 4.0x)
+- **Auto Focus**: Tap on preview to focus on specific area
+- **AI Detection**: Real-time meter detection with confidence overlay
+- **Auto Capture**: Automatically captures when confidence > 90%
+
+### Detection Parameters
+
+These are configured in the native SDK (not exposed to JS):
+
+- Minimum confidence threshold: 0.5 (50%)
+- Auto-close confidence: 0.9 (90%)
+- Detection timeout: No timeout (scans until result or user closes)
+- Supported formats: 5-8 digit water meter numbers
+
+## 🔧 Troubleshooting
+
+### Plugin Not Found
+
+**Error:** `Cannot read property 'scan' of undefined`
+
+**Solution:**
+1. Verify plugin is installed:
+   ```bash
+   cordova plugin list
+   ```
+2. Should see: `cordova-plugin-water-meter 1.0.0 "Water Meter Scanner Plugin"`
+3. Make sure `cordova.js` is loaded before calling plugin:
+   ```html
+   <script src="cordova.js"></script>
+   <script>
+       document.addEventListener('deviceready', function() {
+           // Now safe to use WaterMeter
+           WaterMeter.scan(onSuccess, onError);
+       });
+   </script>
+   ```
+
+### AAR File Not Found
+
+**Error:** `Could not find water_meter_sdk.aar`
+
+**Solution:**
+1. Verify AAR exists at: `cordova-plugin-water-meter/libs/water_meter_sdk.aar`
+2. Remove and re-add plugin:
+   ```bash
+   cordova plugin remove cordova-plugin-water-meter
+   cordova plugin add /path/to/cordova-plugin-water-meter
+   ```
+3. The Gradle task will auto-copy AAR to `app/libs/` during build
+
+### Camera Permission Denied
+
+**Error:** `Camera permission denied`
+
+**Solution:**
+1. Check `AndroidManifest.xml` has permission:
+   ```xml
+   <uses-permission android:name="android.permission.CAMERA" />
+   ```
+2. Request permission before scanning:
+   ```javascript
+   WaterMeter.requestPermission(
+       function(result) {
+           if (result.granted) {
+               WaterMeter.scan(onSuccess, onError);
+           }
+       },
+       onError
+   );
+   ```
+
+### Build Failures
+
+**Error:** `Could not determine the dependencies of task ':app:compileDebugJavaWithJavac'`
+
+**Solution:**
+
+1. Check `config.xml` has correct Android platform version:
+   ```xml
+   <engine name="android" spec="^9.0.0" />
+   ```
+
+2. Clean and rebuild:
+
+   ```bash
+   cordova clean android
+   rm -rf platforms/android
+   cordova platform add android@9.0.0
+   cordova build android
+   ```
+
+### Scanner Not Detecting Numbers
+
+**Issue:** Camera opens but doesn't detect meter numbers
+
+**Solution:**
+1. Ensure good lighting conditions
+2. Hold camera steady over meter display
+3. Position meter numbers in the green detection box
+4. Wait for confidence indicator to reach > 50%
+5. Flash can help in low light - tap flash icon
+
+### Old Plugin Code Running
+
+**Issue:** Code changes not reflected in app
+
+**Solution:**
+1. Force plugin refresh:
+   ```bash
+   cordova plugin remove cordova-plugin-water-meter
+   cordova plugin add /path/to/cordova-plugin-water-meter
+   cordova clean android
+   cordova build android
+   ```
+
+2. Uninstall app from device before reinstalling
+
+## 🛠️ Development
+
+### Rebuilding the SDK
+
+If you need to modify the native Android SDK (Water_SDK):
+
+1. Navigate to SDK directory:
+
+   ```bash
+   cd Water_SDK
+   ```
+
+2. Build SDK:
+
+   ```bash
+   ./gradlew assembleRelease
+   ```
+
+3. Copy AAR to plugin:
+
+   ```bash
+   cp app/build/outputs/aar/app-release.aar \
+      ../cordova-plugin-water-meter/libs/water_meter_sdk.aar
+   ```
+
+4. Update plugin in your Cordova app:
+
+   ```bash
+   cd ../cordova_water_meter_app
+   cordova plugin remove cordova-plugin-water-meter
+   cordova plugin add ../cordova-plugin-water-meter
+   cordova build android
+   ```
+
+### Build Script (Automated)
+
+Use the provided build script for complete rebuild:
+
+```bash
+cd /path/to/SDK
+./build_ultra_simple.sh
 ```
 
-### JavaScript (index.js)
+This script:
+1. Builds the Android SDK (AAR)
+2. Copies AAR to plugin libs/
+3. Builds and installs Cordova app
 
-```javascript
-document.addEventListener('deviceready', onDeviceReady, false);
+### Project Structure
 
-function onDeviceReady() {
-    console.log('Device ready');
-    
-    document.getElementById('scanBtn').addEventListener('click', function() {
-        scanWaterMeter();
-    });
-}
+```text
+Water_SDK/                           # Native Android SDK
+├── app/src/main/java/com/eov/watermeter/
+│   ├── camera/                      # Camera2 API implementation
+│   │   ├── CameraManager.java       # Flash, zoom, preview
+│   │   └── CameraHelper.java
+│   ├── ml/                          # PaddleOCR integration
+│   │   └── Predictor.java
+│   └── ui/
+│       └── CameraScanActivity.java  # Main scanner UI
+├── build.gradle
+└── app/build/outputs/aar/           # Output AAR file
 
-function scanWaterMeter() {
-    // Check permission first
-    WaterMeter.checkPermission(
-        function(result) {
-            if (result.granted) {
-                // Permission granted - open scanner
-                openScanner();
-            } else {
-                // Request permission
-                WaterMeter.requestPermission(
-                    function(permResult) {
-                        if (permResult.granted) {
-                            openScanner();
-                        } else {
-                            alert('Camera permission is required to scan');
-                        }
-                    },
-                    function(error) {
-                        alert('Permission error: ' + error);
-                    }
-                );
-            }
-        },
-        function(error) {
-            console.error('Check permission error:', error);
-        }
-    );
-}
+cordova-plugin-water-meter/          # Cordova plugin wrapper
+├── src/android/
+│   ├── WaterMeterPlugin.java        # Cordova bridge
+│   └── build.gradle                 # AAR auto-copy task
+├── www/
+│   └── WaterMeter.js                # JavaScript API
+├── libs/
+│   └── water_meter_sdk.aar          # Native SDK (AAR)
+└── plugin.xml                       # Plugin manifest
 
-function openScanner() {
-    WaterMeter.scan(
-        function(result) {
-            // Success
-            console.log('Scan result:', result);
-            
-            if (result.success && result.text) {
-                // Show result
-                document.getElementById('result').innerHTML = 
-                    '✅ Meter Number: ' + result.text + 
-                    '<br>Confidence: ' + Math.round(result.confidence * 100) + '%';
-                
-                // Save to database or send to server
-                saveMeterReading(result.text);
-            } else {
-                // No detection
-                document.getElementById('result').innerHTML = 
-                    '❌ No meter number detected';
-            }
-        },
-        function(error) {
-            // Error or cancelled
-            console.error('Scan error:', error);
-            if (error !== 'User cancelled') {
-                alert('Scan failed: ' + error);
-            }
-        },
-        {
-            title: 'Quét số đồng hồ nước',
-            showCloseButton: true,
-            autoCloseOnResult: true
-        }
-    );
-}
-
-function saveMeterReading(meterNumber) {
-    // TODO: Save to local storage or send to server
-    console.log('Saving meter reading:', meterNumber);
-    
-    // Example: Save to localStorage
-    var readings = JSON.parse(localStorage.getItem('readings') || '[]');
-    readings.push({
-        number: meterNumber,
-        timestamp: new Date().toISOString()
-    });
-    localStorage.setItem('readings', JSON.stringify(readings));
-}
+cordova_water_meter_app/             # Example Cordova app
+├── www/
+│   ├── index.html
+│   └── js/index.js
+├── platforms/android/               # Android platform
+└── plugins/                         # Installed plugins
 ```
 
-## 🔧 Requirements
+### Key Files
 
-- **Cordova**: >= 9.0.0
+- **CameraManager.java**: Camera2 API implementation with flash/zoom control
+- **CameraScanActivity.java**: Scanner UI with real-time detection overlay
+- **Predictor.java**: PaddleOCR integration for meter number recognition
+- **WaterMeterPlugin.java**: Cordova plugin bridge (Java ↔ JavaScript)
+- **WaterMeter.js**: JavaScript API exposed to Cordova apps
+- **build.gradle** (plugin): Auto-copy AAR during Android build
+
+## 📝 Changelog
+
+### Version 1.0.0 (Current)
+
+- ✅ Real-time water meter detection using PaddleOCR
+- ✅ Flash toggle with zoom preservation fix
+- ✅ Zoom controls (1.0x - 4.0x)
+- ✅ Auto-capture when confidence > 90%
+- ✅ Confidence overlay display
+- ✅ Permission handling (check/request)
+- ✅ Customizable UI (title, close button, auto-close)
+- ✅ Gradle task for automatic AAR deployment
+- ✅ Support Android 6.0+ (API 23+)
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) file for details.
+
+## 👥 Credits
+
+**EOV Solutions**
+
+- **SDK**: PaddleOCR-based water meter recognition
+- **Plugin**: Cordova integration wrapper
+- **Contact**: [Your contact information]
+
+## 🆘 Support
+
+For issues, questions, or contributions:
+
+1. Check [Troubleshooting](#-troubleshooting) section
+2. Review [API Reference](#-api-reference)
+3. Contact development team
+
+---
+
+**Made with ❤️ by EOV Solutions**
 - **Cordova Android**: >= 9.0.0
 - **Android**: >= 6.0 (API 23)
 - **Permissions**: CAMERA

@@ -10,6 +10,31 @@ repositories {
     mavenCentral()
 }
 
+// Auto-copy AAR to app/libs (Cordova workaround)
+// AAR is in plugins/cordova-plugin-water-meter/libs/ after "cordova plugin add"
+task copyAarToAppLibs {
+    doLast {
+        // Path from platforms/android/app/ to plugins/cordova-plugin-water-meter/libs/
+        def aarSource = project.file('../../../plugins/cordova-plugin-water-meter/libs/water_meter_sdk.aar')
+        def appLibsDir = new File(project.projectDir, 'libs')
+        def aarTarget = new File(appLibsDir, 'water_meter_sdk.aar')
+        
+        if (aarSource.exists()) {
+            appLibsDir.mkdirs()
+            aarTarget.bytes = aarSource.bytes
+            println "✓ Copied AAR from plugins: ${aarSource} -> ${aarTarget}"
+        } else {
+            println "⚠ AAR not found at: ${aarSource}"
+            println "   Current project dir: ${project.projectDir}"
+        }
+    }
+}
+
+// Run before preBuild
+project.afterEvaluate {
+    preBuild.dependsOn copyAarToAppLibs
+}
+
 dependencies {
     // Note: AAR is auto-loaded by app/build.gradle via fileTree(dir: 'libs')
     // So we don't need to explicitly declare it here
