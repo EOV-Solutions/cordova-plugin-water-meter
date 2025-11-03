@@ -83,8 +83,16 @@ WaterMeter.scan(
         // Thành công
         console.log('✓ Số:', result.text);
         console.log('Độ tin cậy:', (result.confidence * 100).toFixed(1) + '%');
+        
+        // Hiển thị kết quả
         document.getElementById('meter-value').innerText = result.text;
         document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
+        
+        // Hiển thị ảnh đã lưu
+        if (result.imagePath) {
+            console.log('Ảnh đã lưu tại:', result.imagePath);
+            document.getElementById('captured-image').src = 'file://' + result.imagePath;
+        }
     },
     function(error) {
         // Lỗi hoặc hủy
@@ -120,6 +128,9 @@ WaterMeter.scan(
 <head>
     <title>Quét Số Đồng Hồ Nước</title>
     <script src="cordova.js"></script>
+    <style>
+        #captured-image { max-width: 100%; height: auto; margin-top: 10px; }
+    </style>
 </head>
 <body>
     <h1>Quét Số Đồng Hồ Nước</h1>
@@ -128,13 +139,25 @@ WaterMeter.scan(
         <h2>Kết quả:</h2>
         <p>Số: <strong id="meter-value">-</strong></p>
         <p>Độ tin cậy: <strong id="confidence">-</strong></p>
+        <p>Đường dẫn: <span id="image-path">-</span></p>
+        <img id="captured-image" style="display:none;" />
     </div>
     <script>
         function startScan() {
             WaterMeter.scan(
                 function(result) {
+                    // Hiển thị kết quả
                     document.getElementById('meter-value').innerText = result.text;
                     document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
+                    
+                    // Hiển thị ảnh đã lưu
+                    if (result.imagePath) {
+                        document.getElementById('image-path').innerText = result.imagePath;
+                        var img = document.getElementById('captured-image');
+                        img.src = 'file://' + result.imagePath;
+                        img.style.display = 'block';
+                    }
+                    
                     document.getElementById('result-container').style.display = 'block';
                 },
                 function(error) {
@@ -172,8 +195,36 @@ Mở camera để quét số đồng hồ nước.
 {
     text: "00123",        // Số đồng hồ (rỗng nếu thất bại)
     confidence: 1.0,      // Độ tin cậy 0.0-1.0
-    success: true         // true nếu có số
+    success: true,        // true nếu có số
+    imagePath: "/path/to/image.jpg"  // Đường dẫn ảnh đã chụp (nếu có)
 }
+```
+
+**Ví dụ:**
+
+```javascript
+WaterMeter.scan(
+    function(result) {
+        if (result.success) {
+            alert('Meter number: ' + result.text);
+            console.log('Image saved at: ' + result.imagePath);
+            
+            // Hiển thị ảnh đã lưu
+            if (result.imagePath) {
+                document.getElementById('captured-image').src = 'file://' + result.imagePath;
+            }
+        } else {
+            alert('No number detected');
+        }
+    },
+    function(error) {
+        alert('Error: ' + error);
+    },
+    {
+        title: 'Scan Water Meter',
+        autoCloseOnResult: true
+    }
+);
 ```
 
 **Ví dụ:**

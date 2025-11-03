@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2025-11-03
+
+### 🎯 New Features
+
+#### Image Capture & Save
+- ✅ **Auto-save captured images**: SDK now automatically saves captured images to device storage
+- ✅ **Image path in result**: Added `imagePath` field to success callback result
+- ✅ **Organized storage**: Images saved to `/storage/emulated/0/Android/data/[package]/files/Pictures/WaterMeter/`
+- ✅ **Timestamped filenames**: Format `[timestamp].jpg` (e.g. `1730626822456.jpg`)
+- ✅ **High quality**: JPEG compression at 90% quality
+- ✅ **No extra permissions**: Uses app-scoped storage (Android 6.0+)
+
+#### Technical Changes
+- Updated `CameraScanActivity.java`:
+  - Added `EXTRA_RESULT_IMAGE_PATH` constant
+  - Added `saveImageToFile()` method to save bitmap to JPEG
+  - Modified `returnResult()` to include image path
+  - Images saved before returning result to ensure availability
+- Updated `WaterMeterPlugin.java`:
+  - Added `imagePath` field to JSON result object
+  - Forward image path from Activity result to JavaScript callback
+- Updated documentation:
+  - README.md: Added `imagePath` field to API reference
+  - Examples updated to show image display
+
+#### Result Object (Updated)
+```javascript
+{
+    text: "00123",                              // Meter number
+    confidence: 0.95,                           // Confidence score (0.0-1.0)
+    success: true,                              // true if text not empty
+    imagePath: "/path/to/water_meter_....jpg"  // 🆕 Absolute path to saved image
+}
+```
+
 ## [1.0.0] - 2025-10-24
 
 ### 🎉 Initial Release

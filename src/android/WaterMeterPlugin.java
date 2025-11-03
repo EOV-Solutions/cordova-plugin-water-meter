@@ -157,12 +157,16 @@ public class WaterMeterPlugin extends CordovaPlugin {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 String text = data.getStringExtra(CameraScanActivity.EXTRA_RESULT_TEXT);
                 float confidence = data.getFloatExtra(CameraScanActivity.EXTRA_RESULT_CONFIDENCE, 0f);
+                String imagePath = data.getStringExtra(CameraScanActivity.EXTRA_RESULT_IMAGE_PATH);
                 
                 try {
                     JSONObject result = new JSONObject();
                     result.put("text", text != null ? text : "");
                     result.put("confidence", confidence);
                     result.put("success", text != null && !text.isEmpty());
+                    if (imagePath != null && !imagePath.isEmpty()) {
+                        result.put("imagePath", imagePath);
+                    }
                     
                     Log.d(TAG, "Scan result: " + result.toString());
                     scanCallback.success(result);

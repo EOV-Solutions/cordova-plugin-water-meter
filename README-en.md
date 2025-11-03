@@ -187,7 +187,8 @@ Open camera scanner to scan water meter number.
 {
     text: "00123",        // Scanned meter number (empty string if failed)
     confidence: 1.0,      // Confidence score 0.0-1.0
-    success: true         // true if text is not empty
+    success: true,         // true if text is not empty
+    imagePath: "/storage/emulated/0/Android/data/com.example.app/files/Pictures/WaterMeter/water_meter_20251103_150122.jpg"  // 🆕 Path to saved image
 }
 ```
 
@@ -198,6 +199,11 @@ WaterMeter.scan(
     function(result) {
         if (result.success) {
             alert('Meter number: ' + result.text);
+            console.log('Image saved at: ' + result.imagePath);
+            
+            if (result.imagePath) {
+                document.getElementById('captured-image').src = 'file://' + result.imagePath;
+            }
         } else {
             alert('No number detected');
         }
