@@ -494,7 +494,7 @@ cordova build android
 
 ## 📝 License
 
-MIT License - see LICENSE file
+License - see LICENSE file
 
 ## 👥 Author
 

@@ -379,7 +379,7 @@ WaterMeter.requestPermission(
 
 ## 📄 Giấy phép
 
-MIT License
+[License](./LICENSE)
 
 ## 👥 Tác giả
 
