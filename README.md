@@ -4,7 +4,7 @@
 
 [![Nền tảng](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com/)
 [![Cordova](https://img.shields.io/badge/cordova-%3E%3D9.0.0-blue.svg)](https://cordova.apache.org/)
-[![Giấy phép](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+[![Giấy phép](https://img.shields.io/badge/license-EOV-orange.svg)](LICENSE)
 
 ## ✨ Tính năng
 

@@ -4,7 +4,7 @@
 
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com/)
 [![Cordova](https://img.shields.io/badge/cordova-%3E%3D9.0.0-blue.svg)](https://cordova.apache.org/)
-[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-EOV-orange.svg)](LICENSE)
 
 ## ✨ Features
 
@@ -400,7 +400,7 @@ These are configured in the native SDK (not exposed to JS):
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+EOV License - See [LICENSE](LICENSE) file for details.
 
 ## 👥 Credits
 
