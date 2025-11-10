@@ -363,6 +363,98 @@ WaterMeter.requestPermission(
   ```
 - Gỡ cài đặt app khỏi thiết bị trước khi cài lại
 
+### Lỗi: cannot find symbol CameraScanActivity
+
+**Nguyên nhân:** AAR không được thêm vào dependencies hoặc chưa được copy.
+
+**Giải pháp:**
+
+1. Kiểm tra AAR tồn tại:
+   ```bash
+   ls platforms/android/app/libs/water_meter_sdk.aar
+   ls plugins/cordova-plugin-water-meter/libs/water_meter_sdk.aar
+   ```
+
+2. Reinstall plugin hoàn toàn:
+   ```bash
+   cordova plugin rm cordova-plugin-water-meter
+   cordova platform rm android
+   cordova platform add android
+   cordova plugin add /path/to/cordova-plugin-water-meter
+   ```
+
+3. Build lại:
+   ```bash
+   cd platforms/android
+   ./gradlew clean assembleDebug
+   ```
+
+4. Nếu vẫn lỗi, kiểm tra `platforms/android/app/build.gradle`:
+   ```gradle
+   dependencies {
+       implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+       // ... other deps
+   }
+   ```
+
+### Lỗi: Manifest merger failed (FileProvider conflict)
+
+**Nguyên nhân:** Conflict giữa FileProvider của Cordova và SDK.
+
+**Giải pháp:** Thêm `tools:replace` vào AndroidManifest.xml:
+
+1. Mở `platforms/android/app/src/main/AndroidManifest.xml`
+2. Thêm namespace tools:
+   ```xml
+   <manifest xmlns:tools="http://schemas.android.com/tools" ...>
+   ```
+3. Thêm tools:replace vào provider:
+   ```xml
+   <provider android:authorities="${applicationId}.cdv.core.file.provider"
+             tools:replace="android:authorities">
+       <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                  tools:replace="android:resource" />
+   </provider>
+   ```
+
+### Lỗi: Gradle version mismatch
+
+**Giải pháp 1:** Thêm vào `config.xml`:
+```xml
+<platform name="android">
+    <preference name="GradleVersion" value="8.9" />
+</platform>
+```
+
+**Giải pháp 2:** Update gradle wrapper:
+```bash
+# Edit platforms/android/gradle/wrapper/gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
+```
+
+### Lỗi: Java version mismatch
+
+**Yêu cầu:** Java 17
+
+**Giải pháp:**
+```bash
+# Set JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Verify
+java -version  # Should show version 17
+
+# Build
+cordova build android
+```
+
+## 📚 Tài liệu bổ sung
+
+- [PLUGIN_INTEGRATION_GUIDE.md](./PLUGIN_INTEGRATION_GUIDE.md) - Hướng dẫn chi tiết tích hợp plugin
+- [API_DOCUMENTATION.md](../Water_SDK/API_DOCUMENTATION.md) - API documentation của SDK
+- [CHANGELOG.md](./CHANGELOG.md) - Lịch sử thay đổi chi tiết
+
 ## 📝 Lịch sử thay đổi
 
 ### Phiên bản 1.0.0
@@ -376,6 +468,7 @@ WaterMeter.requestPermission(
 - UI tuỳ chỉnh
 - Tự động copy AAR khi build
 - Hỗ trợ Android 6.0+
+- Lưu ảnh và trả về đường dẫn
 
 ## 📄 Giấy phép
 
