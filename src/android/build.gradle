@@ -36,8 +36,11 @@ project.afterEvaluate {
 }
 
 dependencies {
-    // Note: AAR is auto-loaded by app/build.gradle via fileTree(dir: 'libs')
-    // So we don't need to explicitly declare it here
+    // Auto-load AAR from libs folder
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    
+    // Or explicitly reference the AAR (alternative method)
+    // implementation files('libs/water_meter_sdk.aar')
     
     // AndroidX
     implementation 'androidx.appcompat:appcompat:1.3.1'
