@@ -2,6 +2,91 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-11-11
+
+### 🎨 New Features
+
+#### Image Resize on Save
+- ✅ **Flexible resize options**: Specify `imageMaxWidth` or `imageMaxHeight` when scanning
+- ✅ **Auto aspect ratio**: Only need to specify one dimension - other calculated automatically
+- ✅ **Fit within bounds**: Specify both dimensions to fit image within bounds
+- ✅ **Memory efficient**: Auto-recycles resized bitmap to prevent memory leaks
+- ✅ **Optional feature**: Default behavior (no resize) unchanged
+
+#### JavaScript API
+```javascript
+// Resize by width (height auto-calculated)
+WaterMeter.scan(success, error, { imageMaxWidth: 1920 });
+
+// Resize by height (width auto-calculated)
+WaterMeter.scan(success, error, { imageMaxHeight: 1080 });
+
+// Fit within bounds
+WaterMeter.scan(success, error, { 
+    imageMaxWidth: 1920, 
+    imageMaxHeight: 1080 
+});
+```
+
+#### Native API
+```java
+// Using WaterMeterSDK builder
+new WaterMeterSDK.CameraScanBuilder()
+    .setImageMaxWidth(1920)
+    .setImageMaxHeight(1080)
+    
+// Or directly via Intent
+intent.putExtra(CameraScanActivity.EXTRA_IMAGE_MAX_WIDTH, 1920);
+```
+
+#### Technical Changes
+- Added `CameraScanActivity.EXTRA_IMAGE_MAX_WIDTH` constant
+- Added `CameraScanActivity.EXTRA_IMAGE_MAX_HEIGHT` constant
+- Added `resizeBitmapIfNeeded()` method with smart scaling logic
+- Updated `saveImageToFile()` to resize before saving
+- Added setters in `WaterMeterSDK.CameraScanBuilder`
+- Updated `WaterMeterPlugin` to pass resize options from JavaScript
+- Updated `WaterMeter.js` with new options
+
+#### Documentation
+- Added [IMAGE_RESIZE_FEATURE.md](./IMAGE_RESIZE_FEATURE.md) with examples
+- Updated README with resize usage examples
+- Added API reference for new parameters
+
+#### Use Cases
+- 📱 Mobile upload optimization (reduce bandwidth)
+- 🖼️ Thumbnail generation
+- 💾 Storage space management
+- 🚀 Faster image processing
+
+---
+
+## [1.1.1] - 2025-11-10
+
+### 🔧 Critical Bug Fixes
+
+#### Fixed Manifest Merger Conflict
+- ✅ **Removed FileProvider from SDK**: Eliminated manifest merger conflicts when integrating with Cordova apps
+- ✅ **Cleaner integration**: SDK no longer declares its own FileProvider
+- ✅ **Host app compatibility**: Cordova apps manage their own FileProvider configuration
+- ✅ **No breaking changes**: Image saving still works via app-scoped storage
+
+#### Technical Details
+- **File modified**: `Water_SDK/app/src/main/AndroidManifest.xml`
+- **Change**: Removed `<provider>` declaration for FileProvider
+- **Reason**: SDK uses `getExternalFilesDir()` which doesn't require FileProvider
+- **Impact**: Eliminates "Manifest merger failed" errors in external apps
+- **Backwards compatible**: Existing apps continue to work without changes
+
+#### Migration Notes
+- ✅ **For new integrations**: No action needed - works out of the box
+- ✅ **For existing apps with conflicts**: Update plugin to v1.1.1 or later
+- ℹ️ **For manual workarounds**: Can now remove `tools:replace` attributes
+
+See [MANIFEST_CONFLICT_FIX.md](./MANIFEST_CONFLICT_FIX.md) for detailed explanation.
+
+---
+
 ## [1.1.0] - 2025-11-03
 
 ### 🎯 New Features

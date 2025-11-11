@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-water-meter",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Cordova plugin for Water Meter OCR scanning using AI camera preview",
   "main": "www/WaterMeter.js",
   "scripts": {

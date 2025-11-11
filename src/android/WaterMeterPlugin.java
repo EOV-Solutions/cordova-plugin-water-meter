@@ -79,6 +79,12 @@ public class WaterMeterPlugin extends CordovaPlugin {
                     if (options.has("autoCloseOnResult")) {
                         intent.putExtra(CameraScanActivity.EXTRA_AUTO_CLOSE_ON_RESULT, options.getBoolean("autoCloseOnResult"));
                     }
+                    if (options.has("imageMaxWidth")) {
+                        intent.putExtra(CameraScanActivity.EXTRA_IMAGE_MAX_WIDTH, options.getInt("imageMaxWidth"));
+                    }
+                    if (options.has("imageMaxHeight")) {
+                        intent.putExtra(CameraScanActivity.EXTRA_IMAGE_MAX_HEIGHT, options.getInt("imageMaxHeight"));
+                    }
                     
                     cordova.startActivityForResult(WaterMeterPlugin.this, intent, REQUEST_CAMERA_SCAN);
                     

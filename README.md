@@ -166,8 +166,52 @@ WaterMeter.scan(
                 {
                     title: 'Quét số đồng hồ nước',
                     showCloseButton: true,
-                    autoCloseOnResult: true
+                    autoCloseOnResult: true,
+                    imageMaxWidth: 1920  // Resize ảnh về max width 1920px (giữ tỷ lệ)
                 }
+            );
+        }
+    </script>
+```
+
+### Ví dụ nâng cao
+
+```javascript
+// Resize ảnh theo width
+WaterMeter.scan(
+    successCallback, 
+    errorCallback,
+    {
+        imageMaxWidth: 1920  // Height tự động tính theo tỷ lệ
+    }
+);
+
+// Resize ảnh theo height  
+WaterMeter.scan(
+    successCallback,
+    errorCallback, 
+    {
+        imageMaxHeight: 1080  // Width tự động tính theo tỷ lệ
+    }
+);
+
+// Resize ảnh fit trong bounds (chọn scale nhỏ hơn)
+WaterMeter.scan(
+    successCallback,
+    errorCallback,
+    {
+        imageMaxWidth: 1920,
+        imageMaxHeight: 1080  // Ảnh sẽ fit trong 1920x1080
+    }
+);
+
+// Không resize (ảnh gốc)
+WaterMeter.scan(
+    successCallback,
+    errorCallback,
+    {
+        // Không truyền imageMaxWidth/imageMaxHeight
+    }
             );
         }
     </script>
@@ -182,12 +226,14 @@ WaterMeter.scan(
 Mở camera để quét số đồng hồ nước.
 
 - `successCallback(result)` - Được gọi khi quét thành công
-    - `result`: `{text: string, confidence: number, success: boolean}`
+    - `result`: `{text: string, confidence: number, success: boolean, imagePath: string}`
 - `errorCallback(error)` - Được gọi khi lỗi hoặc hủy
 - `options` (tuỳ chọn)
     - `title` (string) - Tiêu đề màn hình quét
     - `showCloseButton` (boolean) - Hiện nút đóng (X)
     - `autoCloseOnResult` (boolean) - Tự động đóng khi quét thành công
+    - `imageMaxWidth` (number) - Chiều rộng tối đa ảnh lưu (px), chiều cao tự tính
+    - `imageMaxHeight` (number) - Chiều cao tối đa ảnh lưu (px), chiều rộng tự tính
 
 **Kết quả thành công:**
 
