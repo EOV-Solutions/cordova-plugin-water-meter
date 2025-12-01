@@ -12,6 +12,7 @@
 @interface WaterMeter () <WMCameraScannerDelegate_ObjC>
 @property (nonatomic, copy) NSString *scanCallbackId;
 @property (nonatomic, strong) WMCameraScanner *currentScanner;
+@property (nonatomic, assign) BOOL isScannerPresented;  // Guard against multiple calls
 @end
 
 @implementation WaterMeter
@@ -200,17 +201,28 @@
 #pragma mark - Camera Scanner
 
 - (void)scan:(CDVInvokedUrlCommand *)command {
-    self.scanCallbackId = command.callbackId;
+    // Guard against multiple simultaneous calls
+    if (self.isScannerPresented) {
+        NSLog(@"[WaterMeter Plugin] scan: IGNORED - scanner already presented");
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                    messageAsString:@"Scanner already active"];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        return;
+    }
     
-    // Parse options
+    self.isScannerPresented = YES;
+    self.scanCallbackId = command.callbackId;
+    NSLog(@"[WaterMeter Plugin] scan: CALLED, isScannerPresented = YES");
+    
+    // Parse options - only UI-related options, NOT behavior settings
     NSDictionary *options = nil;
     if (command.arguments.count > 0 && [command.arguments[0] isKindOfClass:[NSDictionary class]]) {
         options = command.arguments[0];
     }
     
+    // Only read UI options, NOT auto-capture or confidence settings
+    // These should come from SDK's WMSettings (UI Settings screen)
     NSString *title = options[@"title"] ?: @"Quét đồng hồ nước";
-    BOOL autoCapture = options[@"autoCapture"] ? [options[@"autoCapture"] boolValue] : YES;
-    float minConfidence = options[@"minConfidence"] ? [options[@"minConfidence"] floatValue] : 0.7f;
     BOOL showCloseButton = options[@"showCloseButton"] ? [options[@"showCloseButton"] boolValue] : YES;
     
     // Image resize options (like Android)
@@ -218,39 +230,68 @@
     NSInteger imageMaxHeight = options[@"imageMaxHeight"] ? [options[@"imageMaxHeight"] integerValue] : 0;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        // Auto-initialize if needed (like Android)
-        [self ensureInitializedWithCompletion:^(NSError *initError) {
-            if (initError) {
-                CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                            messageAsString:[NSString stringWithFormat:@"SDK initialization failed: %@", initError.localizedDescription]];
-                [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-                return;
-            }
-            
-            // Create scanner configuration with image resize options
-            WMScannerConfiguration_ObjC *config = [[WMScannerConfiguration_ObjC alloc]
-                initWithAutoCapture:autoCapture
-                      minConfidence:minConfidence
-                       flashEnabled:NO
-                    showCloseButton:showCloseButton
-                              title:title
-                      imageMaxWidth:imageMaxWidth
-                     imageMaxHeight:imageMaxHeight];
-            
-            // Present scanner
-            NSError *error = nil;
-            [[WaterMeterSDK shared] presentScannerWithConfiguration:config
-                                                           delegate:self
-                                                               from:self.viewController
-                                                              error:&error];
-            
-            if (error) {
-                CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                            messageAsString:error.localizedDescription];
-                [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-            }
-        }];
+        // Check if view controller is ready to present
+        if (!self.viewController.view.window) {
+            NSLog(@"[WaterMeter Plugin] scan: DELAYED - view not in hierarchy, retrying in 0.3s");
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self presentScannerWithOptions:options command:command];
+            });
+            return;
+        }
+        
+        [self presentScannerWithOptions:options command:command];
     });
+}
+
+- (void)presentScannerWithOptions:(NSDictionary *)options command:(CDVInvokedUrlCommand *)command {
+    // Only read UI options - behavior settings come from SDK's WMSettings
+    NSString *title = options[@"title"] ?: @"Quét đồng hồ nước";
+    BOOL showCloseButton = options[@"showCloseButton"] ? [options[@"showCloseButton"] boolValue] : YES;
+    NSInteger imageMaxWidth = options[@"imageMaxWidth"] ? [options[@"imageMaxWidth"] integerValue] : 0;
+    NSInteger imageMaxHeight = options[@"imageMaxHeight"] ? [options[@"imageMaxHeight"] integerValue] : 0;
+    
+    NSLog(@"[WaterMeter Plugin] presentScanner - UI options only, behavior from SDK settings");
+    NSLog(@"[WaterMeter Plugin] title=%@, showCloseButton=%d", title, showCloseButton);
+    
+    // Auto-initialize if needed (like Android)
+    [self ensureInitializedWithCompletion:^(NSError *initError) {
+        if (initError) {
+            self.isScannerPresented = NO;
+            CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                        messageAsString:[NSString stringWithFormat:@"SDK initialization failed: %@", initError.localizedDescription]];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            return;
+        }
+        
+        // Create scanner configuration - NO override for autoCapture/confidence
+        // Use -1 for all behavior settings to let SDK use WMSettings values
+        WMScannerConfiguration_ObjC *config = [[WMScannerConfiguration_ObjC alloc]
+            initWithAutoCaptureSet:-1          // Use SDK settings
+                  minConfidenceSet:-1.0f       // Use SDK settings
+                   flashEnabled:NO
+                showCloseButton:showCloseButton
+                          title:title
+                  imageMaxWidth:imageMaxWidth
+                 imageMaxHeight:imageMaxHeight];
+        
+        // Present scanner
+        NSError *error = nil;
+        NSLog(@"[WaterMeter Plugin] presentScanner about to call SDK (using SDK settings for behavior)");
+        [[WaterMeterSDK shared] presentScannerWithConfiguration:config
+                                                       delegate:self
+                                                           from:self.viewController
+                                                          error:&error];
+        
+        if (error) {
+            self.isScannerPresented = NO;
+            NSLog(@"[WaterMeter Plugin] presentScanner ERROR: %@", error.localizedDescription);
+            CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                        messageAsString:error.localizedDescription];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        } else {
+            NSLog(@"[WaterMeter Plugin] presentScanner SUCCESS");
+        }
+    }];
 }
 
 #pragma mark - WMCameraScannerDelegate_ObjC
@@ -259,6 +300,9 @@
     // SDK already dismisses the view controller, so we just send the result directly
     // Do NOT call dismissViewControllerAnimated here - it will cause completion to never fire
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.isScannerPresented = NO;  // Reset guard flag
+        NSLog(@"[WaterMeter Plugin] didScanResult - isScannerPresented = NO");
+        
         CDVPluginResult *pluginResult;
         
         // Always return result if we have ocrResult (like Android)
@@ -305,7 +349,8 @@
 - (void)scanner:(WMCameraScanner *)scanner didFailWithError:(NSError *)error {
     // SDK already dismisses the view controller
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"[WaterMeter Plugin] Scan failed with error: %@", error.localizedDescription);
+        self.isScannerPresented = NO;  // Reset guard flag
+        NSLog(@"[WaterMeter Plugin] didFailWithError - isScannerPresented = NO, error: %@", error.localizedDescription);
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                     messageAsString:error.localizedDescription];
         [self.commandDelegate sendPluginResult:result callbackId:self.scanCallbackId];
@@ -316,7 +361,8 @@
 - (void)scannerDidCancel:(WMCameraScanner *)scanner {
     // SDK already dismisses the view controller
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"[WaterMeter Plugin] User cancelled scan");
+        self.isScannerPresented = NO;  // Reset guard flag
+        NSLog(@"[WaterMeter Plugin] scannerDidCancel - isScannerPresented = NO");
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                     messageAsString:@"User cancelled"];
         [self.commandDelegate sendPluginResult:result callbackId:self.scanCallbackId];
@@ -346,10 +392,35 @@
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
+- (void)openSettings:(CDVInvokedUrlCommand *)command {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Present SDK settings view controller
+        WMSettingsViewController *settingsVC = [[WMSettingsViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        
+        // Add close button
+        settingsVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+            initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+            target:self
+            action:@selector(closeSettings)];
+        
+        [self.viewController presentViewController:navController animated:YES completion:^{
+            CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                       messageAsString:@"Settings opened"];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        }];
+    });
+}
+
+- (void)closeSettings {
+    [self.viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Helper Methods
 
 /// Convert OCR result to dictionary matching Android format:
-/// {text, confidence, success, imagePath}
+/// {text, confidence, success, imagePath, imageBase64}
 - (NSDictionary *)ocrResultToDictionary:(WMOCRScanResult_ObjC *)ocrResult {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -361,6 +432,13 @@
     // Include imagePath if available
     if (ocrResult.imagePath && ocrResult.imagePath.length > 0) {
         dict[@"imagePath"] = ocrResult.imagePath;
+        
+        // Also include base64 for WKWebView display
+        NSData *imageData = [NSData dataWithContentsOfFile:ocrResult.imagePath];
+        if (imageData) {
+            NSString *base64String = [imageData base64EncodedStringWithOptions:0];
+            dict[@"imageBase64"] = [NSString stringWithFormat:@"data:image/jpeg;base64,%@", base64String];
+        }
     }
     
     // Additional iOS-specific fields (for backward compatibility)

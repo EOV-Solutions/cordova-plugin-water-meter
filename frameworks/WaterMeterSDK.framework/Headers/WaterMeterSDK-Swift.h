@@ -448,10 +448,18 @@ SWIFT_CLASS("_TtC13WaterMeterSDK27WMScannerConfiguration_ObjC")
 @property (nonatomic) NSInteger imageMaxWidth;
 /// Maximum height for saved images (0 = no resize)
 @property (nonatomic) NSInteger imageMaxHeight;
+/// Flags to track which options were explicitly set by plugin
+/// If false, use SDK settings instead
+@property (nonatomic) BOOL autoCaptureOverride;
+@property (nonatomic) BOOL minConfidenceOverride;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithAutoCapture:(BOOL)autoCapture minConfidence:(float)minConfidence flashEnabled:(BOOL)flashEnabled showCloseButton:(BOOL)showCloseButton title:(NSString * _Nullable)title OBJC_DESIGNATED_INITIALIZER;
 /// Full initializer with image resize options
 - (nonnull instancetype)initWithAutoCapture:(BOOL)autoCapture minConfidence:(float)minConfidence flashEnabled:(BOOL)flashEnabled showCloseButton:(BOOL)showCloseButton title:(NSString * _Nullable)title imageMaxWidth:(NSInteger)imageMaxWidth imageMaxHeight:(NSInteger)imageMaxHeight OBJC_DESIGNATED_INITIALIZER;
+/// Initializer that respects SDK settings - only override what’s explicitly set
+/// Use autoCaptureSet=-1 to use SDK settings, 0=false, 1=true
+/// Use minConfidenceSet=-1 to use SDK settings
+- (nonnull instancetype)initWithAutoCaptureSet:(NSInteger)autoCaptureSet minConfidenceSet:(float)minConfidenceSet flashEnabled:(BOOL)flashEnabled showCloseButton:(BOOL)showCloseButton title:(NSString * _Nullable)title imageMaxWidth:(NSInteger)imageMaxWidth imageMaxHeight:(NSInteger)imageMaxHeight OBJC_DESIGNATED_INITIALIZER;
 @end
 
 /// Settings view controller (like Android CameraSettingsActivity)

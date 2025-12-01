@@ -7,8 +7,21 @@ module.exports = function(context) {
     const fs = require('fs');
     const path = require('path');
     
-    const xcode = context.requireCordovaModule('xcode');
-    const platforms = context.opts.platforms;
+    // Try to require xcode module the modern way
+    let xcode;
+    try {
+        xcode = require('xcode');
+    } catch (e) {
+        // Fallback to old method
+        try {
+            xcode = context.requireCordovaModule('xcode');
+        } catch (e2) {
+            console.log('⚠️ Could not load xcode module, skipping build settings hook');
+            return;
+        }
+    }
+    
+    const platforms = context.opts.platforms || [];
     
     if (!platforms.includes('ios')) {
         return;
@@ -16,6 +29,12 @@ module.exports = function(context) {
     
     const projectRoot = context.opts.projectRoot;
     const platformPath = path.join(projectRoot, 'platforms', 'ios');
+    
+    // Check if platform exists
+    if (!fs.existsSync(platformPath)) {
+        console.log('iOS platform not found, skipping');
+        return;
+    }
     
     // Find xcodeproj
     const files = fs.readdirSync(platformPath);
@@ -27,9 +46,20 @@ module.exports = function(context) {
     }
     
     const pbxprojPath = path.join(platformPath, xcodeproj, 'project.pbxproj');
+    
+    if (!fs.existsSync(pbxprojPath)) {
+        console.log('project.pbxproj not found');
+        return;
+    }
+    
     const project = xcode.project(pbxprojPath);
     
-    project.parseSync();
+    try {
+        project.parseSync();
+    } catch (e) {
+        console.log('Failed to parse Xcode project:', e.message);
+        return;
+    }
     
     // Build settings for C++17 and ARM NEON
     const buildSettings = {
@@ -43,8 +73,9 @@ module.exports = function(context) {
     };
     
     // Apply to all build configurations
-    for (const configName of Object.keys(project.pbxXCBuildConfigurationSection())) {
-        const config = project.pbxXCBuildConfigurationSection()[configName];
+    const configs = project.pbxXCBuildConfigurationSection();
+    for (const configName of Object.keys(configs)) {
+        const config = configs[configName];
         if (config && config.buildSettings) {
             Object.assign(config.buildSettings, buildSettings);
         }

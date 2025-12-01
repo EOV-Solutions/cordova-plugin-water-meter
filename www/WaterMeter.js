@@ -90,14 +90,23 @@ var WaterMeter = {
             return;
         }
         
-        // Default options
+        // Default options - only include values that are explicitly set
+        // If autoCapture/minConfidence are not set, native code will use SDK settings
         var config = {
             title: options.title || 'Quét số đồng hồ',
             showCloseButton: options.showCloseButton !== undefined ? options.showCloseButton : true,
-            autoCloseOnResult: options.autoCloseOnResult !== undefined ? options.autoCloseOnResult : true,
-            autoCapture: options.autoCapture !== undefined ? options.autoCapture : true,
-            minConfidence: options.minConfidence || 0.7
+            autoCloseOnResult: options.autoCloseOnResult !== undefined ? options.autoCloseOnResult : true
         };
+        
+        // Only add autoCapture if explicitly set - otherwise use SDK settings
+        if (options.autoCapture !== undefined) {
+            config.autoCapture = options.autoCapture;
+        }
+        
+        // Only add minConfidence if explicitly set - otherwise use SDK settings
+        if (options.minConfidence !== undefined) {
+            config.minConfidence = options.minConfidence;
+        }
         
         // Add image resize options if specified
         if (options.imageMaxWidth && typeof options.imageMaxWidth === 'number') {
@@ -193,6 +202,24 @@ var WaterMeter = {
      */
     reset: function(success, error) {
         exec(success, error, 'WaterMeter', 'reset', []);
+    },
+    
+    /**
+     * Open SDK settings screen (iOS only)
+     * Allows user to configure auto-capture, confidence threshold, etc.
+     * Settings are persisted and used by the scanner.
+     * 
+     * @param {Function} success - Success callback
+     * @param {Function} error - Error callback
+     * 
+     * @example
+     * WaterMeter.openSettings(
+     *     function() { console.log('Settings opened'); },
+     *     function(err) { console.error('Error:', err); }
+     * );
+     */
+    openSettings: function(success, error) {
+        exec(success, error, 'WaterMeter', 'openSettings', []);
     },
     
     // Helper functions

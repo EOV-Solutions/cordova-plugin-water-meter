@@ -82,9 +82,6 @@
         <framework src="MetalKit.framework"/>
         <framework src="libc++.tbd"/>
         
-        <!-- Build Settings -->
-        <preference name="deployment-target" value="11.0"/>
-        
         <!-- Additional build settings via hook -->
         <hook type="after_platform_add" src="scripts/ios_build_settings.js"/>
     </platform>

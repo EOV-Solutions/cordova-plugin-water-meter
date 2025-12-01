@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name WaterMeterSDK
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name WaterMeterSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
 import AVFoundation
 import Foundation
@@ -429,6 +429,7 @@ public struct WMSettingsDefaults {
     get
     set
   }
+  public func synchronize()
   public func resetToDefaults()
   public func printSettings()
   @objc deinit
@@ -468,12 +469,17 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   @objc public var title: Swift.String?
   @objc public var imageMaxWidth: Swift.Int
   @objc public var imageMaxHeight: Swift.Int
+  @objc public var autoCaptureOverride: Swift.Bool
+  @objc public var minConfidenceOverride: Swift.Bool
   @objc override dynamic public init()
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(autoCapture: Swift.Bool, minConfidence: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(autoCapture: Swift.Bool, minConfidence: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?, imageMaxWidth: Swift.Int, imageMaxHeight: Swift.Int)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(autoCaptureSet: Swift.Int, minConfidenceSet: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?, imageMaxWidth: Swift.Int, imageMaxHeight: Swift.Int)
   #endif
   @objc deinit
 }
