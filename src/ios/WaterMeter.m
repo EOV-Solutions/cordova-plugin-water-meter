@@ -8,6 +8,7 @@
 
 #import "WaterMeter.h"
 @import WaterMeterSDK;
+@import AVFoundation;
 
 @interface WaterMeter () <WMCameraScannerDelegate_ObjC>
 @property (nonatomic, copy) NSString *scanCallbackId;
@@ -196,6 +197,51 @@
                                            error:&error];
     
     completion(error);
+}
+
+#pragma mark - Permissions
+
+- (void)checkPermission:(CDVInvokedUrlCommand *)command {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        
+        NSString *statusString;
+        BOOL granted = NO;
+        
+        switch (status) {
+            case AVAuthorizationStatusAuthorized:
+                statusString = @"granted";
+                granted = YES;
+                break;
+            case AVAuthorizationStatusDenied:
+                statusString = @"denied";
+                break;
+            case AVAuthorizationStatusRestricted:
+                statusString = @"restricted";
+                break;
+            case AVAuthorizationStatusNotDetermined:
+                statusString = @"prompt";
+                break;
+        }
+        
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                               messageAsDictionary:@{
+            @"status": statusString,
+            @"granted": @(granted)
+        }];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    });
+}
+
+- (void)requestPermission:(CDVInvokedUrlCommand *)command {
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                   messageAsDictionary:@{
+            @"status": granted ? @"granted" : @"denied",
+            @"granted": @(granted)
+        }];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    }];
 }
 
 #pragma mark - Camera Scanner

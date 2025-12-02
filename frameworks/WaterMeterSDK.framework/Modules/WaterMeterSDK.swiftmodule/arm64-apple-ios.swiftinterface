@@ -157,6 +157,10 @@ public enum WMScannerError : Foundation.LocalizedError {
   final public func zoomOut()
   final public func setZoom(_ zoom: CoreFoundation.CGFloat, isManual: Swift.Bool = true)
   final public func focus(at layerPoint: CoreFoundation.CGPoint)
+  final public func setExposureBias(_ bias: Swift.Float)
+  final public func adjustExposure(at layerPoint: CoreFoundation.CGPoint)
+  final public func setHDREnabled(_ enabled: Swift.Bool)
+  final public func isFrameOverexposed(_ image: UIKit.UIImage, threshold: Swift.Float = 0.7) -> Swift.Bool
   final public func handlePinchZoom(scale: CoreFoundation.CGFloat)
   final public func calculateOptimalZoom(for detection: WaterMeterSDK.WMDetection, imageSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
   #if compiler(>=5.3) && $NonescapableTypes
@@ -379,6 +383,9 @@ public struct WMSettingsKeys {
   public static let autoZoomEnabled: Swift.String
   public static let zoomAdjustmentStep: Swift.String
   public static let currentZoom: Swift.String
+  public static let autoFocusEnabled: Swift.String
+  public static let autoExposureEnabled: Swift.String
+  public static let exposureBias: Swift.String
 }
 public struct WMSettingsDefaults {
   public static let realtimeDetection: Swift.Bool
@@ -390,6 +397,9 @@ public struct WMSettingsDefaults {
   public static let autoZoomEnabled: Swift.Bool
   public static let zoomAdjustmentStep: Swift.Float
   public static let currentZoom: Swift.Float
+  public static let autoFocusEnabled: Swift.Bool
+  public static let autoExposureEnabled: Swift.Bool
+  public static let exposureBias: Swift.Float
 }
 @_hasMissingDesignatedInitializers public class WMSettings {
   public static let shared: WaterMeterSDK.WMSettings
@@ -426,6 +436,18 @@ public struct WMSettingsDefaults {
     set
   }
   public var currentZoom: Swift.Float {
+    get
+    set
+  }
+  public var autoFocusEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var autoExposureEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var exposureBias: Swift.Float {
     get
     set
   }
