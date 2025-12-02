@@ -23,14 +23,14 @@
 - 🔍 **Zoom control** - pinch to zoom for better reading
 - 📐 **OBB detection** - oriented bounding box visualization
 - 🔒 **Permission handling** - automatic camera permission management
-- 📱 **iOS 12.0+** support
+- 📱 **iOS 11.0+** support
 - 🎨 **Customizable UI** - settings for detection parameters
 - 💾 **Image saving** - captured images saved to app directory
 - 🖼️ **Base64 encoding** - images returned as base64 for display in WebView
 
 ### 🛠️ Requirements
 
-- iOS 12.0 or later
+- iOS 11.0 or later
 - Xcode 14.0 or later
 - Cordova >= 9.0.0
 - cordova-ios >= 6.0.0
