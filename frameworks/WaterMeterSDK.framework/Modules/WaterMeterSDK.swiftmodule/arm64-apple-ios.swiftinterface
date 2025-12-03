@@ -379,6 +379,7 @@ public struct WMSettingsKeys {
   public static let confidenceThreshold: Swift.String
   public static let iouThreshold: Swift.String
   public static let autoCapture: Swift.String
+  public static let strictVerify: Swift.String
   public static let flashOn: Swift.String
   public static let autoZoomEnabled: Swift.String
   public static let zoomAdjustmentStep: Swift.String
@@ -393,6 +394,7 @@ public struct WMSettingsDefaults {
   public static let confidenceThreshold: Swift.Float
   public static let iouThreshold: Swift.Float
   public static let autoCapture: Swift.Bool
+  public static let strictVerify: Swift.Bool
   public static let flashOn: Swift.Bool
   public static let autoZoomEnabled: Swift.Bool
   public static let zoomAdjustmentStep: Swift.Float
@@ -420,6 +422,10 @@ public struct WMSettingsDefaults {
     set
   }
   public var autoCaptureEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var strictVerifyEnabled: Swift.Bool {
     get
     set
   }
