@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova-plugin-water-meter" 
-        version="1.1.1" 
+        version="1.2.0" 
         xmlns="http://apache.org/cordova/ns/plugins/1.0" 
         xmlns:android="http://schemas.android.com/apk/res/android">
     
@@ -16,6 +16,7 @@
     <engines>
         <engine name="cordova" version=">=9.0.0"/>
         <engine name="cordova-android" version=">=9.0.0"/>
+        <engine name="cordova-ios" version=">=6.0.0"/>
     </engines>
     
     <!-- JavaScript Interface -->
@@ -49,6 +50,40 @@
         <!-- Gradle Dependencies -->
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
         
+    </platform>
+    
+    <!-- iOS Platform -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WaterMeter">
+                <param name="ios-package" value="WaterMeter"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        
+        <!-- Camera Permission -->
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>Camera is used to scan water meter readings</string>
+        </config-file>
+        
+        <!-- Plugin Source Files -->
+        <header-file src="src/ios/WaterMeter.h"/>
+        <source-file src="src/ios/WaterMeter.m"/>
+        
+        <!-- WaterMeterSDK Framework -->
+        <framework src="frameworks/WaterMeterSDK.framework" embed="true" custom="true"/>
+        
+        <!-- System Frameworks -->
+        <framework src="AVFoundation.framework"/>
+        <framework src="CoreMedia.framework"/>
+        <framework src="CoreVideo.framework"/>
+        <framework src="Accelerate.framework"/>
+        <framework src="Metal.framework"/>
+        <framework src="MetalKit.framework"/>
+        <framework src="libc++.tbd"/>
+        
+        <!-- Additional build settings via hook -->
+        <hook type="after_platform_add" src="scripts/ios_build_settings.js"/>
     </platform>
     
 </plugin>
