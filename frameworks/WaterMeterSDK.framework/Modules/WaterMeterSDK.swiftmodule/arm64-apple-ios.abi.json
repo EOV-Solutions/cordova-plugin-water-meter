@@ -4553,6 +4553,71 @@
           },
           {
             "kind": "Function",
+            "name": "checkCameraPermission",
+            "printedName": "checkCameraPermission()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AVAuthorizationStatus",
+                "printedName": "AVFoundation.AVAuthorizationStatus",
+                "usr": "c:@E@AVAuthorizationStatus"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC21checkCameraPermissionSo21AVAuthorizationStatusVyFZ",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC21checkCameraPermissionSo21AVAuthorizationStatusVyFZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "requestCameraPermission",
+            "printedName": "requestCameraPermission(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC23requestCameraPermission10completionyySbc_tFZ",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC23requestCameraPermission10completionyySbc_tFZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setupCamera",
             "printedName": "setupCamera(in:)",
             "children": [
@@ -17811,6 +17876,72 @@
           },
           {
             "kind": "Function",
+            "name": "checkCameraPermission",
+            "printedName": "checkCameraPermission()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@WaterMeterSDK@objc(cs)WaterMeterSDK(cm)checkCameraPermission",
+            "mangledName": "$s13WaterMeterSDKAAC21checkCameraPermissionSiyFZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "requestCameraPermission",
+            "printedName": "requestCameraPermission(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@WaterMeterSDK@objc(cs)WaterMeterSDK(cm)requestCameraPermissionWithCompletion:",
+            "mangledName": "$s13WaterMeterSDKAAC23requestCameraPermission10completionyySbc_tFZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "objc_name": "requestCameraPermissionWithCompletion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "presentScanner",
             "printedName": "presentScanner(configuration:delegate:from:error:)",
             "children": [
@@ -18202,21 +18333,21 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 21005,
+      "offset": 22272,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 21615,
+      "offset": 22882,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 28135,
+      "offset": 29793,
       "length": 3,
       "value": "0.7"
     },
@@ -18811,154 +18942,154 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "Array",
-      "offset": 38095,
+      "offset": 40068,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38213,
+      "offset": 40186,
       "length": 4,
       "value": "1080"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38258,
+      "offset": 40231,
       "length": 4,
       "value": "1920"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38324,
+      "offset": 40297,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38363,
+      "offset": 40336,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38404,
+      "offset": 40377,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38443,
+      "offset": 40416,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 38483,
+      "offset": 40456,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44258,
+      "offset": 46231,
       "length": 2,
       "value": "76"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44261,
+      "offset": 46234,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44273,
+      "offset": 46246,
       "length": 3,
       "value": "175"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44277,
+      "offset": 46250,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44288,
+      "offset": 46261,
       "length": 2,
       "value": "80"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44291,
+      "offset": 46264,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44303,
+      "offset": 46276,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44415,
+      "offset": 46388,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 44528,
+      "offset": 46501,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "Array",
-      "offset": 44669,
+      "offset": 46642,
       "length": 7,
       "value": "[10, 5]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 44792,
+      "offset": 46765,
       "length": 3,
       "value": "0.8"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 45397,
+      "offset": 47370,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 45416,
+      "offset": 47389,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 45618,
+      "offset": 47591,
       "length": 1,
       "value": "0"
     },
