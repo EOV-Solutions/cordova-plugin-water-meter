@@ -503,6 +503,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) WaterMeterSD
 /// returns:
 /// OCR scan result
 - (WMOCRScanResult_ObjC * _Nullable)recognizeWithImage:(UIImage * _Nonnull)image error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Check camera permission status
+///
+/// returns:
+/// Authorization status (0=notDetermined, 1=restricted, 2=denied, 3=authorized)
++ (NSInteger)checkCameraPermission SWIFT_WARN_UNUSED_RESULT;
+/// Request camera permission
+/// \param completion Callback with granted status
+///
++ (void)requestCameraPermissionWithCompletion:(void (^ _Nonnull)(BOOL))completion;
 /// Present camera scanner with ObjC delegate
 /// \param configuration Scanner configuration
 ///

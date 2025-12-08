@@ -146,6 +146,8 @@ public enum WMScannerError : Foundation.LocalizedError {
   final public func loadModels(fromBundle modelFolder: Swift.String = "models", labelFile: Swift.String = "ppocr_keys_v1.txt") -> Swift.Bool
   @discardableResult
   final public func loadModels(fromPath modelPath: Swift.String, labelPath: Swift.String) -> Swift.Bool
+  public static func checkCameraPermission() -> AVFoundation.AVAuthorizationStatus
+  public static func requestCameraPermission(completion: @escaping (Swift.Bool) -> Swift.Void)
   final public func setupCamera(in view: UIKit.UIView) throws
   final public func startScanning()
   final public func stopScanning()
@@ -588,6 +590,8 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func recognize(image: UIKit.UIImage, error: Foundation.NSErrorPointer) -> WaterMeterSDK.WMOCRScanResult_ObjC?
   #endif
+  @objc public class func checkCameraPermission() -> Swift.Int
+  @objc public class func requestCameraPermission(completion: @escaping (Swift.Bool) -> Swift.Void)
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func presentScanner(configuration: WaterMeterSDK.WMScannerConfiguration_ObjC?, delegate: (any WaterMeterSDK.WMCameraScannerDelegate_ObjC)?, from viewController: UIKit.UIViewController, error: Foundation.NSErrorPointer)
   #endif
