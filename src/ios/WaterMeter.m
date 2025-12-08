@@ -386,7 +386,10 @@
             }];
         }
         
-        NSLog(@"[WaterMeter Plugin] Sending plugin result to JS callback: %@", self.scanCallbackId);
+        // Final result - DON'T keep callback (this is the last call)
+        [pluginResult setKeepCallbackAsBool:NO];
+        
+        NSLog(@"[WaterMeter Plugin] Sending final plugin result to JS callback: %@", self.scanCallbackId);
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.scanCallbackId];
         self.scanCallbackId = nil;
     });
@@ -399,6 +402,8 @@
         NSLog(@"[WaterMeter Plugin] didFailWithError - isScannerPresented = NO, error: %@", error.localizedDescription);
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                     messageAsString:error.localizedDescription];
+        // Final result - DON'T keep callback
+        [result setKeepCallbackAsBool:NO];
         [self.commandDelegate sendPluginResult:result callbackId:self.scanCallbackId];
         self.scanCallbackId = nil;
     });
@@ -411,6 +416,8 @@
         NSLog(@"[WaterMeter Plugin] scannerDidCancel - isScannerPresented = NO");
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                     messageAsString:@"User cancelled"];
+        // Final result - DON'T keep callback
+        [result setKeepCallbackAsBool:NO];
         [self.commandDelegate sendPluginResult:result callbackId:self.scanCallbackId];
         self.scanCallbackId = nil;
     });
