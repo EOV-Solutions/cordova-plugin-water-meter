@@ -139,6 +139,26 @@ public enum WMScannerError : Foundation.LocalizedError {
   final public var currentZoom: CoreFoundation.CGFloat
   final public var minZoom: CoreFoundation.CGFloat
   final public var maxZoom: CoreFoundation.CGFloat
+  final public var isFlashOn: Swift.Bool {
+    get
+  }
+  public enum CameraLens : Swift.String {
+    case ultraWide
+    case wide
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  final public var currentLens: WaterMeterSDK.WMCameraScanner.CameraLens {
+    get
+  }
+  final public var hasUltraWideCamera: Swift.Bool {
+    get
+  }
   final public var guideFrameRect: CoreFoundation.CGRect
   final public var previewSize: CoreFoundation.CGSize
   public init(configuration: WaterMeterSDK.WMScannerConfiguration = .default)
@@ -171,6 +191,15 @@ public enum WMScannerError : Foundation.LocalizedError {
   final public func toggleFlash()
   final public func setFlash(_ enabled: Swift.Bool)
   final public var hasFlash: Swift.Bool {
+    get
+  }
+  @discardableResult
+  final public func switchToLens(_ lens: WaterMeterSDK.WMCameraScanner.CameraLens) -> Swift.Bool
+  @discardableResult
+  final public func switchToUltraWide() -> Swift.Bool
+  @discardableResult
+  final public func switchToWide() -> Swift.Bool
+  final public var availableLenses: [WaterMeterSDK.WMCameraScanner.CameraLens] {
     get
   }
   final public func calculateIoU(detection: WaterMeterSDK.WMDetection, imageSize: CoreFoundation.CGSize) -> Swift.Float
@@ -251,6 +280,9 @@ extension WaterMeterSDK.WMCameraViewController : WaterMeterSDK.WMSettingsViewCon
   #endif
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
   @objc deinit
+}
+extension WaterMeterSDK.WMCameraViewController : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
 }
 public enum WMCPUPowerMode : Swift.Int {
   case low
@@ -501,6 +533,7 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   @objc public var imageMaxHeight: Swift.Int
   @objc public var autoCaptureOverride: Swift.Bool
   @objc public var minConfidenceOverride: Swift.Bool
+  @objc public var flashEnabledOverride: Swift.Bool
   @objc override dynamic public init()
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(autoCapture: Swift.Bool, minConfidence: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?)
@@ -599,6 +632,9 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
 }
 extension WaterMeterSDK.WMScannerError : Swift.Equatable {}
 extension WaterMeterSDK.WMScannerError : Swift.Hashable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.Equatable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.Hashable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.RawRepresentable {}
 extension WaterMeterSDK.WMCPUPowerMode : Swift.Equatable {}
 extension WaterMeterSDK.WMCPUPowerMode : Swift.Hashable {}
 extension WaterMeterSDK.WMCPUPowerMode : Swift.RawRepresentable {}

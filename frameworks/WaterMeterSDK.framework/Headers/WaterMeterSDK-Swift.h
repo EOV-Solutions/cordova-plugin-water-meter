@@ -349,6 +349,14 @@ SWIFT_CLASS("_TtC13WaterMeterSDK22WMCameraViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIGestureRecognizer;
+@class UITouch;
+@interface WMCameraViewController (SWIFT_EXTENSION(WaterMeterSDK)) <UIGestureRecognizerDelegate>
+/// Allow tap gesture to work simultaneously with buttons
+/// This ensures buttons receive touch events before tap gesture
+- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
+@end
+
 /// A view that draws a dashed border guide frame like Android’s scan_frame
 SWIFT_CLASS("_TtC13WaterMeterSDK16WMGuideFrameView")
 @interface WMGuideFrameView : UIView
@@ -452,6 +460,7 @@ SWIFT_CLASS("_TtC13WaterMeterSDK27WMScannerConfiguration_ObjC")
 /// If false, use SDK settings instead
 @property (nonatomic) BOOL autoCaptureOverride;
 @property (nonatomic) BOOL minConfidenceOverride;
+@property (nonatomic) BOOL flashEnabledOverride;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithAutoCapture:(BOOL)autoCapture minConfidence:(float)minConfidence flashEnabled:(BOOL)flashEnabled showCloseButton:(BOOL)showCloseButton title:(NSString * _Nullable)title OBJC_DESIGNATED_INITIALIZER;
 /// Full initializer with image resize options

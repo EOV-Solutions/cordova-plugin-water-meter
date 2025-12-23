@@ -4257,6 +4257,370 @@
           },
           {
             "kind": "Var",
+            "name": "isFlashOn",
+            "printedName": "isFlashOn",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC9isFlashOnSbvp",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC9isFlashOnSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC9isFlashOnSbvg",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC9isFlashOnSbvg",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "CameraLens",
+            "printedName": "CameraLens",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "ultraWide",
+                "printedName": "ultraWide",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(WaterMeterSDK.WMCameraScanner.CameraLens.Type) -> WaterMeterSDK.WMCameraScanner.CameraLens",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraLens",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                        "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "CameraLens",
+                            "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                            "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO9ultraWideyA2EmF",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO9ultraWideyA2EmF",
+                "moduleName": "WaterMeterSDK"
+              },
+              {
+                "kind": "Var",
+                "name": "wide",
+                "printedName": "wide",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(WaterMeterSDK.WMCameraScanner.CameraLens.Type) -> WaterMeterSDK.WMCameraScanner.CameraLens",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraLens",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                        "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "CameraLens",
+                            "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                            "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO4wideyA2EmF",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO4wideyA2EmF",
+                "moduleName": "WaterMeterSDK"
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(rawValue:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraLens",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                        "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueAESgSS_tcfc",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueAESgSS_tcfc",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Var",
+                "name": "rawValue",
+                "printedName": "rawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueSSvp",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueSSvp",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueSSvg",
+                    "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO8rawValueSSvg",
+                    "moduleName": "WaterMeterSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC10CameraLensO",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "enumRawTypeName": "String",
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "RawRepresentable",
+                "printedName": "RawRepresentable",
+                "children": [
+                  {
+                    "kind": "TypeWitness",
+                    "name": "RawValue",
+                    "printedName": "RawValue",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:SY",
+                "mangledName": "$sSY"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "currentLens",
+            "printedName": "currentLens",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CameraLens",
+                "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC11currentLensAC06CameraG0Ovp",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC11currentLensAC06CameraG0Ovp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraLens",
+                    "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                    "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC11currentLensAC06CameraG0Ovg",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC11currentLensAC06CameraG0Ovg",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hasUltraWideCamera",
+            "printedName": "hasUltraWideCamera",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC18hasUltraWideCameraSbvp",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC18hasUltraWideCameraSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC18hasUltraWideCameraSbvg",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC18hasUltraWideCameraSbvg",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "guideFrameRect",
             "printedName": "guideFrameRect",
             "children": [
@@ -5190,6 +5554,145 @@
                 "declKind": "Accessor",
                 "usr": "s:13WaterMeterSDK15WMCameraScannerC8hasFlashSbvg",
                 "mangledName": "$s13WaterMeterSDK15WMCameraScannerC8hasFlashSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "switchToLens",
+            "printedName": "switchToLens(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CameraLens",
+                "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC12switchToLensySbAC06CameraH0OF",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC12switchToLensySbAC06CameraH0OF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "switchToUltraWide",
+            "printedName": "switchToUltraWide()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC17switchToUltraWideSbyF",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC17switchToUltraWideSbyF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "switchToWide",
+            "printedName": "switchToWide()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC12switchToWideSbyF",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC12switchToWideSbyF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "availableLenses",
+            "printedName": "availableLenses",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[WaterMeterSDK.WMCameraScanner.CameraLens]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraLens",
+                    "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                    "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK15WMCameraScannerC15availableLensesSayAC10CameraLensOGvp",
+            "mangledName": "$s13WaterMeterSDK15WMCameraScannerC15availableLensesSayAC10CameraLensOGvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[WaterMeterSDK.WMCameraScanner.CameraLens]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraLens",
+                        "printedName": "WaterMeterSDK.WMCameraScanner.CameraLens",
+                        "usr": "s:13WaterMeterSDK15WMCameraScannerC10CameraLensO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK15WMCameraScannerC15availableLensesSayAC10CameraLensOGvg",
+                "mangledName": "$s13WaterMeterSDK15WMCameraScannerC15availableLensesSayAC10CameraLensOGvg",
                 "moduleName": "WaterMeterSDK",
                 "declAttributes": [
                   "Final"
@@ -6433,6 +6936,46 @@
               "Preconcurrency",
               "Custom",
               "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gestureRecognizer",
+            "printedName": "gestureRecognizer(_:shouldReceive:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UITouch",
+                "printedName": "UIKit.UITouch",
+                "usr": "c:objc(cs)UITouch"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@WaterMeterSDK@objc(cs)WMCameraViewController(im)gestureRecognizer:shouldReceiveTouch:",
+            "mangledName": "$s13WaterMeterSDK22WMCameraViewControllerC17gestureRecognizer_13shouldReceiveSbSo09UIGestureH0C_So7UITouchCtF",
+            "moduleName": "WaterMeterSDK",
+            "objc_name": "gestureRecognizer:shouldReceiveTouch:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -15194,6 +15737,99 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "flashEnabledOverride",
+            "printedName": "flashEnabledOverride",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@WaterMeterSDK@objc(cs)WMScannerConfiguration_ObjC(py)flashEnabledOverride",
+            "mangledName": "$s13WaterMeterSDK27WMScannerConfiguration_ObjCC20flashEnabledOverrideSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@WaterMeterSDK@objc(cs)WMScannerConfiguration_ObjC(im)flashEnabledOverride",
+                "mangledName": "$s13WaterMeterSDK27WMScannerConfiguration_ObjCC20flashEnabledOverrideSbvg",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@WaterMeterSDK@objc(cs)WMScannerConfiguration_ObjC(im)setFlashEnabledOverride:",
+                "mangledName": "$s13WaterMeterSDK27WMScannerConfiguration_ObjCC20flashEnabledOverrideSbvs",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK27WMScannerConfiguration_ObjCC20flashEnabledOverrideSbvM",
+                "mangledName": "$s13WaterMeterSDK27WMScannerConfiguration_ObjCC20flashEnabledOverrideSbvM",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -15215,7 +15851,8 @@
               "Dynamic",
               "ObjC",
               "Override",
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "init_kind": "Designated"
           },
@@ -18200,154 +18837,182 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 5633,
+      "offset": 5772,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "StringLiteral",
-      "offset": 6427,
+      "offset": 6566,
       "length": 31,
       "value": "\"com.eov.watermeter.processing\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 6704,
+      "offset": 6843,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 6741,
+      "offset": 6880,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 6783,
+      "offset": 6922,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 6915,
+      "offset": 7054,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 6953,
+      "offset": 7092,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 6991,
+      "offset": 7130,
       "length": 4,
       "value": "10.0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 7034,
+      "offset": 7173,
       "length": 4,
       "value": "0.95"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 7082,
+      "offset": 7221,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 7138,
+      "offset": 7277,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7403,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
+      "kind": "StringLiteral",
+      "offset": 7560,
+      "length": 6,
+      "value": "\"0.5x\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
+      "kind": "StringLiteral",
+      "offset": 7587,
+      "length": 6,
+      "value": "\"1.0x\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7811,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "IntegerLiteral",
-      "offset": 7281,
+      "offset": 8249,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 7341,
+      "offset": 8309,
       "length": 3,
       "value": "3.0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "IntegerLiteral",
-      "offset": 7468,
+      "offset": 8436,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "IntegerLiteral",
-      "offset": 7522,
+      "offset": 8490,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 7586,
+      "offset": 8554,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "Array",
-      "offset": 7752,
+      "offset": 8720,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "StringLiteral",
-      "offset": 8575,
+      "offset": 9543,
       "length": 8,
       "value": "\"models\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "StringLiteral",
-      "offset": 8631,
+      "offset": 9599,
       "length": 19,
       "value": "\"ppocr_keys_v1.txt\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 22272,
+      "offset": 24615,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 22882,
+      "offset": 25225,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 29793,
+      "offset": 32136,
       "length": 3,
       "value": "0.7"
     },
@@ -18682,414 +19347,498 @@
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 6364,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6403,
+      "length": 2,
+      "value": "25"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6463,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6493,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "StringLiteral",
-      "offset": 6321,
+      "offset": 6711,
+      "length": 5,
+      "value": "\"0.5\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6792,
+      "length": 2,
+      "value": "17"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6921,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6983,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 7235,
+      "length": 3,
+      "value": "\"1\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7314,
+      "length": 2,
+      "value": "17"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7444,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7506,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 7833,
       "length": 23,
       "value": "\"minus.magnifyingglass\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "StringLiteral",
-      "offset": 6360,
+      "offset": 7872,
       "length": 5,
       "value": "\"−\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 6377,
+      "offset": 7889,
       "length": 2,
       "value": "22"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 6481,
+      "offset": 7993,
       "length": 3,
-      "value": "0.2"
+      "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 6522,
+      "offset": 8034,
       "length": 2,
-      "value": "22"
+      "value": "24"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 6584,
+      "offset": 8096,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 6710,
+      "offset": 8222,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "StringLiteral",
-      "offset": 6887,
+      "offset": 8399,
       "length": 22,
       "value": "\"plus.magnifyingglass\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "StringLiteral",
-      "offset": 6925,
+      "offset": 8437,
       "length": 3,
       "value": "\"+\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 6940,
+      "offset": 8452,
       "length": 2,
       "value": "22"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 7044,
+      "offset": 8556,
       "length": 3,
-      "value": "0.2"
+      "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 7085,
+      "offset": 8597,
       "length": 2,
-      "value": "22"
+      "value": "24"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 7147,
+      "offset": 8659,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 7272,
+      "offset": 8784,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 7504,
+      "offset": 9016,
       "length": 2,
       "value": "35"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 7542,
+      "offset": 9054,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 7612,
+      "offset": 9124,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 7684,
+      "offset": 9196,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 7961,
+      "offset": 9473,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8004,
+      "offset": 9516,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8067,
+      "offset": 9579,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "StringLiteral",
-      "offset": 8223,
+      "offset": 9735,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 8359,
+      "offset": 9871,
       "length": 2,
       "value": "32"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 8423,
+      "offset": 9935,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 8433,
+      "offset": 9945,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 8444,
+      "offset": 9956,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 8454,
+      "offset": 9966,
       "length": 3,
       "value": "0.8"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 8494,
+      "offset": 10006,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8527,
+      "offset": 10039,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8557,
+      "offset": 10069,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8620,
+      "offset": 10132,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9083,
+      "offset": 10595,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9150,
+      "offset": 10662,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 9346,
+      "offset": 10858,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9390,
+      "offset": 10902,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9422,
+      "offset": 10934,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9489,
+      "offset": 11001,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "Array",
-      "offset": 42058,
+      "offset": 48707,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42176,
+      "offset": 48825,
       "length": 4,
       "value": "1080"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42221,
+      "offset": 48870,
       "length": 4,
       "value": "1920"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42287,
+      "offset": 48936,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42326,
+      "offset": 48975,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42367,
+      "offset": 49016,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42406,
+      "offset": 49055,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 42446,
+      "offset": 49095,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48221,
+      "offset": 54870,
       "length": 2,
       "value": "76"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48224,
+      "offset": 54873,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48236,
+      "offset": 54885,
       "length": 3,
       "value": "175"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48240,
+      "offset": 54889,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48251,
+      "offset": 54900,
       "length": 2,
       "value": "80"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48254,
+      "offset": 54903,
       "length": 3,
       "value": "255"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48266,
+      "offset": 54915,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48378,
+      "offset": 55027,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 48491,
+      "offset": 55140,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "Array",
-      "offset": 48632,
+      "offset": 55281,
       "length": 7,
       "value": "[10, 5]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 48755,
+      "offset": 55404,
       "length": 3,
       "value": "0.8"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 49360,
+      "offset": 56009,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 49379,
+      "offset": 56028,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 49581,
+      "offset": 56230,
       "length": 1,
       "value": "0"
     },
@@ -19301,7 +20050,7 @@
       "kind": "FloatLiteral",
       "offset": 1439,
       "length": 3,
-      "value": "0.6"
+      "value": "0.7"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
@@ -20019,92 +20768,99 @@
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
-      "kind": "IntegerLiteral",
-      "offset": 5092,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
-      "kind": "IntegerLiteral",
-      "offset": 5129,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "BooleanLiteral",
-      "offset": 5197,
+      "offset": 1257,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 5239,
+      "offset": 5424,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5461,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5529,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5571,
       "length": 3,
       "value": "480"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "FloatLiteral",
-      "offset": 5286,
+      "offset": 5618,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "FloatLiteral",
-      "offset": 5335,
+      "offset": 5667,
       "length": 3,
       "value": "0.7"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "FloatLiteral",
-      "offset": 7303,
+      "offset": 7635,
       "length": 3,
       "value": "0.7"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 7452,
+      "offset": 7784,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 7531,
+      "offset": 7863,
       "length": 2,
       "value": "-3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "StringLiteral",
-      "offset": 7585,
+      "offset": 7917,
       "length": 3,
       "value": "\".\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 7610,
+      "offset": 7942,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "StringLiteral",
-      "offset": 9245,
+      "offset": 9577,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMObjCBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 9376,
+      "offset": 9708,
       "length": 1,
       "value": "0"
     }
