@@ -14,6 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.eov.watermeter.ui.CameraScanActivity;
+import com.eov.watermeter.WaterMeterSDK;
+import com.eov.watermeter.LicenseCallback;
 
 /**
  * Cordova Plugin for Water Meter Scanner
@@ -32,8 +34,13 @@ public class WaterMeterPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, "execute: action=" + action);
         
-        if (action.equals("scan")) {
+        if (action.equals("scan") || action.equals("startCamera")) {
             this.scan(args.getJSONObject(0), callbackContext);
+            return true;
+        }
+
+        if (action.equals("initialize")) {
+            this.initialize(args, callbackContext);
             return true;
         }
         
@@ -48,6 +55,60 @@ public class WaterMeterPlugin extends CordovaPlugin {
         }
         
         return false;
+    }
+    
+    /**
+     * Initialize SDK
+     */
+    private void initialize(JSONArray args, CallbackContext callbackContext) {
+        String licenseKey = "";
+        try {
+            // Handle both String (key direct) or Object (options)
+            Object firstArg = args.get(0);
+            if (firstArg instanceof String) {
+                licenseKey = (String) firstArg;
+            } else if (firstArg instanceof JSONObject) {
+                JSONObject options = (JSONObject) firstArg;
+                licenseKey = options.optString("licenseKey", "");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Invalid arguments for initialize", e);
+            callbackContext.error("Invalid arguments");
+            return;
+        }
+
+        if (licenseKey.isEmpty()) {
+            callbackContext.error("License key is required");
+            return;
+        }
+
+        // Call SDK Initialize
+        final String finalKey = licenseKey;
+        cordova.getActivity().runOnUiThread(() -> {
+            try {
+                WaterMeterSDK.initialize(cordova.getContext(), finalKey, new LicenseCallback() {
+                    @Override
+                    public void onSuccess() {
+                        try {
+                            JSONObject result = new JSONObject();
+                            result.put("success", true);
+                            result.put("message", "SDK Initialized");
+                            callbackContext.success(result);
+                        } catch (JSONException e) {
+                             callbackContext.success("SDK Initialized");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        callbackContext.error("SDK Init Failed: " + message);
+                    }
+                });
+            } catch (Exception e) {
+                 Log.e(TAG, "Error initializing SDK", e);
+                 callbackContext.error("Error: " + e.getMessage());
+            }
+        });
     }
     
     /**
