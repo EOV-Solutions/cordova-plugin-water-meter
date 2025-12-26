@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.eov.watermeter.ui.CameraScanActivity;
+import com.eov.watermeter.WaterMeterSDK;
 
 /**
  * Cordova Plugin for Water Meter Scanner
@@ -27,10 +28,21 @@ public class WaterMeterPlugin extends CordovaPlugin {
     
     private CallbackContext scanCallback;
     private CallbackContext permissionCallback;
+    private boolean licenseInitialized = false;
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, "execute: action=" + action);
+        
+        if (action.equals("initializeLicense")) {
+            this.initializeLicense(args.getString(0), callbackContext);
+            return true;
+        }
+        
+        if (action.equals("isLicenseValid")) {
+            this.isLicenseValid(callbackContext);
+            return true;
+        }
         
         if (action.equals("scan")) {
             this.scan(args.getJSONObject(0), callbackContext);
@@ -51,12 +63,71 @@ public class WaterMeterPlugin extends CordovaPlugin {
     }
     
     /**
+     * Initialize SDK with license key
+     */
+    private void initializeLicense(String licenseKey, CallbackContext callbackContext) {
+        cordova.getActivity().runOnUiThread(() -> {
+            try {
+                WaterMeterSDK.initialize(
+                    cordova.getActivity().getApplicationContext(),
+                    licenseKey,
+                    new WaterMeterSDK.LicenseCallback() {
+                        @Override
+                        public void onSuccess() {
+                            licenseInitialized = true;
+                            Log.i(TAG, "License initialized successfully");
+                            try {
+                                JSONObject result = new JSONObject();
+                                result.put("success", true);
+                                result.put("message", "License activated successfully");
+                                callbackContext.success(result);
+                            } catch (JSONException e) {
+                                callbackContext.success("License activated");
+                            }
+                        }
+                        
+                        @Override
+                        public void onError(String errorMessage) {
+                            Log.e(TAG, "License initialization failed: " + errorMessage);
+                            callbackContext.error("License error: " + errorMessage);
+                        }
+                    }
+                );
+            } catch (Exception e) {
+                Log.e(TAG, "Error initializing license", e);
+                callbackContext.error("Failed to initialize license: " + e.getMessage());
+            }
+        });
+    }
+    
+    /**
+     * Check if license is valid
+     */
+    private void isLicenseValid(CallbackContext callbackContext) {
+        try {
+            boolean valid = WaterMeterSDK.isLicenseValid();
+            JSONObject result = new JSONObject();
+            result.put("valid", valid);
+            result.put("status", WaterMeterSDK.getLicenseStatus());
+            callbackContext.success(result);
+        } catch (Exception e) {
+            callbackContext.error("Error checking license: " + e.getMessage());
+        }
+    }
+    
+    /**
      * Open camera scanner
      */
     private void scan(JSONObject options, CallbackContext callbackContext) {
         this.scanCallback = callbackContext;
         
-        // Check permission first
+        // Check license first
+        if (!WaterMeterSDK.isLicenseValid()) {
+            callbackContext.error("SDK not initialized or license invalid. Call initializeLicense() first.");
+            return;
+        }
+        
+        // Check permission
         if (!hasPermission()) {
             callbackContext.error("Camera permission not granted. Call requestPermission() first.");
             return;
@@ -172,6 +243,12 @@ public class WaterMeterPlugin extends CordovaPlugin {
                     result.put("success", text != null && !text.isEmpty());
                     if (imagePath != null && !imagePath.isEmpty()) {
                         result.put("imagePath", imagePath);
+                    }
+                    
+                    // Increment usage quota on successful scan
+                    if (text != null && !text.isEmpty()) {
+                        WaterMeterSDK.incrementUsage();
+                        Log.d(TAG, "Usage incremented after successful scan");
                     }
                     
                     Log.d(TAG, "Scan result: " + result.toString());

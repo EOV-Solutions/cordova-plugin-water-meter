@@ -15,10 +15,42 @@ var WaterMeter = {
      * SDK Version
      */
     VERSION: '1.2.0',
-    
+
     /**
-     * Initialize the WaterMeter SDK
-     * Must be called before using other methods (iOS only, Android auto-initializes)
+     * Initialize the WaterMeter SDK with license key (required before scanning)
+     * Must be called before using other methods
+     * 
+     * @param {string} licenseKey - License key from backend
+     * @param {Function} success - Success callback
+     * @param {Function} error - Error callback
+     * 
+     * @example
+     * WaterMeter.initializeLicense(
+     *     'YOUR_LICENSE_KEY',
+     *     function(result) { console.log('SDK initialized:', result); },
+     *     function(err) { console.error('License error:', err); }
+     * );
+     */
+    initializeLicense: function (licenseKey, success, error) {
+        if (!licenseKey) {
+            error && error('License key is required');
+            return;
+        }
+        exec(success, error, 'WaterMeter', 'initializeLicense', [licenseKey]);
+    },
+
+    /**
+     * Check if SDK license is valid
+     * 
+     * @param {Function} success - Success callback with {valid: boolean, status: number}
+     * @param {Function} error - Error callback
+     */
+    isLicenseValid: function (success, error) {
+        exec(success, error, 'WaterMeter', 'isLicenseValid', []);
+    },
+
+    /**
+     * Initialize the WaterMeter SDK (iOS only, deprecated - use initializeLicense instead)
      * 
      * @param {Object} options - Configuration options
      * @param {number} [options.threadCount=2] - Number of threads for inference
@@ -26,19 +58,13 @@ var WaterMeter = {
      * @param {number} [options.maxSideLength=640] - Maximum image dimension
      * @param {Function} success - Success callback
      * @param {Function} error - Error callback
-     * 
-     * @example
-     * WaterMeter.initialize(
-     *     { threadCount: 2 },
-     *     function(result) { console.log('SDK initialized:', result); },
-     *     function(err) { console.error('Init error:', err); }
-     * );
+     * @deprecated Use initializeLicense() instead
      */
-    initialize: function(options, success, error) {
+    initialize: function (options, success, error) {
         options = options || {};
         exec(success, error, 'WaterMeter', 'initialize', [options]);
     },
-    
+
     /**
      * Open camera scanner to scan water meter number
      * 
@@ -77,9 +103,9 @@ var WaterMeter = {
      *     }
      * );
      */
-    scan: function(successCallback, errorCallback, options) {
+    scan: function (successCallback, errorCallback, options) {
         options = options || {};
-        
+
         // Validate callbacks
         if (typeof successCallback !== 'function') {
             console.error('WaterMeter.scan: successCallback must be a function');
@@ -89,7 +115,7 @@ var WaterMeter = {
             console.error('WaterMeter.scan: errorCallback must be a function');
             return;
         }
-        
+
         // Default options - only include values that are explicitly set
         // If autoCapture/minConfidence are not set, native code will use SDK settings
         var config = {
@@ -97,17 +123,17 @@ var WaterMeter = {
             showCloseButton: options.showCloseButton !== undefined ? options.showCloseButton : true,
             autoCloseOnResult: options.autoCloseOnResult !== undefined ? options.autoCloseOnResult : true
         };
-        
+
         // Only add autoCapture if explicitly set - otherwise use SDK settings
         if (options.autoCapture !== undefined) {
             config.autoCapture = options.autoCapture;
         }
-        
+
         // Only add minConfidence if explicitly set - otherwise use SDK settings
         if (options.minConfidence !== undefined) {
             config.minConfidence = options.minConfidence;
         }
-        
+
         // Add image resize options if specified
         if (options.imageMaxWidth && typeof options.imageMaxWidth === 'number') {
             config.imageMaxWidth = Math.floor(options.imageMaxWidth);
@@ -115,10 +141,10 @@ var WaterMeter = {
         if (options.imageMaxHeight && typeof options.imageMaxHeight === 'number') {
             config.imageMaxHeight = Math.floor(options.imageMaxHeight);
         }
-        
+
         exec(successCallback, errorCallback, 'WaterMeter', 'scan', [config]);
     },
-    
+
     /**
      * Recognize water meter reading from base64 encoded image
      * 
@@ -136,14 +162,14 @@ var WaterMeter = {
      *     function(err) { console.error('Error:', err); }
      * );
      */
-    recognizeBase64: function(base64Image, success, error) {
+    recognizeBase64: function (base64Image, success, error) {
         if (!base64Image) {
             error && error('Missing base64 image data');
             return;
         }
         exec(success, error, 'WaterMeter', 'recognizeBase64', [base64Image]);
     },
-    
+
     /**
      * Recognize water meter reading from file path
      * 
@@ -151,59 +177,59 @@ var WaterMeter = {
      * @param {Function} success - Success callback with OCR result
      * @param {Function} error - Error callback
      */
-    recognizeFile: function(filePath, success, error) {
+    recognizeFile: function (filePath, success, error) {
         if (!filePath) {
             error && error('Missing file path');
             return;
         }
         exec(success, error, 'WaterMeter', 'recognizeFile', [filePath]);
     },
-    
+
     /**
      * Check if camera permission is granted
      * @param {Function} successCallback - Called with {granted: boolean}
      * @param {Function} errorCallback - Called on error
      */
-    checkPermission: function(successCallback, errorCallback) {
+    checkPermission: function (successCallback, errorCallback) {
         exec(successCallback, errorCallback, 'WaterMeter', 'checkPermission', []);
     },
-    
+
     /**
      * Request camera permission
      * @param {Function} successCallback - Called with {granted: boolean}
      * @param {Function} errorCallback - Called on error
      */
-    requestPermission: function(successCallback, errorCallback) {
+    requestPermission: function (successCallback, errorCallback) {
         exec(successCallback, errorCallback, 'WaterMeter', 'requestPermission', []);
     },
-    
+
     /**
      * Get SDK version
      * @param {Function} success - Success callback with version string
      * @param {Function} error - Error callback
      */
-    getVersion: function(success, error) {
+    getVersion: function (success, error) {
         exec(success, error, 'WaterMeter', 'getVersion', []);
     },
-    
+
     /**
      * Check if SDK is initialized
      * @param {Function} success - Success callback with boolean
      * @param {Function} error - Error callback
      */
-    isInitialized: function(success, error) {
+    isInitialized: function (success, error) {
         exec(success, error, 'WaterMeter', 'isInitialized', []);
     },
-    
+
     /**
      * Reset SDK (release resources)
      * @param {Function} success - Success callback
      * @param {Function} error - Error callback
      */
-    reset: function(success, error) {
+    reset: function (success, error) {
         exec(success, error, 'WaterMeter', 'reset', []);
     },
-    
+
     /**
      * Open SDK settings screen (iOS only)
      * Allows user to configure auto-capture, confidence threshold, etc.
@@ -218,12 +244,12 @@ var WaterMeter = {
      *     function(err) { console.error('Error:', err); }
      * );
      */
-    openSettings: function(success, error) {
+    openSettings: function (success, error) {
         exec(success, error, 'WaterMeter', 'openSettings', []);
     },
-    
+
     // Helper functions
-    
+
     /**
      * Convert file to base64 (helper)
      * Requires cordova-plugin-file
@@ -231,16 +257,16 @@ var WaterMeter = {
      * @param {string} filePath - Path to file
      * @returns {Promise<string>} Base64 encoded content
      */
-    fileToBase64: function(filePath) {
-        return new Promise(function(resolve, reject) {
+    fileToBase64: function (filePath) {
+        return new Promise(function (resolve, reject) {
             if (!window.resolveLocalFileSystemURL) {
                 reject(new Error('cordova-plugin-file is required'));
                 return;
             }
-            window.resolveLocalFileSystemURL(filePath, function(fileEntry) {
-                fileEntry.file(function(file) {
+            window.resolveLocalFileSystemURL(filePath, function (fileEntry) {
+                fileEntry.file(function (file) {
                     var reader = new FileReader();
-                    reader.onloadend = function() {
+                    reader.onloadend = function () {
                         var base64 = reader.result.split(',')[1];
                         resolve(base64);
                     };
@@ -250,7 +276,7 @@ var WaterMeter = {
             }, reject);
         });
     },
-    
+
     /**
      * Format meter reading with decimal point
      * 
@@ -258,7 +284,7 @@ var WaterMeter = {
      * @param {number} [decimalPlaces=3] - Number of decimal places
      * @returns {string} Formatted reading
      */
-    formatReading: function(text, decimalPlaces) {
+    formatReading: function (text, decimalPlaces) {
         decimalPlaces = decimalPlaces || 3;
         if (!text || text.length <= decimalPlaces) {
             return text;
