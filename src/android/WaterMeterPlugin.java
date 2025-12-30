@@ -17,7 +17,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.eov.watermeter.ui.CameraScanActivity;
+import com.eov.watermeter.ui.CameraSettingsActivity;
 import com.eov.watermeter.WaterMeterSDK;
+import com.eov.watermeter.ocr.PredictorManager;
+import com.eov.watermeter.ocr.Predictor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,8 +32,10 @@ import java.io.File;
 public class WaterMeterPlugin extends CordovaPlugin {
     
     private static final String TAG = "WaterMeterPlugin";
+    private static final String SDK_VERSION = "1.2.0";
     private static final int REQUEST_CAMERA_SCAN = 1001;
     private static final int REQUEST_CAMERA_PERMISSION = 1002;
+    private static final int REQUEST_SETTINGS = 1003;
     
     private CallbackContext scanCallback;
     private CallbackContext permissionCallback;
@@ -62,6 +67,37 @@ public class WaterMeterPlugin extends CordovaPlugin {
         
         if (action.equals("requestPermission")) {
             this.requestPermission(callbackContext);
+            return true;
+        }
+        
+        // New features for parity with iOS
+        if (action.equals("recognizeBase64")) {
+            this.recognizeBase64(args.getString(0), callbackContext);
+            return true;
+        }
+        
+        if (action.equals("recognizeFile")) {
+            this.recognizeFile(args.getString(0), callbackContext);
+            return true;
+        }
+        
+        if (action.equals("openSettings")) {
+            this.openSettings(callbackContext);
+            return true;
+        }
+        
+        if (action.equals("getVersion")) {
+            this.getVersion(callbackContext);
+            return true;
+        }
+        
+        if (action.equals("isInitialized")) {
+            this.isInitialized(callbackContext);
+            return true;
+        }
+        
+        if (action.equals("reset")) {
+            this.reset(callbackContext);
             return true;
         }
         
@@ -340,6 +376,164 @@ public class WaterMeterPlugin extends CordovaPlugin {
         } catch (Exception e) {
             Log.e(TAG, "Error converting image to base64", e);
             return null;
+        }
+    }
+    
+    // ============= NEW FEATURES FOR IOS PARITY =============
+    
+    /**
+     * Recognize water meter reading from base64 encoded image
+     */
+    private void recognizeBase64(String base64Image, CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(() -> {
+            try {
+                // Remove data URL prefix if present
+                String base64Data = base64Image;
+                if (base64Data.contains("base64,")) {
+                    base64Data = base64Data.substring(base64Data.indexOf("base64,") + 7);
+                }
+                
+                // Decode base64 to bitmap
+                byte[] imageBytes = Base64.decode(base64Data, Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                
+                if (bitmap == null) {
+                    callbackContext.error("Failed to decode base64 image");
+                    return;
+                }
+                
+                // Perform OCR
+                performOCR(bitmap, callbackContext);
+                
+            } catch (Exception e) {
+                Log.e(TAG, "Error in recognizeBase64", e);
+                callbackContext.error("Error: " + e.getMessage());
+            }
+        });
+    }
+    
+    /**
+     * Recognize water meter reading from file path
+     */
+    private void recognizeFile(String filePath, CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(() -> {
+            try {
+                // Handle file:// prefix
+                String path = filePath;
+                if (path.startsWith("file://")) {
+                    path = path.substring(7);
+                }
+                
+                Bitmap bitmap = BitmapFactory.decodeFile(path);
+                if (bitmap == null) {
+                    callbackContext.error("Failed to load image from: " + path);
+                    return;
+                }
+                
+                performOCR(bitmap, callbackContext);
+                
+            } catch (Exception e) {
+                Log.e(TAG, "Error in recognizeFile", e);
+                callbackContext.error("Error: " + e.getMessage());
+            }
+        });
+    }
+    
+    /**
+     * Perform OCR on bitmap using PredictorManager
+     */
+    private void performOCR(Bitmap bitmap, CallbackContext callbackContext) {
+        try {
+            PredictorManager manager = PredictorManager.getInstance();
+            
+            // Initialize if needed
+            if (!manager.isInitialized()) {
+                boolean initialized = manager.init(cordova.getActivity().getApplicationContext());
+                if (!initialized) {
+                    callbackContext.error("Failed to initialize OCR predictor");
+                    return;
+                }
+            }
+            
+            Predictor predictor = manager.getPredictor();
+            if (predictor == null) {
+                callbackContext.error("OCR predictor not available");
+                return;
+            }
+            
+            // Run OCR
+            predictor.setInputImage(bitmap);
+            boolean success = predictor.runModel(1, 0, 1); // run_det=1, run_cls=0, run_rec=1
+            
+            // Get results
+            JSONObject result = new JSONObject();
+            String text = predictor.outputResult();
+            float confidence = predictor.conf_rec();
+            
+            result.put("text", text != null ? text : "");
+            result.put("confidence", confidence);
+            result.put("success", text != null && !text.isEmpty());
+            
+            Log.d(TAG, "OCR result: text=" + text + ", confidence=" + confidence);
+            callbackContext.success(result);
+            
+            // Clean up bitmap
+            bitmap.recycle();
+            
+        } catch (Exception e) {
+            Log.e(TAG, "OCR Error", e);
+            callbackContext.error("OCR Error: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Open SDK settings activity
+     */
+    private void openSettings(CallbackContext callbackContext) {
+        cordova.getActivity().runOnUiThread(() -> {
+            try {
+                Intent intent = new Intent(cordova.getActivity(), CameraSettingsActivity.class);
+                cordova.getActivity().startActivity(intent);
+                callbackContext.success("Settings opened");
+            } catch (Exception e) {
+                Log.e(TAG, "Error opening settings", e);
+                callbackContext.error("Failed to open settings: " + e.getMessage());
+            }
+        });
+    }
+    
+    /**
+     * Get SDK version
+     */
+    private void getVersion(CallbackContext callbackContext) {
+        callbackContext.success(SDK_VERSION);
+    }
+    
+    /**
+     * Check if SDK OCR predictor is initialized
+     */
+    private void isInitialized(CallbackContext callbackContext) {
+        try {
+            boolean initialized = PredictorManager.getInstance().isInitialized();
+            JSONObject result = new JSONObject();
+            result.put("initialized", initialized);
+            callbackContext.success(result);
+        } catch (Exception e) {
+            callbackContext.error("Error: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Reset SDK (release resources)
+     */
+    private void reset(CallbackContext callbackContext) {
+        try {
+            PredictorManager.getInstance().release();
+            Log.i(TAG, "SDK resources released");
+            callbackContext.success("SDK reset");
+        } catch (Exception e) {
+            Log.e(TAG, "Error resetting SDK", e);
+            callbackContext.error("Failed to reset SDK: " + e.getMessage());
         }
     }
 }

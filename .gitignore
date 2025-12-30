@@ -13,6 +13,6 @@ yarn-error.log
 # OS
 .DS_Store
 Thumbs.db
-
+CHANGELOG.md
 # Build outputs (keep the AAR)
 # (AAR is required for plugin to work)

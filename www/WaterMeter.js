@@ -106,7 +106,7 @@ var WaterMeter = {
     scan: function (successCallback, errorCallback, options) {
         options = options || {};
 
-        // Validate callbacks
+        // Validate callbFacks
         if (typeof successCallback !== 'function') {
             console.error('WaterMeter.scan: successCallback must be a function');
             return;
@@ -231,7 +231,7 @@ var WaterMeter = {
     },
 
     /**
-     * Open SDK settings screen (iOS only)
+     * Open SDK settings screen
      * Allows user to configure auto-capture, confidence threshold, etc.
      * Settings are persisted and used by the scanner.
      * 

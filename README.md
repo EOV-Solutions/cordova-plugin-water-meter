@@ -2,7 +2,9 @@
 
 > Plugin quét số đồng hồ nước sử dụng AI cho ứng dụng Cordova/PhoneGap.
 
-[![Nền tảng](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com/)
+[![Nền tảng](https://img.shields.io/badge/platform-Android%20%7C%20iOS-green.svg)](https://cordova.apache.org/)
+[![Android](https://img.shields.io/badge/Android-%3E%3D6.0-brightgreen.svg)](https://www.android.com/)
+[![iOS](https://img.shields.io/badge/iOS-%3E%3D12.0-blue.svg)](https://www.apple.com/ios/)
 [![Cordova](https://img.shields.io/badge/cordova-%3E%3D9.0.0-blue.svg)](https://cordova.apache.org/)
 [![Giấy phép](https://img.shields.io/badge/license-EOV-orange.svg)](LICENSE)
 
@@ -16,30 +18,33 @@
 - 🔍 Điều khiển zoom
 - 📐 Phát hiện OBB (hình chữ nhật bao quanh)
 - 🔒 Quản lý quyền camera
-- 📱 Hỗ trợ Android 6.0+ (API 23+)
+- 📱 Hỗ trợ đa nền tảng:
+  - **Android 6.0+** (API 23+)
+  - **iOS 12.0+**
 - 🎨 Giao diện tùy chỉnh
+- 💾 Lưu ảnh và trả về đường dẫn
+- 🖼️ Hỗ trợ Base64 để hiển thị ảnh trong WebView
+- 🔑 Hệ thống quản lý License
 
 ## 🛠️ Yêu cầu
 
+### Android
 - Cordova >= 9.0.0
 - cordova-android >= 9.0.0
 - Android SDK API Level >= 23 (Android 6.0)
 - Quyền camera
 
+### iOS
+- Cordova >= 9.0.0
+- cordova-ios >= 6.0.0
+- iOS 12.0 trở lên
+- Quyền camera trong Info.plist
+
 ## 🚀 Cài đặt
-
-### Điều kiện tiên quyết
-
-Đảm bảo tệp AAR SDK ở `libs/water_meter_sdk.aar`:
-
-```bash
-# Tệp AAR phải nằm tại:
-# cordova-plugin-water-meter/libs/water_meter_sdk.aar
-```
 
 ### Cài đặt Plugin
 
-#### Cách 1: Đường dẫn cục bộ
+#### Cách 1: Đường dẫn cục bộ (khuyến nghị cho phát triển)
 
 ```bash
 cd YourCordovaApp
@@ -52,54 +57,117 @@ cordova plugin add /duong/dan/den/cordova-plugin-water-meter
 cordova plugin add https://github.com/EOV-Solutions/cordova-plugin-water-meter.git
 ```
 
-#### Cách 3: Git riêng
-
-```bash
-cordova plugin add git+https://github.com/EOV-Solutions/cordova-plugin-water-meter.git
-```
-
 ### Kiểm tra cài đặt
 
 ```bash
 cordova plugin list
-# Phải thấy: cordova-plugin-water-meter 1.0.0 "Water Meter Scanner"
+# Phải thấy: cordova-plugin-water-meter 1.2.0 "Water Meter Scanner"
+```
+
+### Cấu hình quyền Camera (iOS)
+
+Plugin tự động thêm quyền camera vào `Info.plist`, nhưng bạn có thể tùy chỉnh mô tả:
+
+```xml
+<key>NSCameraUsageDescription</key>
+<string>Ứng dụng cần quyền truy cập camera để quét số đồng hồ nước</string>
 ```
 
 ### Xây dựng & chạy
 
+**Android:**
 ```bash
-cordova prepare
+cordova prepare android
 cordova build android
 cordova run android
 ```
 
+**iOS:**
+```bash
+cordova prepare ios
+cordova build ios
+cordova run ios --device
+```
+
 ## 💻 Sử dụng
+
+### ⚠️ Khởi tạo License (Bắt buộc)
+
+**QUAN TRỌNG**: Bạn phải khởi tạo license trước khi sử dụng các tính năng quét. SDK sẽ không hoạt động nếu license chưa được kích hoạt.
+
+```javascript
+document.addEventListener('deviceready', function() {
+    // Khởi tạo license khi app start
+    WaterMeter.initializeLicense(
+        'YOUR_LICENSE_KEY',  // License key từ backend
+        function(result) {
+            console.log('✓ License initialized:', result);
+            // result = {
+            //   valid: true,
+            //   status: 1,       // 1 = active
+            //   message: "License activated successfully"
+            // }
+            
+            // Bây giờ có thể sử dụng scan
+            startScanning();
+        },
+        function(error) {
+            console.error('✗ License error:', error);
+            // Xử lý lỗi license
+            alert('Không thể kích hoạt license: ' + error);
+        }
+    );
+}, false);
+
+// Kiểm tra license có hợp lệ không
+function checkLicense() {
+    WaterMeter.isLicenseValid(
+        function(result) {
+            console.log('License valid:', result.valid);
+            console.log('License status:', result.status);
+            // status: 0 = unknown, 1 = active, 2 = expired, 3 = blocked
+        },
+        function(error) {
+            console.error('Error:', error);
+        }
+    );
+}
+```
 
 ### Ví dụ cơ bản
 
 ```javascript
-WaterMeter.scan(
-    function(result) {
-        // Thành công
-        console.log('✓ Số:', result.text);
-        console.log('Độ tin cậy:', (result.confidence * 100).toFixed(1) + '%');
-        
-        // Hiển thị kết quả
-        document.getElementById('meter-value').innerText = result.text;
-        document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
-        
-        // Hiển thị ảnh đã lưu
-        if (result.imagePath) {
-            console.log('Ảnh đã lưu tại:', result.imagePath);
-            document.getElementById('captured-image').src = 'file://' + result.imagePath;
+// Đợi device ready
+document.addEventListener('deviceready', function() {
+    WaterMeter.scan(
+        function(result) {
+            // Thành công
+            console.log('✓ Số:', result.text);
+            console.log('Độ tin cậy:', (result.confidence * 100).toFixed(1) + '%');
+            
+            // Hiển thị kết quả
+            document.getElementById('meter-value').innerText = result.text;
+            document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
+            
+            // Hiển thị ảnh đã lưu
+            if (result.imagePath) {
+                console.log('Ảnh đã lưu tại:', result.imagePath);
+                // Android: dùng file://
+                document.getElementById('captured-image').src = 'file://' + result.imagePath;
+            }
+            
+            // iOS: dùng base64 cho WKWebView
+            if (result.imageBase64) {
+                document.getElementById('captured-image').src = result.imageBase64;
+            }
+        },
+        function(error) {
+            // Lỗi hoặc hủy
+            console.error('Lỗi quét:', error);
+            alert('Đã hủy: ' + error);
         }
-    },
-    function(error) {
-        // Lỗi hoặc hủy
-        console.error('Lỗi quét:', error);
-        alert('Đã hủy: ' + error);
-    }
-);
+    );
+}, false);
 ```
 
 ### Ví dụ nâng cao với tuỳ chọn
@@ -108,14 +176,25 @@ WaterMeter.scan(
 WaterMeter.scan(
     function(result) {
         console.log('Thành công:', result);
+        // result = {
+        //   text: "00012345",           // Số đồng hồ
+        //   confidence: 0.95,           // Độ tin cậy 0.0-1.0
+        //   success: true,              // true nếu có số
+        //   imagePath: "/path/to/image.jpg",  // Đường dẫn ảnh
+        //   imageBase64: "data:image/jpeg;base64,..." // Base64 (iOS)
+        //   formattedReading: "0.0012345",  // Số đã format (iOS)
+        //   isReliable: true                 // Độ tin cậy cao (iOS)
+        // }
     },
     function(error) {
         console.error('Lỗi:', error);
     },
     {
-        title: 'Quét số đồng hồ nước', // Tiêu đề màn hình quét
-        showCloseButton: true,     // Hiện nút đóng (X)
-        autoCloseOnResult: true   // Tự động đóng khi quét thành công
+        title: 'Quét số đồng hồ nước',  // Tiêu đề màn hình quét
+        showCloseButton: true,          // Hiện nút đóng (X)
+        autoCloseOnResult: true,        // Tự động đóng khi quét thành công
+        imageMaxWidth: 1920,            // Resize ảnh về max width (giữ tỷ lệ)
+        imageMaxHeight: 1080            // Resize ảnh về max height (giữ tỷ lệ)
     }
 );
 ```
@@ -126,23 +205,61 @@ WaterMeter.scan(
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quét Số Đồng Hồ Nước</title>
     <script src="cordova.js"></script>
     <style>
-        #captured-image { max-width: 100%; height: auto; margin-top: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+        }
+        button {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        #captured-image { 
+            max-width: 100%; 
+            height: auto; 
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+        .result-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Quét Số Đồng Hồ Nước</h1>
+    <h1>📱 Quét Số Đồng Hồ Nước</h1>
+    
     <button onclick="startScan()">Quét</button>
-    <div id="result-container" style="display:none;">
+    <button onclick="checkPermission()">Kiểm tra quyền</button>
+    <button onclick="openSettings()">Cài đặt</button>
+    
+    <div id="result-container" class="result-box" style="display:none;">
         <h2>Kết quả:</h2>
         <p>Số: <strong id="meter-value">-</strong></p>
         <p>Độ tin cậy: <strong id="confidence">-</strong></p>
-        <p>Đường dẫn: <span id="image-path">-</span></p>
+        <p>Đường dẫn: <span id="image-path" style="font-size:12px;">-</span></p>
         <img id="captured-image" style="display:none;" />
     </div>
+    
     <script>
+        document.addEventListener('deviceready', onDeviceReady, false);
+        
+        function onDeviceReady() {
+            console.log('Device ready - Cordova initialized');
+            console.log('WaterMeter plugin:', typeof WaterMeter !== 'undefined' ? 'Available' : 'Not found');
+        }
+        
         function startScan() {
             WaterMeter.scan(
                 function(result) {
@@ -150,12 +267,17 @@ WaterMeter.scan(
                     document.getElementById('meter-value').innerText = result.text;
                     document.getElementById('confidence').innerText = (result.confidence * 100).toFixed(1) + '%';
                     
-                    // Hiển thị ảnh đã lưu
-                    if (result.imagePath) {
-                        document.getElementById('image-path').innerText = result.imagePath;
-                        var img = document.getElementById('captured-image');
+                    // Hiển thị ảnh
+                    var img = document.getElementById('captured-image');
+                    if (result.imageBase64) {
+                        // iOS: dùng base64
+                        img.src = result.imageBase64;
+                        img.style.display = 'block';
+                    } else if (result.imagePath) {
+                        // Android: dùng file://
                         img.src = 'file://' + result.imagePath;
                         img.style.display = 'block';
+                        document.getElementById('image-path').innerText = result.imagePath;
                     }
                     
                     document.getElementById('result-container').style.display = 'block';
@@ -166,52 +288,31 @@ WaterMeter.scan(
                 {
                     title: 'Quét số đồng hồ nước',
                     showCloseButton: true,
-                    autoCloseOnResult: true,
-                    imageMaxWidth: 1920  // Resize ảnh về max width 1920px (giữ tỷ lệ)
+                    imageMaxWidth: 1920,
+                    imageMaxHeight: 1080
                 }
             );
         }
-    </script>
-```
-
-### Ví dụ nâng cao
-
-```javascript
-// Resize ảnh theo width
-WaterMeter.scan(
-    successCallback, 
-    errorCallback,
-    {
-        imageMaxWidth: 1920  // Height tự động tính theo tỷ lệ
-    }
-);
-
-// Resize ảnh theo height  
-WaterMeter.scan(
-    successCallback,
-    errorCallback, 
-    {
-        imageMaxHeight: 1080  // Width tự động tính theo tỷ lệ
-    }
-);
-
-// Resize ảnh fit trong bounds (chọn scale nhỏ hơn)
-WaterMeter.scan(
-    successCallback,
-    errorCallback,
-    {
-        imageMaxWidth: 1920,
-        imageMaxHeight: 1080  // Ảnh sẽ fit trong 1920x1080
-    }
-);
-
-// Không resize (ảnh gốc)
-WaterMeter.scan(
-    successCallback,
-    errorCallback,
-    {
-        // Không truyền imageMaxWidth/imageMaxHeight
-    }
+        
+        function checkPermission() {
+            WaterMeter.checkPermission(
+                function(result) {
+                    alert('Quyền camera: ' + (result.granted ? 'Đã cấp ✓' : 'Chưa cấp ✗'));
+                },
+                function(error) {
+                    alert('Lỗi: ' + error);
+                }
+            );
+        }
+        
+        function openSettings() {
+            WaterMeter.openSettings(
+                function(result) {
+                    console.log('Settings opened:', result);
+                },
+                function(error) {
+                    alert('Lỗi: ' + error);
+                }
             );
         }
     </script>
@@ -221,87 +322,129 @@ WaterMeter.scan(
 
 ## 📖 API
 
+### `WaterMeter.initializeLicense(licenseKey, successCallback, errorCallback)`
+
+**⚠️ BẮT BUỘC** - Khởi tạo SDK với license key. Phải gọi trước khi sử dụng các tính năng khác.
+
+**Tham số:**
+- `licenseKey` (string) - License key từ backend
+- `successCallback(result)` - Được gọi khi kích hoạt thành công
+  - `result.valid` (boolean) - License có hợp lệ không
+  - `result.status` (number) - Trạng thái license (0=unknown, 1=active, 2=expired, 3=blocked)
+  - `result.message` (string) - Thông báo chi tiết
+- `errorCallback(error)` - Được gọi khi có lỗi
+
+```javascript
+WaterMeter.initializeLicense(
+    'YOUR_LICENSE_KEY',
+    function(result) {
+        console.log('License activated:', result.valid);
+    },
+    function(error) {
+        console.error('License error:', error);
+    }
+);
+```
+
+---
+
+### `WaterMeter.isLicenseValid(successCallback, errorCallback)`
+
+Kiểm tra license hiện tại có hợp lệ không.
+
+**Kết quả:**
+```javascript
+{
+    valid: true,      // License có hợp lệ
+    status: 1         // 0=unknown, 1=active, 2=expired, 3=blocked
+}
+```
+
+```javascript
+WaterMeter.isLicenseValid(
+    function(result) {
+        if (result.valid) {
+            console.log('License is active');
+        } else {
+            console.log('License status:', result.status);
+        }
+    },
+    function(error) {
+        console.error('Error:', error);
+    }
+);
+```
+
+---
+
 ### `WaterMeter.scan(successCallback, errorCallback, options)`
 
 Mở camera để quét số đồng hồ nước.
 
+**Tham số:**
 - `successCallback(result)` - Được gọi khi quét thành công
-    - `result`: `{text: string, confidence: number, success: boolean, imagePath: string}`
 - `errorCallback(error)` - Được gọi khi lỗi hoặc hủy
-- `options` (tuỳ chọn)
-    - `title` (string) - Tiêu đề màn hình quét
-    - `showCloseButton` (boolean) - Hiện nút đóng (X)
-    - `autoCloseOnResult` (boolean) - Tự động đóng khi quét thành công
-    - `imageMaxWidth` (number) - Chiều rộng tối đa ảnh lưu (px), chiều cao tự tính
-    - `imageMaxHeight` (number) - Chiều cao tối đa ảnh lưu (px), chiều rộng tự tính
+- `options` (tuỳ chọn):
+  - `imageMaxWidth` (number) - Chiều rộng tối đa ảnh lưu (px)
+  - `imageMaxHeight` (number) - Chiều cao tối đa ảnh lưu (px)
 
 **Kết quả thành công:**
 
 ```javascript
 {
-    text: "00123",        // Số đồng hồ (rỗng nếu thất bại)
-    confidence: 1.0,      // Độ tin cậy 0.0-1.0
-    success: true,        // true nếu có số
-    imagePath: "/path/to/image.jpg"  // Đường dẫn ảnh đã chụp (nếu có)
+    text: "00123",                              // Số đồng hồ (rỗng nếu thất bại)
+    confidence: 0.95,                           // Độ tin cậy 0.0-1.0
+    success: true,                              // true nếu có số
+    imagePath: "/path/to/image.jpg",            // Đường dẫn ảnh đã chụp
+    imageBase64: "data:image/jpeg;base64,...",  // Base64 cho WebView (cả Android và iOS)
 }
 ```
 
-**Ví dụ:**
+---
+
+### `WaterMeter.recognizeBase64(successCallback, errorCallback, base64Image)` *(iOS only)*
+
+Nhận diện số đồng hồ từ ảnh base64.
 
 ```javascript
-WaterMeter.scan(
+WaterMeter.recognizeBase64(
     function(result) {
-        if (result.success) {
-            alert('Meter number: ' + result.text);
-            console.log('Image saved at: ' + result.imagePath);
-            
-            // Hiển thị ảnh đã lưu
-            if (result.imagePath) {
-                document.getElementById('captured-image').src = 'file://' + result.imagePath;
-            }
-        } else {
-            alert('No number detected');
-        }
+        console.log('Kết quả:', result.text);
     },
     function(error) {
-        alert('Error: ' + error);
+        console.error('Lỗi:', error);
     },
-    {
-        title: 'Scan Water Meter',
-        autoCloseOnResult: true
-    }
+    'data:image/jpeg;base64,' + imageData
 );
 ```
 
-**Ví dụ:**
+---
+
+### `WaterMeter.recognizeFile(successCallback, errorCallback, filePath)` *(iOS only)*
+
+Nhận diện số đồng hồ từ file ảnh.
 
 ```javascript
-WaterMeter.scan(
+WaterMeter.recognizeFile(
     function(result) {
-        if (result.success) {
-            alert('Meter number: ' + result.text);
-        } else {
-            alert('No number detected');
-        }
+        console.log('Kết quả:', result.text);
     },
     function(error) {
-        alert('Error: ' + error);
+        console.error('Lỗi:', error);
     },
-    {
-        title: 'Scan Water Meter',
-        autoCloseOnResult: true
-    }
+    '/path/to/image.jpg'
 );
 ```
+
+---
 
 ### `WaterMeter.checkPermission(successCallback, errorCallback)`
 
 Kiểm tra quyền camera.
 
-- `successCallback(result)` - `{granted: boolean}`
+- `successCallback(result)` - `{granted: boolean, status: string}`
+  - status values (iOS): "granted", "denied", "restricted", "prompt"
 - `errorCallback(error)`
-
-**Ví dụ:**
 
 ```javascript
 WaterMeter.checkPermission(
@@ -314,23 +457,38 @@ WaterMeter.checkPermission(
 );
 ```
 
+---
+
 ### `WaterMeter.requestPermission(successCallback, errorCallback)`
 
 Yêu cầu quyền camera.
-
-- `successCallback(result)` - `{granted: boolean}`
-- `errorCallback(error)`
-
-**Ví dụ:**
 
 ```javascript
 WaterMeter.requestPermission(
     function(result) {
         if (result.granted) {
             console.log('Permission granted!');
+            WaterMeter.scan(onSuccess, onError);
         } else {
             alert('Permission denied');
         }
+    },
+    function(error) {
+        console.error('Error:', error);
+    }
+);
+```
+
+---
+
+### `WaterMeter.isInitialized(successCallback, errorCallback)` *(iOS only)*
+
+Kiểm tra SDK đã khởi tạo chưa.
+
+```javascript
+WaterMeter.isInitialized(
+    function(initialized) {
+        console.log('SDK initialized:', initialized);
     },
     function(error) {
         console.error('Error:', error);
@@ -342,172 +500,137 @@ WaterMeter.requestPermission(
 
 | Tuỳ chọn | Kiểu | Mặc định | Mô tả |
 |----------|------|----------|-------|
-| `title` | string | "Quét số đồng hồ" | Tiêu đề màn hình quét |
-| `showCloseButton` | boolean | true | Hiện nút đóng |
-| `autoCloseOnResult` | boolean | true | Tự động đóng khi quét thành công |
+| `imageMaxWidth` | number | 0 (ảnh gốc) | Chiều rộng tối đa ảnh (px) |
+| `imageMaxHeight` | number | 0 (ảnh gốc) | Chiều cao tối đa ảnh (px) |
+
+**Lưu ý:** Resize ảnh giữ tỷ lệ. Nếu chỉ định cả width và height, ảnh sẽ fit trong bounds.
+
+## 📱 Đặc điểm theo nền tảng
+
+### Tính năng chung (Android & iOS)
+
+- 🔑 Khởi tạo và quản lý license (`initializeLicense`, `isLicenseValid`)
+- 📷 Quét số đồng hồ nước (`scan`)
+- 🔒 Quản lý quyền camera (`checkPermission`, `requestPermission`)
+- 💾 Lưu ảnh và trả về đường dẫn (`imagePath`)
+- 🖼️ Trả về ảnh base64 (`imageBase64`) cho WebView
 
 ## 🔧 Khắc phục sự cố
 
 ### Không tìm thấy plugin
 
-- Kiểm tra plugin đã cài:
-  ```bash
-  cordova plugin list
-  ```
-- Đảm bảo có: `cordova-plugin-water-meter 1.0.0 "Water Meter Scanner"`
-- Đảm bảo đã load `cordova.js` trước khi gọi plugin
+```bash
+# Kiểm tra plugin đã cài:
+cordova plugin list
+# Phải thấy: cordova-plugin-water-meter 1.2.0 "Water Meter Scanner"
 
-### Không tìm thấy AAR
-
-- Đảm bảo tệp AAR ở: `cordova-plugin-water-meter/libs/water_meter_sdk.aar`
-- Xoá và cài lại plugin:
-  ```bash
-  cordova plugin remove cordova-plugin-water-meter
-  cordova plugin add /duong/dan/den/cordova-plugin-water-meter
-  ```
-
-### Quyền camera bị từ chối
-
-- Kiểm tra AndroidManifest.xml có:
-  ```xml
-  <uses-permission android:name="android.permission.CAMERA" />
-  ```
-- Yêu cầu quyền trước khi quét:
-  ```javascript
-  WaterMeter.requestPermission(
-      function(result) {
-          if (result.granted) {
-              WaterMeter.scan(onSuccess, onError);
-          }
-      },
-      onError
-  );
-  ```
-
-### Lỗi build
-
-- Kiểm tra `config.xml` có:
-  ```xml
-  <engine name="android" spec="^9.0.0" />
-  ```
-- Clean và build lại:
-  ```bash
-  cordova clean android
-  rm -rf platforms/android
-  cordova platform add android@9.0.0
-  cordova build android
-  ```
-
-### Code plugin cũ vẫn chạy
-
-- Xoá và cài lại plugin, clean và build lại
-  ```bash
-  cordova plugin remove cordova-plugin-water-meter
-  cordova plugin add /duong/dan/den/cordova-plugin-water-meter
-  cordova clean android
-  cordova build android
-  ```
-- Gỡ cài đặt app khỏi thiết bị trước khi cài lại
-
-### Lỗi: cannot find symbol CameraScanActivity
-
-**Nguyên nhân:** AAR không được thêm vào dependencies hoặc chưa được copy.
-
-**Giải pháp:**
-
-1. Kiểm tra AAR tồn tại:
-   ```bash
-   ls platforms/android/app/libs/water_meter_sdk.aar
-   ls plugins/cordova-plugin-water-meter/libs/water_meter_sdk.aar
-   ```
-
-2. Reinstall plugin hoàn toàn:
-   ```bash
-   cordova plugin rm cordova-plugin-water-meter
-   cordova platform rm android
-   cordova platform add android
-   cordova plugin add /path/to/cordova-plugin-water-meter
-   ```
-
-3. Build lại:
-   ```bash
-   cd platforms/android
-   ./gradlew clean assembleDebug
-   ```
-
-4. Nếu vẫn lỗi, kiểm tra `platforms/android/app/build.gradle`:
-   ```gradle
-   dependencies {
-       implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-       // ... other deps
-   }
-   ```
-
-### Lỗi: Manifest merger failed (FileProvider conflict)
-
-**Nguyên nhân:** Conflict giữa FileProvider của Cordova và SDK.
-
-**Giải pháp:** Thêm `tools:replace` vào AndroidManifest.xml:
-
-1. Mở `platforms/android/app/src/main/AndroidManifest.xml`
-2. Thêm namespace tools:
-   ```xml
-   <manifest xmlns:tools="http://schemas.android.com/tools" ...>
-   ```
-3. Thêm tools:replace vào provider:
-   ```xml
-   <provider android:authorities="${applicationId}.cdv.core.file.provider"
-             tools:replace="android:authorities">
-       <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                  tools:replace="android:resource" />
-   </provider>
-   ```
-
-### Lỗi: Gradle version mismatch
-
-**Giải pháp 1:** Thêm vào `config.xml`:
-```xml
-<platform name="android">
-    <preference name="GradleVersion" value="8.9" />
-</platform>
+# Đảm bảo đã load cordova.js và đợi deviceready
 ```
 
-**Giải pháp 2:** Update gradle wrapper:
+### Android: Không tìm thấy AAR
+
 ```bash
-# Edit platforms/android/gradle/wrapper/gradle-wrapper.properties
-distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
+# Đảm bảo tệp AAR ở:
+ls cordova-plugin-water-meter/libs/water_meter_sdk.aar
+
+# Xoá và cài lại plugin:
+cordova plugin remove cordova-plugin-water-meter
+cordova plugin add /duong/dan/den/cordova-plugin-water-meter
 ```
 
-### Lỗi: Java version mismatch
+### Android: Lỗi cannot find symbol CameraScanActivity
 
-**Yêu cầu:** Java 17
-
-**Giải pháp:**
 ```bash
-# Set JAVA_HOME
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
-
-# Verify
-java -version  # Should show version 17
-
-# Build
+# Reinstall plugin hoàn toàn:
+cordova plugin rm cordova-plugin-water-meter
+cordova platform rm android
+cordova platform add android
+cordova plugin add /path/to/cordova-plugin-water-meter
 cordova build android
 ```
 
-## 📚 Tài liệu bổ sung
+### iOS: Framework Not Found
 
-- [PLUGIN_INTEGRATION_GUIDE.md](./PLUGIN_INTEGRATION_GUIDE.md) - Hướng dẫn chi tiết tích hợp plugin
-- [API_DOCUMENTATION.md](../Water_SDK/API_DOCUMENTATION.md) - API documentation của SDK
-- [CHANGELOG.md](./CHANGELOG.md) - Lịch sử thay đổi chi tiết
+```bash
+# Clean và rebuild:
+cordova clean ios
+rm -rf platforms/ios
+cordova platform add ios
+cordova build ios
+```
+
+### iOS: Ảnh không hiển thị trong WebView
+
+```javascript
+// ✗ Không dùng file:// URLs trong WKWebView
+// img.src = 'file://' + result.imagePath;
+
+// ✓ Dùng base64 data URL
+if (result.imageBase64) {
+    img.src = result.imageBase64;
+}
+```
+
+### Quyền camera bị từ chối
+
+**Android:**
+```xml
+<!-- Kiểm tra AndroidManifest.xml có: -->
+<uses-permission android:name="android.permission.CAMERA" />
+```
+
+**iOS:**
+```xml
+<!-- Kiểm tra Info.plist có: -->
+<key>NSCameraUsageDescription</key>
+<string>Mô tả lý do cần camera</string>
+```
+
+### Lỗi build
+
+**Android:**
+```bash
+cordova clean android
+rm -rf platforms/android
+cordova platform add android@9.0.0
+cordova build android
+```
+
+**iOS:**
+```bash
+cordova clean ios
+rm -rf platforms/ios
+cordova platform add ios
+cordova build ios
+```
+
+### Code plugin cũ vẫn chạy
+
+```bash
+# Xoá và cài lại plugin, clean và build lại
+cordova plugin remove cordova-plugin-water-meter
+cordova plugin add /duong/dan/den/cordova-plugin-water-meter
+cordova clean
+cordova build
+
+# Gỡ cài đặt app khỏi thiết bị trước khi cài lại
+```
 
 ## 📝 Lịch sử thay đổi
+
+### Phiên bản 1.2.0
+
+- **Hỗ trợ iOS** - Tích hợp đầy đủ cho iOS 12.0+
+- **WaterMeterSDK.framework** - Pre-built framework cho iOS
+- **Base64 image** - Trả về ảnh base64 cho iOS WebView
+- **Nhận diện từ ảnh** - API `recognizeBase64` và `recognizeFile` (iOS)
+- **Màn hình cài đặt** - API `openSettings` (iOS)
+- **Thông tin SDK** - API `getVersion` và `isInitialized` (iOS)
 
 ### Phiên bản 1.0.0
 
 - Nhận diện số đồng hồ thời gian thực bằng AI
-- Sửa lỗi flash khi zoom
-- Điều khiển zoom (1.0x - 4.0x)
+- Điều khiển flash và zoom
 - Tự động chụp khi độ tin cậy > 90%
 - Hiển thị độ tin cậy
 - Quản lý quyền camera
