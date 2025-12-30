@@ -463,7 +463,7 @@ public class WaterMeterPlugin extends CordovaPlugin {
             
             // Run OCR
             predictor.setInputImage(bitmap);
-            boolean success = predictor.runModel(1, 0, 1); // run_det=1, run_cls=0, run_rec=1
+            boolean success = predictor.runModel(1, 1, 1); // run_det=1, run_cls=1, run_rec=1
             
             // Get results
             JSONObject result = new JSONObject();
