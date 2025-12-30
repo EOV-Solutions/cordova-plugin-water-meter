@@ -16,3 +16,4 @@ FOUNDATION_EXPORT const unsigned char WaterMeterSDKVersionString[];
 
 // Public headers
 #import <WaterMeterSDK/WMOCRBridge.h>
+#import <WaterMeterSDK/WMLicenseBridge.h>

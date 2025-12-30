@@ -1,9 +1,10 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name WaterMeterSDK
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name WaterMeterSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
 import AVFoundation
 import Foundation
+import Network
 import Swift
 import UIKit
 @_exported import WaterMeterSDK
@@ -17,9 +18,22 @@ import _SwiftConcurrencyShims
   final public var isInitialized: Swift.Bool {
     get
   }
+  final public var isLicenseInitialized: Swift.Bool {
+    get
+  }
   final public func initialize(modelFolder: Swift.String = "models", labelFile: Swift.String = "ppocr_keys_v1.txt", configuration: WaterMeterSDK.WMPredictorConfiguration = .default) throws
   final public func initialize(modelPath: Swift.String, labelPath: Swift.String, configuration: WaterMeterSDK.WMPredictorConfiguration = .default) throws
   final public func reset()
+  final public func initializeLicense(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public func initializeLicense(licenseKey: Swift.String, secretKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public var isLicenseValid: Swift.Bool {
+    get
+  }
+  final public var licenseStatus: WaterMeterSDK.WMLicenseStatus {
+    get
+  }
+  final public func incrementUsage(_ amount: Swift.Int = 1)
+  final public func clearLicense()
   final public func recognize(image: UIKit.UIImage) throws -> WaterMeterSDK.WMOCRScanResult
   @available(iOS 13.0, *)
   final public func recognize(image: UIKit.UIImage) async throws -> WaterMeterSDK.WMOCRScanResult
@@ -388,6 +402,7 @@ public enum WMError : Foundation.LocalizedError {
   case cameraAccessDenied
   case cameraNotAvailable
   case processingFailed(Swift.String)
+  case licenseError(Swift.String)
   case unknown(Swift.String)
   #if compiler(>=5.3) && $NonescapableTypes
   public var errorDescription: Swift.String? {
@@ -421,6 +436,8 @@ public struct WMSettingsKeys {
   public static let autoFocusEnabled: Swift.String
   public static let autoExposureEnabled: Swift.String
   public static let exposureBias: Swift.String
+  public static let trainingUploadEnabled: Swift.String
+  public static let allowMobileData: Swift.String
 }
 public struct WMSettingsDefaults {
   public static let realtimeDetection: Swift.Bool
@@ -436,6 +453,8 @@ public struct WMSettingsDefaults {
   public static let autoFocusEnabled: Swift.Bool
   public static let autoExposureEnabled: Swift.Bool
   public static let exposureBias: Swift.Float
+  public static let trainingUploadEnabled: Swift.Bool
+  public static let allowMobileData: Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class WMSettings {
   public static let shared: WaterMeterSDK.WMSettings
@@ -488,6 +507,14 @@ public struct WMSettingsDefaults {
     set
   }
   public var exposureBias: Swift.Float {
+    get
+    set
+  }
+  public var trainingUploadEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var allowMobileData: Swift.Bool {
     get
     set
   }
@@ -628,6 +655,65 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func presentScanner(configuration: WaterMeterSDK.WMScannerConfiguration_ObjC?, delegate: (any WaterMeterSDK.WMCameraScannerDelegate_ObjC)?, from viewController: UIKit.UIViewController, error: Foundation.NSErrorPointer)
   #endif
+  @objc deinit
+}
+public enum WMLicenseResult {
+  case success
+  case error(Swift.String)
+}
+public typealias WMLicenseCallback = (WaterMeterSDK.WMLicenseResult) -> Swift.Void
+@_hasMissingDesignatedInitializers final public class WMLicenseManager {
+  public static let shared: WaterMeterSDK.WMLicenseManager
+  final public var baseUrl: Swift.String {
+    get
+  }
+  final public func setSecretKey(_ secretKey: Swift.String)
+  final public func activate(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public var isValid: Swift.Bool {
+    get
+  }
+  final public var status: WaterMeterSDK.WMLicenseStatus {
+    get
+  }
+  final public var isBlockedDueToQuota: Swift.Bool {
+    get
+  }
+  final public func clear()
+  final public func incrementUsage(_ amount: Swift.Int = 1)
+  final public var pendingUsage: Swift.Int {
+    get
+  }
+  final public var quotaThreshold: Swift.Int {
+    get
+  }
+  final public func syncNow(completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class WMTrainingDataManager {
+  public static let shared: WaterMeterSDK.WMTrainingDataManager
+  final public func initialize(deviceId: Swift.String, licenseKey: Swift.String)
+  final public var isEnabled: Swift.Bool {
+    get
+    set
+  }
+  final public var allowMobileData: Swift.Bool {
+    get
+    set
+  }
+  final public var isOnWifi: Swift.Bool {
+    get
+  }
+  final public var canUpload: Swift.Bool {
+    get
+  }
+  final public func queueIfLowConfidence(image: UIKit.UIImage, confidence: Swift.Float, ocrResult: Swift.String)
+  final public func uploadCachedImages()
+  final public var pendingCount: Swift.Int {
+    get
+  }
+  final public var cacheSizeBytes: Swift.Int64 {
+    get
+  }
   @objc deinit
 }
 extension WaterMeterSDK.WMScannerError : Swift.Equatable {}

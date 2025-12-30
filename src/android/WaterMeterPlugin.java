@@ -4,6 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
@@ -15,6 +18,9 @@ import org.json.JSONObject;
 
 import com.eov.watermeter.ui.CameraScanActivity;
 import com.eov.watermeter.WaterMeterSDK;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 /**
  * Cordova Plugin for Water Meter Scanner
@@ -243,6 +249,12 @@ public class WaterMeterPlugin extends CordovaPlugin {
                     result.put("success", text != null && !text.isEmpty());
                     if (imagePath != null && !imagePath.isEmpty()) {
                         result.put("imagePath", imagePath);
+                        
+                        // Convert image to base64 for WebView compatibility
+                        String base64Image = convertImageToBase64(imagePath);
+                        if (base64Image != null) {
+                            result.put("imageBase64", base64Image);
+                        }
                     }
                     
                     // Increment usage quota on successful scan
@@ -293,6 +305,41 @@ public class WaterMeterPlugin extends CordovaPlugin {
             }
             
             permissionCallback = null;
+        }
+    }
+    
+    /**
+     * Convert image file to base64 data URL
+     */
+    private String convertImageToBase64(String imagePath) {
+        try {
+            File file = new File(imagePath);
+            if (!file.exists()) {
+                Log.e(TAG, "Image file does not exist: " + imagePath);
+                return null;
+            }
+            
+            // Decode with inSampleSize to reduce memory usage
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 2; // Scale down by 2
+            Bitmap bitmap = BitmapFactory.decodeFile(imagePath, options);
+            
+            if (bitmap == null) {
+                Log.e(TAG, "Failed to decode image: " + imagePath);
+                return null;
+            }
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
+            byte[] bytes = baos.toByteArray();
+            bitmap.recycle();
+            
+            String base64 = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            return "data:image/jpeg;base64," + base64;
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Error converting image to base64", e);
+            return null;
         }
     }
 }

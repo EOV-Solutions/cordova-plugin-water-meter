@@ -233,6 +233,56 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "isLicenseInitialized",
+            "printedName": "isLicenseInitialized",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC20isLicenseInitializedSbvp",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC20isLicenseInitializedSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK12WMSDKManagerC20isLicenseInitializedSbvg",
+                "mangledName": "$s13WaterMeterSDK12WMSDKManagerC20isLicenseInitializedSbvg",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "initialize",
             "printedName": "initialize(modelFolder:labelFile:configuration:)",
@@ -332,6 +382,245 @@
             "declKind": "Func",
             "usr": "s:13WaterMeterSDK12WMSDKManagerC5resetyyF",
             "mangledName": "$s13WaterMeterSDK12WMSDKManagerC5resetyyF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "initializeLicense",
+            "printedName": "initializeLicense(licenseKey:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseResult",
+                    "printedName": "WaterMeterSDK.WMLicenseResult",
+                    "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey10completionySS_yAA15WMLicenseResultOctF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey10completionySS_yAA15WMLicenseResultOctF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "initializeLicense",
+            "printedName": "initializeLicense(licenseKey:secretKey:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseResult",
+                    "printedName": "WaterMeterSDK.WMLicenseResult",
+                    "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH010completionySS_SSyAA15WMLicenseResultOctF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH010completionySS_SSyAA15WMLicenseResultOctF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "isLicenseValid",
+            "printedName": "isLicenseValid",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC14isLicenseValidSbvp",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC14isLicenseValidSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK12WMSDKManagerC14isLicenseValidSbvg",
+                "mangledName": "$s13WaterMeterSDK12WMSDKManagerC14isLicenseValidSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "licenseStatus",
+            "printedName": "licenseStatus",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WMLicenseStatus",
+                "printedName": "WaterMeterSDK.WMLicenseStatus",
+                "usr": "c:@E@WMLicenseStatus"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC13licenseStatusSo09WMLicenseF0Vvp",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC13licenseStatusSo09WMLicenseF0Vvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseStatus",
+                    "printedName": "WaterMeterSDK.WMLicenseStatus",
+                    "usr": "c:@E@WMLicenseStatus"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK12WMSDKManagerC13licenseStatusSo09WMLicenseF0Vvg",
+                "mangledName": "$s13WaterMeterSDK12WMSDKManagerC13licenseStatusSo09WMLicenseF0Vvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "incrementUsage",
+            "printedName": "incrementUsage(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC14incrementUsageyySiF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC14incrementUsageyySiF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clearLicense",
+            "printedName": "clearLicense()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC12clearLicenseyyF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC12clearLicenseyyF",
             "moduleName": "WaterMeterSDK",
             "declAttributes": [
               "Final",
@@ -11046,6 +11335,56 @@
           },
           {
             "kind": "Var",
+            "name": "licenseError",
+            "printedName": "licenseError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMError.Type) -> (Swift.String) -> WaterMeterSDK.WMError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> WaterMeterSDK.WMError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WMError",
+                        "printedName": "WaterMeterSDK.WMError",
+                        "usr": "s:13WaterMeterSDK7WMErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WaterMeterSDK.WMError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WMError",
+                        "printedName": "WaterMeterSDK.WMError",
+                        "usr": "s:13WaterMeterSDK7WMErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13WaterMeterSDK7WMErrorO12licenseErroryACSScACmF",
+            "mangledName": "$s13WaterMeterSDK7WMErrorO12licenseErroryACSScACmF",
+            "moduleName": "WaterMeterSDK"
+          },
+          {
+            "kind": "Var",
             "name": "unknown",
             "printedName": "unknown",
             "children": [
@@ -12252,6 +12591,101 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "trainingUploadEnabled",
+            "printedName": "trainingUploadEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK14WMSettingsKeysV21trainingUploadEnabledSSvpZ",
+            "mangledName": "$s13WaterMeterSDK14WMSettingsKeysV21trainingUploadEnabledSSvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK14WMSettingsKeysV21trainingUploadEnabledSSvgZ",
+                "mangledName": "$s13WaterMeterSDK14WMSettingsKeysV21trainingUploadEnabledSSvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allowMobileData",
+            "printedName": "allowMobileData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK14WMSettingsKeysV15allowMobileDataSSvpZ",
+            "mangledName": "$s13WaterMeterSDK14WMSettingsKeysV15allowMobileDataSSvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK14WMSettingsKeysV15allowMobileDataSSvgZ",
+                "mangledName": "$s13WaterMeterSDK14WMSettingsKeysV15allowMobileDataSSvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Struct",
@@ -12892,6 +13326,101 @@
                 "declKind": "Accessor",
                 "usr": "s:13WaterMeterSDK18WMSettingsDefaultsV12exposureBiasSfvgZ",
                 "mangledName": "$s13WaterMeterSDK18WMSettingsDefaultsV12exposureBiasSfvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "trainingUploadEnabled",
+            "printedName": "trainingUploadEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK18WMSettingsDefaultsV21trainingUploadEnabledSbvpZ",
+            "mangledName": "$s13WaterMeterSDK18WMSettingsDefaultsV21trainingUploadEnabledSbvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK18WMSettingsDefaultsV21trainingUploadEnabledSbvgZ",
+                "mangledName": "$s13WaterMeterSDK18WMSettingsDefaultsV21trainingUploadEnabledSbvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allowMobileData",
+            "printedName": "allowMobileData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK18WMSettingsDefaultsV15allowMobileDataSbvpZ",
+            "mangledName": "$s13WaterMeterSDK18WMSettingsDefaultsV15allowMobileDataSbvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK18WMSettingsDefaultsV15allowMobileDataSbvgZ",
+                "mangledName": "$s13WaterMeterSDK18WMSettingsDefaultsV15allowMobileDataSbvgZ",
                 "moduleName": "WaterMeterSDK",
                 "static": true,
                 "implicit": true,
@@ -14042,6 +14571,170 @@
                 "declKind": "Accessor",
                 "usr": "s:13WaterMeterSDK10WMSettingsC12exposureBiasSfvM",
                 "mangledName": "$s13WaterMeterSDK10WMSettingsC12exposureBiasSfvM",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "trainingUploadEnabled",
+            "printedName": "trainingUploadEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvp",
+            "mangledName": "$s13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvg",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvg",
+                "moduleName": "WaterMeterSDK",
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvs",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvs",
+                "moduleName": "WaterMeterSDK",
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvM",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC21trainingUploadEnabledSbvM",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allowMobileData",
+            "printedName": "allowMobileData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK10WMSettingsC15allowMobileDataSbvp",
+            "mangledName": "$s13WaterMeterSDK10WMSettingsC15allowMobileDataSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC15allowMobileDataSbvg",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC15allowMobileDataSbvg",
+                "moduleName": "WaterMeterSDK",
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC15allowMobileDataSbvs",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC15allowMobileDataSbvs",
+                "moduleName": "WaterMeterSDK",
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK10WMSettingsC15allowMobileDataSbvM",
+                "mangledName": "$s13WaterMeterSDK10WMSettingsC15allowMobileDataSbvM",
                 "moduleName": "WaterMeterSDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -18745,6 +19438,1230 @@
             "mangledName": "$ss28CustomDebugStringConvertibleP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WaterMeterSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "WaterMeterSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WMLicenseResult",
+        "printedName": "WMLicenseResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "success",
+            "printedName": "success",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult.Type) -> WaterMeterSDK.WMLicenseResult",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseResult",
+                    "printedName": "WaterMeterSDK.WMLicenseResult",
+                    "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WaterMeterSDK.WMLicenseResult.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WMLicenseResult",
+                        "printedName": "WaterMeterSDK.WMLicenseResult",
+                        "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13WaterMeterSDK15WMLicenseResultO7successyA2CmF",
+            "mangledName": "$s13WaterMeterSDK15WMLicenseResultO7successyA2CmF",
+            "moduleName": "WaterMeterSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult.Type) -> (Swift.String) -> WaterMeterSDK.WMLicenseResult",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> WaterMeterSDK.WMLicenseResult",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WMLicenseResult",
+                        "printedName": "WaterMeterSDK.WMLicenseResult",
+                        "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WaterMeterSDK.WMLicenseResult.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WMLicenseResult",
+                        "printedName": "WaterMeterSDK.WMLicenseResult",
+                        "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13WaterMeterSDK15WMLicenseResultO5erroryACSScACmF",
+            "mangledName": "$s13WaterMeterSDK15WMLicenseResultO5erroryACSScACmF",
+            "moduleName": "WaterMeterSDK"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:13WaterMeterSDK15WMLicenseResultO",
+        "mangledName": "$s13WaterMeterSDK15WMLicenseResultO",
+        "moduleName": "WaterMeterSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WMLicenseManager",
+        "printedName": "WMLicenseManager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WMLicenseManager",
+                "printedName": "WaterMeterSDK.WMLicenseManager",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC6sharedACvpZ",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC6sharedACvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseManager",
+                    "printedName": "WaterMeterSDK.WMLicenseManager",
+                    "usr": "s:13WaterMeterSDK16WMLicenseManagerC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC6sharedACvgZ",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC6sharedACvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "baseUrl",
+            "printedName": "baseUrl",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC7baseUrlSSvp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC7baseUrlSSvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC7baseUrlSSvg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC7baseUrlSSvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setSecretKey",
+            "printedName": "setSecretKey(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC12setSecretKeyyySSF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC12setSecretKeyyySSF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activate",
+            "printedName": "activate(licenseKey:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseResult",
+                    "printedName": "WaterMeterSDK.WMLicenseResult",
+                    "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey10completionySS_yAA0D6ResultOctF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey10completionySS_yAA0D6ResultOctF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "isValid",
+            "printedName": "isValid",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC7isValidSbvp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC7isValidSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC7isValidSbvg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC7isValidSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "status",
+            "printedName": "status",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WMLicenseStatus",
+                "printedName": "WaterMeterSDK.WMLicenseStatus",
+                "usr": "c:@E@WMLicenseStatus"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC6statusSo0D6StatusVvp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC6statusSo0D6StatusVvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseStatus",
+                    "printedName": "WaterMeterSDK.WMLicenseStatus",
+                    "usr": "c:@E@WMLicenseStatus"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC6statusSo0D6StatusVvg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC6statusSo0D6StatusVvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isBlockedDueToQuota",
+            "printedName": "isBlockedDueToQuota",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC19isBlockedDueToQuotaSbvp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC19isBlockedDueToQuotaSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC19isBlockedDueToQuotaSbvg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC19isBlockedDueToQuotaSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "clear",
+            "printedName": "clear()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC5clearyyF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC5clearyyF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "incrementUsage",
+            "printedName": "incrementUsage(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC14incrementUsageyySiF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC14incrementUsageyySiF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "pendingUsage",
+            "printedName": "pendingUsage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC12pendingUsageSivp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC12pendingUsageSivp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC12pendingUsageSivg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC12pendingUsageSivg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "quotaThreshold",
+            "printedName": "quotaThreshold",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC14quotaThresholdSivp",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC14quotaThresholdSivp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK16WMLicenseManagerC14quotaThresholdSivg",
+                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC14quotaThresholdSivg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "syncNow",
+            "printedName": "syncNow(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMLicenseResult",
+                    "printedName": "WaterMeterSDK.WMLicenseResult",
+                    "usr": "s:13WaterMeterSDK15WMLicenseResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC7syncNow10completionyyAA0D6ResultOc_tF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC7syncNow10completionyyAA0D6ResultOc_tF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:13WaterMeterSDK16WMLicenseManagerC",
+        "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC",
+        "moduleName": "WaterMeterSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WaterMeterSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "WaterMeterSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Network",
+        "printedName": "Network",
+        "declKind": "Import",
+        "moduleName": "WaterMeterSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WMTrainingDataManager",
+        "printedName": "WMTrainingDataManager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WMTrainingDataManager",
+                "printedName": "WaterMeterSDK.WMTrainingDataManager",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC6sharedACvpZ",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC6sharedACvpZ",
+            "moduleName": "WaterMeterSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WMTrainingDataManager",
+                    "printedName": "WaterMeterSDK.WMTrainingDataManager",
+                    "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC6sharedACvgZ",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC6sharedACvgZ",
+                "moduleName": "WaterMeterSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "initialize",
+            "printedName": "initialize(deviceId:licenseKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC10initialize8deviceId10licenseKeyySS_SStF",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC10initialize8deviceId10licenseKeyySS_SStF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "isEnabled",
+            "printedName": "isEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvs",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvs",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvM",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9isEnabledSbvM",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allowMobileData",
+            "printedName": "allowMobileData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvs",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0Sbvs",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0SbvM",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC011allowMobileE0SbvM",
+                "moduleName": "WaterMeterSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isOnWifi",
+            "printedName": "isOnWifi",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC8isOnWifiSbvp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC8isOnWifiSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC8isOnWifiSbvg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC8isOnWifiSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "canUpload",
+            "printedName": "canUpload",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9canUploadSbvp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9canUploadSbvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC9canUploadSbvg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC9canUploadSbvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "queueIfLowConfidence",
+            "printedName": "queueIfLowConfidence(image:confidence:ocrResult:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC20queueIfLowConfidence5image10confidence9ocrResultySo7UIImageC_SfSStF",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC20queueIfLowConfidence5image10confidence9ocrResultySo7UIImageC_SfSStF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "uploadCachedImages",
+            "printedName": "uploadCachedImages()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC18uploadCachedImagesyyF",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC18uploadCachedImagesyyF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "pendingCount",
+            "printedName": "pendingCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC12pendingCountSivp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC12pendingCountSivp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC12pendingCountSivg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC12pendingCountSivg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cacheSizeBytes",
+            "printedName": "cacheSizeBytes",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC14cacheSizeBytess5Int64Vvp",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC14cacheSizeBytess5Int64Vvp",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC14cacheSizeBytess5Int64Vvg",
+                "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC14cacheSizeBytess5Int64Vvg",
+                "moduleName": "WaterMeterSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC",
+        "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC",
+        "moduleName": "WaterMeterSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
@@ -18773,29 +20690,43 @@
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
+      "kind": "BooleanLiteral",
+      "offset": 768,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1278,
+      "offset": 1385,
       "length": 8,
       "value": "\"models\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1316,
+      "offset": 1423,
       "length": 19,
       "value": "\"ppocr_keys_v1.txt\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5800,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 10492,
+      "offset": 14713,
       "length": 8,
       "value": "\"models\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 10537,
+      "offset": 14758,
       "length": 19,
       "value": "\"ppocr_keys_v1.txt\""
     },
@@ -19908,28 +21839,28 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMModels.swift",
       "kind": "Array",
-      "offset": 8571,
+      "offset": 8687,
       "length": 25,
       "value": "[\"cs\", \"ct\", \"lt\", \"mdh\"]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMModels.swift",
       "kind": "Dictionary",
-      "offset": 8684,
+      "offset": 8800,
       "length": 188,
       "value": "[(\"cs\", \"Chỉ số (Counter)\"), (\"ct\", \"Chỉ số tiêu thụ (Consumption)\"), (\"lt\", \"Lưu tốc (Flow rate)\"), (\"mdh\", \"Mặt đồng hồ (Meter face)\")]"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMModels.swift",
       "kind": "StringLiteral",
-      "offset": 9564,
+      "offset": 9680,
       "length": 12,
       "value": "\"0123456789\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMModels.swift",
       "kind": "StringLiteral",
-      "offset": 9660,
+      "offset": 9776,
       "length": 13,
       "value": "\" 0123456789\""
     },
@@ -20026,94 +21957,122 @@
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 1219,
+      "length": 28,
+      "value": "\"wm_training_upload_enabled\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 1288,
+      "length": 22,
+      "value": "\"wm_allow_mobile_data\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1276,
+      "offset": 1444,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 1328,
+      "offset": 1496,
       "length": 3,
       "value": "600"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 1390,
+      "offset": 1558,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 1439,
+      "offset": 1607,
       "length": 3,
       "value": "0.7"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1485,
+      "offset": 1653,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1533,
+      "offset": 1701,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1617,
+      "offset": 1785,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1669,
+      "offset": 1837,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 1724,
+      "offset": 1892,
       "length": 3,
       "value": "0.3"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 1771,
+      "offset": 1939,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1822,
+      "offset": 1990,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 1910,
+      "offset": 2078,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 1995,
+      "offset": 2163,
       "length": 4,
       "value": "-0.5"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2291,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2342,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
@@ -20600,85 +22559,197 @@
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
-      "kind": "StringLiteral",
-      "offset": 9115,
-      "length": 6,
-      "value": "\"Lưu\""
-    },
-    {
-      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9191,
-      "length": 2,
-      "value": "18"
-    },
-    {
-      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9346,
-      "length": 2,
-      "value": "12"
-    },
-    {
-      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9408,
+      "offset": 9157,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "StringLiteral",
-      "offset": 9648,
+      "offset": 9386,
       "length": 28,
-      "value": "\"Đặt lại mặc định\""
+      "value": "\"Gửi dữ liệu training\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9746,
+      "offset": 9456,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9809,
+      "offset": 9518,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 9667,
+      "length": 66,
+      "value": "\"Gửi ảnh độ tin cậy thấp để cải thiện mô hình\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9775,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9841,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9901,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10111,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 10342,
+      "length": 35,
+      "value": "\"Cho phép dùng mạng di động\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10419,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10481,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 10631,
+      "length": 37,
+      "value": "\"Mặc định chỉ upload qua WiFi\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10710,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10776,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10836,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 11006,
+      "length": 6,
+      "value": "\"Lưu\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11082,
+      "length": 2,
+      "value": "18"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11237,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11299,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 11539,
+      "length": 28,
+      "value": "\"Đặt lại mặc định\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11637,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11700,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 10127,
+      "offset": 12018,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "StringLiteral",
-      "offset": 10196,
+      "offset": 12087,
       "length": 19,
       "value": "\"xmark.circle.fill\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "StringLiteral",
-      "offset": 10351,
+      "offset": 12242,
       "length": 5,
       "value": "\"✕\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 10436,
+      "offset": 12327,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMSettingsViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10561,
+      "offset": 12452,
       "length": 5,
       "value": "false"
     },
@@ -20863,6 +22934,188 @@
       "offset": 9708,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 786,
+      "length": 18,
+      "value": "\"WMLicenseManager\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 840,
+      "length": 21,
+      "value": "\"water_meter_license\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 903,
+      "length": 15,
+      "value": "\"offline_token\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 958,
+      "length": 13,
+      "value": "\"license_key\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1009,
+      "length": 11,
+      "value": "\"device_id\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1058,
+      "length": 11,
+      "value": "\"last_sync\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1250,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1290,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1329,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1380,
+      "length": 26,
+      "value": "\"com.eovsolutions.license\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4674,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "StringLiteral",
+      "offset": 759,
+      "length": 23,
+      "value": "\"WMTrainingDataManager\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "StringLiteral",
+      "offset": 821,
+      "length": 15,
+      "value": "\"training_data\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "FloatLiteral",
+      "offset": 889,
+      "length": 4,
+      "value": "0.99"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 954,
+      "length": 3,
+      "value": "200"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1008,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1014,
+      "length": 4,
+      "value": "1024"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1021,
+      "length": 4,
+      "value": "1024"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1088,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1092,
+      "length": 2,
+      "value": "24"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1097,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1102,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1276,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1316,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1357,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "StringLiteral",
+      "offset": 1408,
+      "length": 31,
+      "value": "\"com.eovsolutions.trainingdata\""
     }
   ]
 }
