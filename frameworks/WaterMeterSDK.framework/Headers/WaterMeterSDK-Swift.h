@@ -503,6 +503,22 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) WaterMeterSD
 - (void)initializeWithBundle:(NSBundle * _Nonnull)bundle configuration:(WMPredictorConfiguration_ObjC * _Nullable)configuration error:(NSError * _Nullable * _Nullable)error;
 /// Reset the SDK
 - (void)reset;
+/// Initialize SDK with license key
+/// \param licenseKey License key from backend
+///
+/// \param completion Callback with (success: Bool, errorMessage: String?)
+///
+- (void)initializeLicenseWithLicenseKey:(NSString * _Nonnull)licenseKey completion:(void (^ _Nonnull)(BOOL, NSString * _Nullable))completion;
+/// Check if license is currently valid
+///
+/// returns:
+/// true if license is valid
+@property (nonatomic, readonly) BOOL isLicenseValid;
+/// Get current license status code
+///
+/// returns:
+/// License status code (see WMLicenseStatus enum)
+@property (nonatomic, readonly) NSInteger licenseStatus;
 /// Recognize water meter reading from image
 /// \param image UIImage to process
 ///

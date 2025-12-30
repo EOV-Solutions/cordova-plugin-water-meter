@@ -14,6 +14,14 @@
 /// @param command Cordova command with optional config dictionary
 - (void)initialize:(CDVInvokedUrlCommand*)command;
 
+/// Initialize SDK with license key (recommended)
+/// @param command Cordova command with license key string
+- (void)initializeLicense:(CDVInvokedUrlCommand*)command;
+
+/// Check if license is valid
+/// @param command Cordova command
+- (void)isLicenseValid:(CDVInvokedUrlCommand*)command;
+
 /// Recognize water meter reading from base64 image
 /// @param command Cordova command with base64 string
 - (void)recognizeBase64:(CDVInvokedUrlCommand*)command;

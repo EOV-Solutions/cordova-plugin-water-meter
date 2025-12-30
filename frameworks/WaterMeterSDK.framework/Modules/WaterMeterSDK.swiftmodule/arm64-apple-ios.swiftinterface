@@ -647,6 +647,14 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   @objc public func initialize(bundle: Foundation.Bundle, configuration: WaterMeterSDK.WMPredictorConfiguration_ObjC?, error: Foundation.NSErrorPointer)
   #endif
   @objc public func reset()
+  public typealias LicenseCallback = @convention(block) (Swift.Bool, Swift.String?) -> Swift.Void
+  @objc public func initializeLicense(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WaterMeterSDK.LicenseCallback)
+  @objc public var isLicenseValid: Swift.Bool {
+    @objc get
+  }
+  @objc public var licenseStatus: Swift.Int {
+    @objc get
+  }
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func recognize(image: UIKit.UIImage, error: Foundation.NSErrorPointer) -> WaterMeterSDK.WMOCRScanResult_ObjC?
   #endif

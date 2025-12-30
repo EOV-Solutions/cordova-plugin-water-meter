@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *scanCallbackId;
 @property (nonatomic, strong) WMCameraScanner *currentScanner;
 @property (nonatomic, assign) BOOL isScannerPresented;  // Guard against multiple calls
+@property (nonatomic, assign) BOOL licenseInitialized;  // Track license status
 @end
 
 @implementation WaterMeter
@@ -67,6 +68,75 @@
             }];
         }
         
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    }];
+}
+
+#pragma mark - License Management
+
+/**
+ * Initialize SDK with license key (like Android)
+ */
+- (void)initializeLicense:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+        // Validate arguments
+        if (command.arguments.count == 0 || ![command.arguments[0] isKindOfClass:[NSString class]]) {
+            CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                        messageAsString:@"License key is required"];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            return;
+        }
+        
+        NSString *licenseKey = command.arguments[0];
+        
+        if (licenseKey.length == 0) {
+            CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                        messageAsString:@"License key cannot be empty"];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            return;
+        }
+        
+        NSLog(@"[WaterMeter Plugin] Initializing license...");
+        
+        // Call SDK's initializeLicense
+        [[WaterMeterSDK shared] initializeLicenseWithLicenseKey:licenseKey completion:^(BOOL success, NSString * _Nullable errorMessage) {
+            CDVPluginResult *result;
+            
+            if (success) {
+                self.licenseInitialized = YES;
+                NSLog(@"[WaterMeter Plugin] License initialized successfully");
+                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                       messageAsDictionary:@{
+                    @"success": @YES,
+                    @"message": @"License activated successfully",
+                    @"version": [WaterMeterSDK sdkVersion]
+                }];
+            } else {
+                self.licenseInitialized = NO;
+                NSString *error = errorMessage ?: @"License activation failed";
+                NSLog(@"[WaterMeter Plugin] License error: %@", error);
+                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                           messageAsString:[NSString stringWithFormat:@"License error: %@", error]];
+            }
+            
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        }];
+    }];
+}
+
+/**
+ * Check if license is valid (like Android)
+ */
+- (void)isLicenseValid:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+        BOOL valid = [WaterMeterSDK shared].isLicenseValid;
+        NSInteger status = [WaterMeterSDK shared].licenseStatus;
+        
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                               messageAsDictionary:@{
+            @"valid": @(valid),
+            @"status": @(status)
+        }];
         [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     }];
 }
