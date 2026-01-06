@@ -293,11 +293,8 @@ public class WaterMeterPlugin extends CordovaPlugin {
                         }
                     }
                     
-                    // Increment usage quota on successful scan
-                    if (text != null && !text.isEmpty()) {
-                        WaterMeterSDK.incrementUsage();
-                        Log.d(TAG, "Usage incremented after successful scan");
-                    }
+                    // Usage quota is now incremented by SDK internally (CameraScanActivity)
+                    // No need to call incrementUsage here - SDK handles it for security
                     
                     Log.d(TAG, "Scan result: " + result.toString());
                     scanCallback.success(result);
