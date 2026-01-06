@@ -38,7 +38,7 @@
         // Parse configuration
         NSInteger threadCount = options[@"threadCount"] ? [options[@"threadCount"] integerValue] : 2;
         BOOL useGPU = options[@"useGPU"] ? [options[@"useGPU"] boolValue] : NO;
-        NSInteger maxSideLen = options[@"maxSideLength"] ? [options[@"maxSideLength"] integerValue] : 640;
+        NSInteger maxSideLen = options[@"maxSideLength"] ? [options[@"maxSideLength"] integerValue] : 480;  // Model trained with 480x480
         
         // Create configuration (use ObjC wrapper)
         WMPredictorConfiguration_ObjC *config = [[WMPredictorConfiguration_ObjC alloc] 
@@ -257,7 +257,7 @@
         initWithThreadCount:2 
                cpuPowerMode:1  // Normal 
                      useGPU:NO 
-              maxSideLength:640 
+              maxSideLength:480  // Model trained with 480x480 input
         detectionThreshold:0.5f 
       recognitionThreshold:0.7f];
     

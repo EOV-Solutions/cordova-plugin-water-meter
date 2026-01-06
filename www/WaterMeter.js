@@ -55,7 +55,7 @@ var WaterMeter = {
      * @param {Object} options - Configuration options
      * @param {number} [options.threadCount=2] - Number of threads for inference
      * @param {boolean} [options.useGPU=false] - Whether to use GPU acceleration
-     * @param {number} [options.maxSideLength=640] - Maximum image dimension
+     * @param {number} [options.maxSideLength=480] - Maximum image dimension (model trained with 480x480)
      * @param {Function} success - Success callback
      * @param {Function} error - Error callback
      * @deprecated Use initializeLicense() instead
