@@ -291,6 +291,8 @@ var WaterMeter = {
         }
         var intPart = text.slice(0, -decimalPlaces);
         var decPart = text.slice(-decimalPlaces);
+        // Remove leading zeros from integer part
+        intPart = intPart.replace(/^0+/, '') || '0';
         return intPart + '.' + decPart;
     }
 };
