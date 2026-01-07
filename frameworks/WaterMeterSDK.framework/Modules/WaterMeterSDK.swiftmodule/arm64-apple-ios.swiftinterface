@@ -1,0 +1,738 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name WaterMeterSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+import AVFoundation
+import Foundation
+import Network
+import Swift
+import UIKit
+@_exported import WaterMeterSDK
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers final public class WMSDKManager {
+  public static let shared: WaterMeterSDK.WMSDKManager
+  public static let version: Swift.String
+  public static let bundleIdentifier: Swift.String
+  final public var isInitialized: Swift.Bool {
+    get
+  }
+  final public var isLicenseInitialized: Swift.Bool {
+    get
+  }
+  final public func initialize(modelFolder: Swift.String = "models", labelFile: Swift.String = "ppocr_keys_v1.txt", configuration: WaterMeterSDK.WMPredictorConfiguration = .default) throws
+  final public func initialize(modelPath: Swift.String, labelPath: Swift.String, configuration: WaterMeterSDK.WMPredictorConfiguration = .default) throws
+  final public func reset()
+  final public func initializeLicense(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public func initializeLicense(licenseKey: Swift.String, secretKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public var isLicenseValid: Swift.Bool {
+    get
+  }
+  final public var licenseStatus: WaterMeterSDK.WMLicenseStatus {
+    get
+  }
+  final public func incrementUsage(_ amount: Swift.Int = 1)
+  final public func clearLicense()
+  final public func recognize(image: UIKit.UIImage) throws -> WaterMeterSDK.WMOCRScanResult
+  @available(iOS 13.0, *)
+  final public func recognize(image: UIKit.UIImage) async throws -> WaterMeterSDK.WMOCRScanResult
+  final public func recognize(data: Foundation.Data) throws -> WaterMeterSDK.WMOCRScanResult
+  final public func createScanner(configuration: WaterMeterSDK.WMScannerConfiguration = .default) throws -> WaterMeterSDK.WMCameraScanner
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func presentScanner(configuration: WaterMeterSDK.WMScannerConfiguration = .default, delegate: (any WaterMeterSDK.WMCameraScannerDelegate)? = nil, from viewController: UIKit.UIViewController, onComplete: ((WaterMeterSDK.WMScanResult) -> Swift.Void)? = nil, onCancel: (() -> Swift.Void)? = nil) throws
+  #endif
+  final public func presentScanner(configuration: WaterMeterSDK.WMScannerConfiguration = .default, delegate: any WaterMeterSDK.WMCameraScannerDelegate, from viewController: UIKit.UIViewController) throws
+  public static var frameworkBundle: Foundation.Bundle {
+    get
+  }
+  public static func hasEmbeddedModels(in bundle: Foundation.Bundle = .main) -> Swift.Bool
+  @objc deinit
+}
+public typealias WMSDK = WaterMeterSDK.WMSDKManager
+public class WMSDKBuilder {
+  public init()
+  @discardableResult
+  public func threadCount(_ count: Swift.Int) -> WaterMeterSDK.WMSDKBuilder
+  @discardableResult
+  public func cpuPowerMode(_ mode: WaterMeterSDK.WMCPUPowerMode) -> WaterMeterSDK.WMSDKBuilder
+  @discardableResult
+  public func useGPU(_ enabled: Swift.Bool) -> WaterMeterSDK.WMSDKBuilder
+  @discardableResult
+  public func maxSideLength(_ length: Swift.Int) -> WaterMeterSDK.WMSDKBuilder
+  @discardableResult
+  public func modelsFolder(_ folder: Swift.String) -> WaterMeterSDK.WMSDKBuilder
+  @discardableResult
+  public func modelPaths(modelDir: Swift.String, labelFile: Swift.String) -> WaterMeterSDK.WMSDKBuilder
+  public func build() throws -> WaterMeterSDK.WMSDKManager
+  @objc deinit
+}
+public class WMPredictor {
+  public var isLoaded: Swift.Bool {
+    get
+  }
+  public var inferenceTime: Swift.Float {
+    get
+  }
+  public init(configuration: WaterMeterSDK.WMPredictorConfiguration = .default)
+  @discardableResult
+  public func loadModels(fromBundle modelFolder: Swift.String = "models", labelFile: Swift.String = "ppocr_keys_v1.txt") -> Swift.Bool
+  @discardableResult
+  public func loadModels(fromPath modelPath: Swift.String, labelPath: Swift.String) -> Swift.Bool
+  public func processImage(_ image: UIKit.UIImage) -> [WaterMeterSDK.WMOCRScanResult]
+  public func processImage(_ image: UIKit.UIImage, runDetection: Swift.Bool, runClassification: Swift.Bool, runRecognition: Swift.Bool) -> [WaterMeterSDK.WMOCRScanResult]
+  public func detectInImage(_ image: UIKit.UIImage) -> [WaterMeterSDK.WMDetection]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getMeterReading(from results: [WaterMeterSDK.WMOCRScanResult]) -> (text: Swift.String, confidence: Swift.Float)?
+  #endif
+  public func releaseModel()
+  @objc deinit
+  public static var sdkVersion: Swift.String {
+    get
+  }
+  public static func initializeSDK()
+}
+public struct WMScannerConfiguration {
+  public var imageMaxWidth: Swift.Int?
+  public var imageMaxHeight: Swift.Int?
+  public var autoCapture: Swift.Bool
+  public var confidenceThreshold: Swift.Float
+  public var iouThreshold: Swift.Float
+  public var realtimeDetection: Swift.Bool
+  public var detectionIntervalMs: Swift.Int
+  public var flashEnabled: Swift.Bool
+  public var autoZoomEnabled: Swift.Bool
+  public var saveImage: Swift.Bool
+  public var autoClose: Swift.Bool
+  public var showCloseButton: Swift.Bool
+  public var title: Swift.String?
+  public var predictorConfig: WaterMeterSDK.WMPredictorConfiguration
+  public init()
+  public static var `default`: WaterMeterSDK.WMScannerConfiguration {
+    get
+  }
+  public mutating func reloadFromSettings()
+}
+public protocol WMCameraScannerDelegate : AnyObject {
+  func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didScanResult result: WaterMeterSDK.WMScanResult)
+  func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didFailWithError error: any Swift.Error)
+  func scannerDidCancel(_ scanner: WaterMeterSDK.WMCameraScanner)
+  func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection])
+  func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection], imageSize: CoreFoundation.CGSize)
+  func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdateZoom zoom: CoreFoundation.CGFloat)
+}
+extension WaterMeterSDK.WMCameraScannerDelegate {
+  public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didFailWithError error: any Swift.Error)
+  public func scannerDidCancel(_ scanner: WaterMeterSDK.WMCameraScanner)
+  public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection])
+  public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection], imageSize: CoreFoundation.CGSize)
+  public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdateZoom zoom: CoreFoundation.CGFloat)
+}
+public enum WMScannerError : Foundation.LocalizedError {
+  case cameraNotAvailable
+  case modelNotLoaded
+  case permissionDenied
+  case processingFailed
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public static func == (a: WaterMeterSDK.WMScannerError, b: WaterMeterSDK.WMScannerError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc final public class WMCameraScanner : ObjectiveC.NSObject {
+  final public var configuration: WaterMeterSDK.WMScannerConfiguration
+  weak final public var delegate: (any WaterMeterSDK.WMCameraScannerDelegate)?
+  final public var isLoaded: Swift.Bool {
+    get
+  }
+  final public var currentZoom: CoreFoundation.CGFloat
+  final public var minZoom: CoreFoundation.CGFloat
+  final public var maxZoom: CoreFoundation.CGFloat
+  final public var isFlashOn: Swift.Bool {
+    get
+  }
+  public enum CameraLens : Swift.String {
+    case ultraWide
+    case wide
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  final public var currentLens: WaterMeterSDK.WMCameraScanner.CameraLens {
+    get
+  }
+  final public var hasUltraWideCamera: Swift.Bool {
+    get
+  }
+  final public var guideFrameRect: CoreFoundation.CGRect
+  final public var previewSize: CoreFoundation.CGSize
+  public init(configuration: WaterMeterSDK.WMScannerConfiguration = .default)
+  @discardableResult
+  final public func loadModels(fromBundle modelFolder: Swift.String = "models", labelFile: Swift.String = "ppocr_keys_v1.txt") -> Swift.Bool
+  @discardableResult
+  final public func loadModels(fromPath modelPath: Swift.String, labelPath: Swift.String) -> Swift.Bool
+  public static func checkCameraPermission() -> AVFoundation.AVAuthorizationStatus
+  public static func requestCameraPermission(completion: @escaping (Swift.Bool) -> Swift.Void)
+  final public func setupCamera(in view: UIKit.UIView) throws
+  final public func startScanning()
+  final public func stopScanning()
+  final public func captureFrame()
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func captureAndProcess(completion: @escaping (WaterMeterSDK.WMScanResult?) -> Swift.Void)
+  #endif
+  final public func zoomIn()
+  final public func zoomOut()
+  final public func setZoom(_ zoom: CoreFoundation.CGFloat, isManual: Swift.Bool = true)
+  final public func focus(at layerPoint: CoreFoundation.CGPoint)
+  final public func setExposureBias(_ bias: Swift.Float)
+  final public func adjustExposure(at layerPoint: CoreFoundation.CGPoint)
+  final public func setHDREnabled(_ enabled: Swift.Bool)
+  final public func isFrameOverexposed(_ image: UIKit.UIImage, threshold: Swift.Float = 0.7) -> Swift.Bool
+  final public func handlePinchZoom(scale: CoreFoundation.CGFloat)
+  final public func calculateOptimalZoom(for detection: WaterMeterSDK.WMDetection, imageSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func processImage(_ image: UIKit.UIImage, completion: @escaping (WaterMeterSDK.WMScanResult?) -> Swift.Void)
+  #endif
+  final public func toggleFlash()
+  final public func setFlash(_ enabled: Swift.Bool)
+  final public var hasFlash: Swift.Bool {
+    get
+  }
+  @discardableResult
+  final public func switchToLens(_ lens: WaterMeterSDK.WMCameraScanner.CameraLens) -> Swift.Bool
+  @discardableResult
+  final public func switchToUltraWide() -> Swift.Bool
+  @discardableResult
+  final public func switchToWide() -> Swift.Bool
+  final public var availableLenses: [WaterMeterSDK.WMCameraScanner.CameraLens] {
+    get
+  }
+  final public func calculateIoU(detection: WaterMeterSDK.WMDetection, imageSize: CoreFoundation.CGSize) -> Swift.Float
+  final public func reloadSettings()
+  final public func cleanup()
+  @objc deinit
+}
+extension WaterMeterSDK.WMCameraScanner : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @objc final public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class WMCameraViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var onScanComplete: ((WaterMeterSDK.WMScanResult) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onCancel: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var autoCloseOnSuccess: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency convenience public init(scanner: WaterMeterSDK.WMCameraScanner)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func configure(with scanner: WaterMeterSDK.WMCameraScanner)
+  @_Concurrency.MainActor @preconcurrency public func startScanning()
+  @_Concurrency.MainActor @preconcurrency public func stopScanning()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
+}
+extension WaterMeterSDK.WMCameraViewController : WaterMeterSDK.WMCameraScannerDelegate {
+  @_Concurrency.MainActor @preconcurrency public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didScanResult result: WaterMeterSDK.WMScanResult)
+  @_Concurrency.MainActor @preconcurrency public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didFailWithError error: any Swift.Error)
+  @_Concurrency.MainActor @preconcurrency public func scannerDidCancel(_ scanner: WaterMeterSDK.WMCameraScanner)
+  @_Concurrency.MainActor @preconcurrency public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection])
+  @_Concurrency.MainActor @preconcurrency public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdatePreview detections: [WaterMeterSDK.WMDetection], imageSize: CoreFoundation.CGSize)
+  @_Concurrency.MainActor @preconcurrency public func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didUpdateZoom zoom: CoreFoundation.CGFloat)
+}
+extension WaterMeterSDK.WMCameraViewController : WaterMeterSDK.WMSettingsViewControllerDelegate {
+  @_Concurrency.MainActor @preconcurrency public func settingsDidUpdate()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class WMOBBOverlayView : UIKit.UIView {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func updateDetections(_ detections: [WaterMeterSDK.WMDetection], imageSize: CoreFoundation.CGSize? = nil)
+  #endif
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class WMGuideFrameView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var borderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var dashPattern: [CoreFoundation.CGFloat] {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var frameAlpha: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension WaterMeterSDK.WMCameraViewController : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+}
+public enum WMCPUPowerMode : Swift.Int {
+  case low
+  case normal
+  case high
+  case full
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct WMPredictorConfiguration {
+  public var threadCount: Swift.Int
+  public var cpuPowerMode: WaterMeterSDK.WMCPUPowerMode
+  public var useGPU: Swift.Bool
+  public var maxSideLength: Swift.Int
+  public var detectionThreshold: Swift.Float
+  public var recognitionThreshold: Swift.Float
+  public init(threadCount: Swift.Int = 2, cpuPowerMode: WaterMeterSDK.WMCPUPowerMode = .normal, useGPU: Swift.Bool = false, maxSideLength: Swift.Int = 480, detectionThreshold: Swift.Float = 0.5, recognitionThreshold: Swift.Float = 0.7)
+  public static var `default`: WaterMeterSDK.WMPredictorConfiguration {
+    get
+  }
+  public static var highPerformance: WaterMeterSDK.WMPredictorConfiguration {
+    get
+  }
+  public static var lowPower: WaterMeterSDK.WMPredictorConfiguration {
+    get
+  }
+}
+public struct WMDetection {
+  public let classIndex: Swift.Int
+  public let classLabel: Swift.String
+  public let confidence: Swift.Float
+  public let points: [CoreFoundation.CGPoint]
+  public var center: CoreFoundation.CGPoint {
+    get
+  }
+  public var boundingBox: CoreFoundation.CGRect {
+    get
+  }
+}
+public struct WMOCRScanResult {
+  public let text: Swift.String
+  public let confidence: Swift.Float
+  public let classificationLabel: Swift.Int
+  public let classificationScore: Swift.Float
+  public let detections: [WaterMeterSDK.WMDetection]
+  public let processingTimeMs: Swift.Double
+  public let sourceImage: UIKit.UIImage?
+  public let imagePath: Swift.String?
+  public var isReliable: Swift.Bool {
+    get
+  }
+  public var formattedReading: Swift.String {
+    get
+  }
+  public var success: Swift.Bool {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(text: Swift.String, confidence: Swift.Float, classificationLabel: Swift.Int, classificationScore: Swift.Float, detections: [WaterMeterSDK.WMDetection], processingTimeMs: Swift.Double, sourceImage: UIKit.UIImage?, imagePath: Swift.String? = nil)
+  #endif
+}
+public struct WMScanResult {
+  public enum Status {
+    case success
+    case noMeterDetected
+    case lowConfidence
+    case error(any Swift.Error)
+  }
+  public let status: WaterMeterSDK.WMScanResult.Status
+  public let ocrResult: WaterMeterSDK.WMOCRScanResult?
+  public var text: Swift.String {
+    get
+  }
+  public var confidence: Swift.Float {
+    get
+  }
+  public var detections: [WaterMeterSDK.WMDetection] {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var imagePath: Swift.String? {
+    get
+  }
+  #endif
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var success: Swift.Bool {
+    get
+  }
+}
+public enum WMError : Foundation.LocalizedError {
+  case modelNotFound(Swift.String)
+  case modelLoadFailed(Swift.String)
+  case initializationFailed(Swift.String)
+  case inferenceFailed(Swift.String)
+  case invalidImage
+  case cameraAccessDenied
+  case cameraNotAvailable
+  case processingFailed(Swift.String)
+  case licenseError(Swift.String)
+  case unknown(Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+}
+public struct WMLabels {
+  public static let allLabels: [Swift.String]
+  public static let descriptions: [Swift.String : Swift.String]
+  public static func label(for index: Swift.Int) -> Swift.String
+  public static func index(for label: Swift.String) -> Swift.Int
+  public static func description(for label: Swift.String) -> Swift.String
+}
+public struct WMCharacters {
+  public static let digitChars: Swift.String
+  public static let allChars: Swift.String
+  public static func indicesToString(_ indices: [Swift.Int]) -> Swift.String
+}
+public struct WMSettingsKeys {
+  public static let realtimeDetection: Swift.String
+  public static let detectionInterval: Swift.String
+  public static let confidenceThreshold: Swift.String
+  public static let iouThreshold: Swift.String
+  public static let autoCapture: Swift.String
+  public static let strictVerify: Swift.String
+  public static let flashOn: Swift.String
+  public static let autoZoomEnabled: Swift.String
+  public static let zoomAdjustmentStep: Swift.String
+  public static let currentZoom: Swift.String
+  public static let autoFocusEnabled: Swift.String
+  public static let autoExposureEnabled: Swift.String
+  public static let exposureBias: Swift.String
+  public static let trainingUploadEnabled: Swift.String
+  public static let allowMobileData: Swift.String
+}
+public struct WMSettingsDefaults {
+  public static let realtimeDetection: Swift.Bool
+  public static let detectionInterval: Swift.Int
+  public static let confidenceThreshold: Swift.Float
+  public static let iouThreshold: Swift.Float
+  public static let autoCapture: Swift.Bool
+  public static let strictVerify: Swift.Bool
+  public static let flashOn: Swift.Bool
+  public static let autoZoomEnabled: Swift.Bool
+  public static let zoomAdjustmentStep: Swift.Float
+  public static let currentZoom: Swift.Float
+  public static let autoFocusEnabled: Swift.Bool
+  public static let autoExposureEnabled: Swift.Bool
+  public static let exposureBias: Swift.Float
+  public static let trainingUploadEnabled: Swift.Bool
+  public static let allowMobileData: Swift.Bool
+}
+@_hasMissingDesignatedInitializers public class WMSettings {
+  public static let shared: WaterMeterSDK.WMSettings
+  public var realtimeDetectionEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var detectionIntervalMs: Swift.Int {
+    get
+    set
+  }
+  public var confidenceThreshold: Swift.Float {
+    get
+    set
+  }
+  public var iouThreshold: Swift.Float {
+    get
+    set
+  }
+  public var autoCaptureEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var strictVerifyEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var flashOn: Swift.Bool {
+    get
+    set
+  }
+  public var autoZoomEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var zoomAdjustmentStep: Swift.Float {
+    get
+    set
+  }
+  public var currentZoom: Swift.Float {
+    get
+    set
+  }
+  public var autoFocusEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var autoExposureEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var exposureBias: Swift.Float {
+    get
+    set
+  }
+  public var trainingUploadEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var allowMobileData: Swift.Bool {
+    get
+    set
+  }
+  public func synchronize()
+  public func resetToDefaults()
+  public func printSettings()
+  @objc deinit
+}
+public protocol WMSettingsViewControllerDelegate : AnyObject {
+  func settingsDidUpdate()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class WMSettingsViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency weak public var delegate: (any WaterMeterSDK.WMSettingsViewControllerDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
+}
+@objc public enum WMScanResultStatus : Swift.Int {
+  case success = 0
+  case noMeterDetected = 1
+  case lowConfidence = 2
+  case error = 3
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class WMScannerConfiguration_ObjC : ObjectiveC.NSObject {
+  @objc public var autoCapture: Swift.Bool
+  @objc public var minConfidence: Swift.Float
+  @objc public var flashEnabled: Swift.Bool
+  @objc public var showCloseButton: Swift.Bool
+  @objc public var title: Swift.String?
+  @objc public var imageMaxWidth: Swift.Int
+  @objc public var imageMaxHeight: Swift.Int
+  @objc public var autoCaptureOverride: Swift.Bool
+  @objc public var minConfidenceOverride: Swift.Bool
+  @objc public var flashEnabledOverride: Swift.Bool
+  @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(autoCapture: Swift.Bool, minConfidence: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(autoCapture: Swift.Bool, minConfidence: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?, imageMaxWidth: Swift.Int, imageMaxHeight: Swift.Int)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(autoCaptureSet: Swift.Int, minConfidenceSet: Swift.Float, flashEnabled: Swift.Bool, showCloseButton: Swift.Bool, title: Swift.String?, imageMaxWidth: Swift.Int, imageMaxHeight: Swift.Int)
+  #endif
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class WMPredictorConfiguration_ObjC : ObjectiveC.NSObject {
+  @objc public var threadCount: Swift.Int
+  @objc public var cpuPowerMode: Swift.Int
+  @objc public var useGPU: Swift.Bool
+  @objc public var maxSideLength: Swift.Int
+  @objc public var detectionThreshold: Swift.Float
+  @objc public var recognitionThreshold: Swift.Float
+  @objc override dynamic public init()
+  @objc public init(threadCount: Swift.Int, cpuPowerMode: Swift.Int, useGPU: Swift.Bool, maxSideLength: Swift.Int, detectionThreshold: Swift.Float, recognitionThreshold: Swift.Float)
+  @objc deinit
+}
+@objc @objcMembers public class WMOCRScanResult_ObjC : ObjectiveC.NSObject {
+  @objc final public let text: Swift.String
+  @objc final public let confidence: Swift.Float
+  @objc final public let classificationLabel: Swift.Int
+  @objc final public let classificationScore: Swift.Float
+  @objc final public let processingTimeMs: Swift.Double
+  @objc final public let imagePath: Swift.String?
+  @objc public var isReliable: Swift.Bool {
+    @objc get
+  }
+  @objc public var formattedReading: Swift.String {
+    @objc get
+  }
+  @objc public var success: Swift.Bool {
+    @objc get
+  }
+  public init(swiftResult: WaterMeterSDK.WMOCRScanResult)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(text: Swift.String, confidence: Swift.Float, classificationLabel: Swift.Int, classificationScore: Swift.Float, processingTimeMs: Swift.Double, imagePath: Swift.String?)
+  #endif
+  @objc deinit
+}
+@objc @objcMembers public class WMScanResult_ObjC : ObjectiveC.NSObject {
+  @objc final public let status: WaterMeterSDK.WMScanResultStatus
+  @objc final public let ocrResult: WaterMeterSDK.WMOCRScanResult_ObjC?
+  @objc public var text: Swift.String {
+    @objc get
+  }
+  @objc public var confidence: Swift.Float {
+    @objc get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public var imagePath: Swift.String? {
+    @objc get
+  }
+  #endif
+  @objc public var isSuccess: Swift.Bool {
+    @objc get
+  }
+  @objc public var success: Swift.Bool {
+    @objc get
+  }
+  public init(swiftResult: WaterMeterSDK.WMScanResult)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(status: WaterMeterSDK.WMScanResultStatus, ocrResult: WaterMeterSDK.WMOCRScanResult_ObjC?)
+  #endif
+  @objc deinit
+}
+@objc public protocol WMCameraScannerDelegate_ObjC {
+  @objc func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didScanResult result: WaterMeterSDK.WMScanResult_ObjC)
+  @objc optional func scanner(_ scanner: WaterMeterSDK.WMCameraScanner, didFailWithError error: any Swift.Error)
+  @objc optional func scannerDidCancel(_ scanner: WaterMeterSDK.WMCameraScanner)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class WaterMeterSDK : ObjectiveC.NSObject {
+  @objc public static let shared: WaterMeterSDK.WaterMeterSDK
+  @objc public class func sdkVersion() -> Swift.String
+  @objc public var isInitialized: Swift.Bool {
+    @objc get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func initialize(bundle: Foundation.Bundle, configuration: WaterMeterSDK.WMPredictorConfiguration_ObjC?, error: Foundation.NSErrorPointer)
+  #endif
+  @objc public func reset()
+  public typealias LicenseCallback = @convention(block) (Swift.Bool, Swift.String?) -> Swift.Void
+  @objc public func initializeLicense(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WaterMeterSDK.LicenseCallback)
+  @objc public var isLicenseValid: Swift.Bool {
+    @objc get
+  }
+  @objc public var licenseStatus: Swift.Int {
+    @objc get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func recognize(image: UIKit.UIImage, error: Foundation.NSErrorPointer) -> WaterMeterSDK.WMOCRScanResult_ObjC?
+  #endif
+  @objc public class func checkCameraPermission() -> Swift.Int
+  @objc public class func requestCameraPermission(completion: @escaping (Swift.Bool) -> Swift.Void)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func presentScanner(configuration: WaterMeterSDK.WMScannerConfiguration_ObjC?, delegate: (any WaterMeterSDK.WMCameraScannerDelegate_ObjC)?, from viewController: UIKit.UIViewController, error: Foundation.NSErrorPointer)
+  #endif
+  @objc deinit
+}
+public enum WMLicenseResult {
+  case success
+  case error(Swift.String)
+}
+public typealias WMLicenseCallback = (WaterMeterSDK.WMLicenseResult) -> Swift.Void
+@_hasMissingDesignatedInitializers final public class WMLicenseManager {
+  public static let shared: WaterMeterSDK.WMLicenseManager
+  final public var baseUrl: Swift.String {
+    get
+  }
+  final public func setSecretKey(_ secretKey: Swift.String)
+  final public func activate(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public var isValid: Swift.Bool {
+    get
+  }
+  final public var status: WaterMeterSDK.WMLicenseStatus {
+    get
+  }
+  final public var isBlockedDueToQuota: Swift.Bool {
+    get
+  }
+  final public func clear()
+  final public func incrementUsage(_ amount: Swift.Int = 1)
+  final public var pendingUsage: Swift.Int {
+    get
+  }
+  final public var quotaThreshold: Swift.Int {
+    get
+  }
+  final public func syncNow(completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class WMTrainingDataManager {
+  public static let shared: WaterMeterSDK.WMTrainingDataManager
+  final public func initialize(deviceId: Swift.String, licenseKey: Swift.String)
+  final public var isEnabled: Swift.Bool {
+    get
+    set
+  }
+  final public var allowMobileData: Swift.Bool {
+    get
+    set
+  }
+  final public var isOnWifi: Swift.Bool {
+    get
+  }
+  final public var canUpload: Swift.Bool {
+    get
+  }
+  final public func queueIfLowConfidence(image: UIKit.UIImage, confidence: Swift.Float, ocrResult: Swift.String)
+  final public func setServerConfig(enabled: Swift.Bool, confidenceThreshold: Swift.Float)
+  final public func uploadCachedImages()
+  final public var pendingCount: Swift.Int {
+    get
+  }
+  final public var cacheSizeBytes: Swift.Int64 {
+    get
+  }
+  @objc deinit
+}
+extension WaterMeterSDK.WMScannerError : Swift.Equatable {}
+extension WaterMeterSDK.WMScannerError : Swift.Hashable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.Equatable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.Hashable {}
+extension WaterMeterSDK.WMCameraScanner.CameraLens : Swift.RawRepresentable {}
+extension WaterMeterSDK.WMCPUPowerMode : Swift.Equatable {}
+extension WaterMeterSDK.WMCPUPowerMode : Swift.Hashable {}
+extension WaterMeterSDK.WMCPUPowerMode : Swift.RawRepresentable {}
+extension WaterMeterSDK.WMScanResultStatus : Swift.Equatable {}
+extension WaterMeterSDK.WMScanResultStatus : Swift.Hashable {}
+extension WaterMeterSDK.WMScanResultStatus : Swift.RawRepresentable {}

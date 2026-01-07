@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-water-meter" 
+        version="1.2.0" 
+        xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <name>Water Meter Scanner</name>
+    <description>Cordova plugin for Water Meter OCR scanning using AI camera preview</description>
+    <keywords>cordova,water meter,ocr,camera,ai,scanner</keywords>
+    <license>MIT</license>
+    <author>EOV Solutions</author>
+    
+    <repo>https://github.com/EOV-Solutions/cordova-plugin-water-meter.git</repo>
+    <issue>https://github.com/EOV-Solutions/cordova-plugin-water-meter/issues</issue>
+    
+    <engines>
+        <engine name="cordova" version=">=9.0.0"/>
+        <engine name="cordova-android" version=">=9.0.0"/>
+        <engine name="cordova-ios" version=">=6.0.0"/>
+    </engines>
+    
+    <!-- JavaScript Interface -->
+    <js-module src="www/WaterMeter.js" name="WaterMeter">
+        <clobbers target="WaterMeter" />
+    </js-module>
+    
+    <!-- Android Platform -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="WaterMeter">
+                <param name="android-package" value="com.eov.cordova.watermeter.WaterMeterPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        
+        <!-- Permissions -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+        </config-file>
+        
+        <!-- Plugin Java Source -->
+        <source-file src="src/android/WaterMeterPlugin.java" 
+                     target-dir="src/com/eov/cordova/watermeter" />
+        
+        <!-- Note: AAR must be manually copied to app/libs/ by build script -->
+        <!-- Cordova <lib-file> only works with .jar, not .aar -->
+        
+        <!-- Gradle Dependencies -->
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        
+    </platform>
+    
+    <!-- iOS Platform -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WaterMeter">
+                <param name="ios-package" value="WaterMeter"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        
+        <!-- Camera Permission -->
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>Camera is used to scan water meter readings</string>
+        </config-file>
+        
+        <!-- Plugin Source Files -->
+        <header-file src="src/ios/WaterMeter.h"/>
+        <source-file src="src/ios/WaterMeter.m"/>
+        
+        <!-- WaterMeterSDK Framework -->
+        <framework src="frameworks/WaterMeterSDK.framework" embed="true" custom="true"/>
+        
+        <!-- System Frameworks -->
+        <framework src="AVFoundation.framework"/>
+        <framework src="CoreMedia.framework"/>
+        <framework src="CoreVideo.framework"/>
+        <framework src="Accelerate.framework"/>
+        <framework src="Metal.framework"/>
+        <framework src="MetalKit.framework"/>
+        <framework src="libc++.tbd"/>
+        
+        <!-- Additional build settings via hook -->
+        <hook type="after_platform_add" src="scripts/ios_build_settings.js"/>
+    </platform>
+    
+</plugin>

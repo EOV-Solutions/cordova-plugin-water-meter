@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-water-meter",
+  "version": "1.1.1",
+  "description": "Cordova plugin for Water Meter OCR scanning using AI camera preview",
+  "main": "www/WaterMeter.js",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EOV-Solutions/cordova-plugin-water-meter.git"
+  },
+  "keywords": [
+    "cordova",
+    "water-meter",
+    "ocr",
+    "camera",
+    "ai",
+    "scanner",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": {
+    "cordovaDependencies": {
+      ">=9.0.0": {
+        "cordova-android": ">=9.0.0"
+      }
+    }
+  },
+  "author": "EOV Solutions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EOV-Solutions/cordova-plugin-water-meter/issues"
+  },
+  "homepage": "https://github.com/EOV-Solutions/cordova-plugin-water-meter#readme"
+}

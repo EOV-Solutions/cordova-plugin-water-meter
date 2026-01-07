@@ -1,0 +1,11 @@
+framework module WaterMeterSDK {
+  umbrella header "WaterMeterSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module WaterMeterSDK.Swift {
+  header "WaterMeterSDK-Swift.h"
+  requires objc
+}
