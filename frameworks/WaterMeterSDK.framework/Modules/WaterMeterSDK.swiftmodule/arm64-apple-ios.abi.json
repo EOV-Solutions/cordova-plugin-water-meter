@@ -20683,6 +20683,40 @@
           },
           {
             "kind": "Function",
+            "name": "setServerConfig",
+            "printedName": "setServerConfig(enabled:confidenceThreshold:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK21WMTrainingDataManagerC15setServerConfig7enabled19confidenceThresholdySb_SftF",
+            "mangledName": "$s13WaterMeterSDK21WMTrainingDataManagerC15setServerConfig7enabled19confidenceThresholdySb_SftF",
+            "moduleName": "WaterMeterSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "uploadCachedImages",
             "printedName": "uploadCachedImages()",
             "children": [
@@ -20877,14 +20911,14 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 16096,
+      "offset": 16213,
       "length": 8,
       "value": "\"models\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 16141,
+      "offset": 16258,
       "length": 19,
       "value": "\"ppocr_keys_v1.txt\""
     },
@@ -21087,21 +21121,21 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 25130,
+      "offset": 24824,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "BooleanLiteral",
-      "offset": 25740,
+      "offset": 25434,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMCameraScanner.swift",
       "kind": "FloatLiteral",
-      "offset": 32651,
+      "offset": 32345,
       "length": 3,
       "value": "0.7"
     },
@@ -23194,7 +23228,7 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 22201,
+      "offset": 24059,
       "length": 27,
       "value": "\"com.eov.watermeter.shared\""
     },
@@ -23302,6 +23336,13 @@
       "offset": 1408,
       "length": 31,
       "value": "\"com.eovsolutions.trainingdata\""
+    },
+    {
+      "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMTrainingDataManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1688,
+      "length": 4,
+      "value": "true"
     }
   ]
 }

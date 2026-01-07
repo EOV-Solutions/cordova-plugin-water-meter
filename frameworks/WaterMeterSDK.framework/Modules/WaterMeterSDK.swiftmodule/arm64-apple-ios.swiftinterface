@@ -715,6 +715,7 @@ public typealias WMLicenseCallback = (WaterMeterSDK.WMLicenseResult) -> Swift.Vo
     get
   }
   final public func queueIfLowConfidence(image: UIKit.UIImage, confidence: Swift.Float, ocrResult: Swift.String)
+  final public func setServerConfig(enabled: Swift.Bool, confidenceThreshold: Swift.Float)
   final public func uploadCachedImages()
   final public var pendingCount: Swift.Int {
     get
