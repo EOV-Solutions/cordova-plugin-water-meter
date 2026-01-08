@@ -41,9 +41,10 @@
         </config-file>
         
         <!-- Extract native libraries for App Bundle compatibility -->
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <meta-data android:name="android.app.extract_native_libs" android:value="true" />
-        </config-file>
+        <!-- Must use edit-config to set attribute on application element, not meta-data -->
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:tools="http://schemas.android.com/tools">
+            <application android:extractNativeLibs="true" tools:replace="android:extractNativeLibs" />
+        </edit-config>
         
         <!-- Plugin Java Source -->
         <source-file src="src/android/WaterMeterPlugin.java" 
