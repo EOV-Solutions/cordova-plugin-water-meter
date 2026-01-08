@@ -103,8 +103,8 @@ document.addEventListener('deviceready', function() {
             console.log('✓ License initialized:', result);
             // result = {
             //   valid: true,
-            //   status: 1,       // 1 = active
-            //   message: "License activated successfully"
+            //   status: 1,       // 1 = valid (see status codes below)
+            //   message: "License is valid"
             // }
             
             // Bây giờ có thể sử dụng scan
@@ -124,7 +124,15 @@ function checkLicense() {
         function(result) {
             console.log('License valid:', result.valid);
             console.log('License status:', result.status);
-            // status: 0 = unknown, 1 = active, 2 = expired, 3 = blocked
+            console.log('License message:', result.message);
+            // Status codes:
+            // 0 = not initialized
+            // 1 = valid
+            // 2 = expired
+            // 3 = grace period
+            // 4 = invalid
+            // 5 = blocked
+            // 6 = quota exceeded
         },
         function(error) {
             console.error('Error:', error);
@@ -329,7 +337,7 @@ WaterMeter.scan(
 - `licenseKey` (string) - License key từ backend
 - `successCallback(result)` - Được gọi khi kích hoạt thành công
   - `result.valid` (boolean) - License có hợp lệ không
-  - `result.status` (number) - Trạng thái license (0=unknown, 1=active, 2=expired, 3=blocked)
+  - `result.status` (number) - Mã trạng thái license (xem bảng Status Codes bên dưới)
   - `result.message` (string) - Thông báo chi tiết
 - `errorCallback(error)` - Được gọi khi có lỗi
 
@@ -354,10 +362,22 @@ Kiểm tra license hiện tại có hợp lệ không.
 **Kết quả:**
 ```javascript
 {
-    valid: true,      // License có hợp lệ
-    status: 1         // 0=unknown, 1=active, 2=expired, 3=blocked
+    valid: true,           // License có hợp lệ
+    status: 1,             // Mã trạng thái (xem bảng Status Codes)
+    message: "License is valid"  // Thông báo chi tiết
 }
 ```
+
+**Status Codes:**
+| Mã | Hằng số | Ý nghĩa |
+|----|---------|--------|
+| 0 | NOT_INITIALIZED | SDK chưa khởi tạo |
+| 1 | VALID | License hợp lệ |
+| 2 | EXPIRED | License đã hết hạn |
+| 3 | GRACE_PERIOD | License trong thời gian gia hạn |
+| 4 | INVALID | License key không hợp lệ |
+| 5 | BLOCKED | License bị khóa |
+| 6 | QUOTA_EXCEEDED | Đã vượt quota, cần sync |
 
 ```javascript
 WaterMeter.isLicenseValid(

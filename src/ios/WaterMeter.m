@@ -82,7 +82,11 @@
         // Validate arguments
         if (command.arguments.count == 0 || ![command.arguments[0] isKindOfClass:[NSString class]]) {
             CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                        messageAsString:@"License key is required"];
+                                                messageAsDictionary:@{
+                @"valid": @NO,
+                @"status": @(0),
+                @"message": @"License key is required"
+            }];
             [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
             return;
         }
@@ -91,7 +95,11 @@
         
         if (licenseKey.length == 0) {
             CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                        messageAsString:@"License key cannot be empty"];
+                                                messageAsDictionary:@{
+                @"valid": @NO,
+                @"status": @(0),
+                @"message": @"License key cannot be empty"
+            }];
             [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
             return;
         }
@@ -101,22 +109,27 @@
         // Call SDK's initializeLicense
         [[WaterMeterSDK shared] initializeLicenseWithLicenseKey:licenseKey completion:^(BOOL success, NSString * _Nullable errorMessage) {
             CDVPluginResult *result;
+            NSInteger status = [WaterMeterSDK shared].licenseStatus;
             
             if (success) {
                 self.licenseInitialized = YES;
                 NSLog(@"[WaterMeter Plugin] License initialized successfully");
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                        messageAsDictionary:@{
-                    @"success": @YES,
-                    @"message": @"License activated successfully",
-                    @"version": [WaterMeterSDK sdkVersion]
+                    @"valid": @YES,
+                    @"status": @(status),
+                    @"message": [self statusMessageForCode:status]
                 }];
             } else {
                 self.licenseInitialized = NO;
                 NSString *error = errorMessage ?: @"License activation failed";
                 NSLog(@"[WaterMeter Plugin] License error: %@", error);
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                           messageAsString:[NSString stringWithFormat:@"License error: %@", error]];
+                                       messageAsDictionary:@{
+                    @"valid": @NO,
+                    @"status": @(status),
+                    @"message": error
+                }];
             }
             
             [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
@@ -135,7 +148,8 @@
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                messageAsDictionary:@{
             @"valid": @(valid),
-            @"status": @(status)
+            @"status": @(status),
+            @"message": [self statusMessageForCode:status]
         }];
         [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     }];
@@ -562,6 +576,20 @@
     dict[@"isReliable"] = @(ocrResult.isReliable);
     
     return dict;
+}
+
+/// Convert license status code to human-readable message (match Android format)
+- (NSString *)statusMessageForCode:(NSInteger)status {
+    switch (status) {
+        case 0: return @"SDK not initialized";
+        case 1: return @"License is valid";
+        case 2: return @"License has expired";
+        case 3: return @"License in grace period";
+        case 4: return @"Invalid license key";
+        case 5: return @"License has been blocked";
+        case 6: return @"Quota exceeded, sync required";
+        default: return @"Unknown status";
+    }
 }
 
 - (NSString *)resolveCordovaFilePath:(NSString *)cdvPath {

@@ -120,8 +120,9 @@ public class WaterMeterPlugin extends CordovaPlugin {
                             Log.i(TAG, "License initialized successfully");
                             try {
                                 JSONObject result = new JSONObject();
-                                result.put("success", true);
-                                result.put("message", "License activated successfully");
+                                result.put("valid", true);
+                                result.put("status", WaterMeterSDK.getLicenseStatus());
+                                result.put("message", WaterMeterSDK.getStatusMessage());
                                 callbackContext.success(result);
                             } catch (JSONException e) {
                                 callbackContext.success("License activated");
@@ -131,7 +132,15 @@ public class WaterMeterPlugin extends CordovaPlugin {
                         @Override
                         public void onError(String errorMessage) {
                             Log.e(TAG, "License initialization failed: " + errorMessage);
-                            callbackContext.error("License error: " + errorMessage);
+                            try {
+                                JSONObject result = new JSONObject();
+                                result.put("valid", false);
+                                result.put("status", WaterMeterSDK.getLicenseStatus());
+                                result.put("message", errorMessage);
+                                callbackContext.error(result);
+                            } catch (JSONException e) {
+                                callbackContext.error("License error: " + errorMessage);
+                            }
                         }
                     }
                 );
