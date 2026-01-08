@@ -40,12 +40,6 @@
             <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
         </config-file>
         
-        <!-- Extract native libraries for App Bundle compatibility -->
-        <!-- Must use edit-config to set attribute on application element, not meta-data -->
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:tools="http://schemas.android.com/tools">
-            <application android:extractNativeLibs="true" tools:replace="android:extractNativeLibs" />
-        </edit-config>
-        
         <!-- Plugin Java Source -->
         <source-file src="src/android/WaterMeterPlugin.java" 
                      target-dir="src/com/eov/cordova/watermeter" />
