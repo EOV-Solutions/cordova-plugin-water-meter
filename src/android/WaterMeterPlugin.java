@@ -160,6 +160,7 @@ public class WaterMeterPlugin extends CordovaPlugin {
             JSONObject result = new JSONObject();
             result.put("valid", valid);
             result.put("status", WaterMeterSDK.getLicenseStatus());
+            result.put("message", WaterMeterSDK.getStatusMessage());
             callbackContext.success(result);
         } catch (Exception e) {
             callbackContext.error("Error checking license: " + e.getMessage());
