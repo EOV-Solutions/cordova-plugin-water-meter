@@ -5,6 +5,18 @@ ext {
     targetSdkVersion = 29
 }
 
+// Fix for native library loading in release builds / App Bundles
+android {
+    packagingOptions {
+        // Ensure native libraries are extracted (required for older devices and some ABIs)
+        jniLibs {
+            useLegacyPackaging = true
+        }
+        // Prevent duplicate .so files if multiple AARs have same libraries
+        pickFirst '**/libc++_shared.so'
+    }
+}
+
 repositories {
     google()
     mavenCentral()

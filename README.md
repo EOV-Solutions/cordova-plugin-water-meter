@@ -14,7 +14,7 @@
 - 🤖 Nhận diện số đồng hồ bằng AI
 - 🎯 Tự động phát hiện với ngưỡng độ tin cậy
 - ⚡ Tự động chụp khi căn chỉnh đúng
-- 🔦 Điều khiển đèn flash
+- 🔦 Hỗ trợ đèn flash
 - 🔍 Điều khiển zoom
 - 📐 Phát hiện OBB (hình chữ nhật bao quanh)
 - 🔒 Quản lý quyền camera
@@ -24,7 +24,6 @@
 - 🎨 Giao diện tùy chỉnh
 - 💾 Lưu ảnh và trả về đường dẫn
 - 🖼️ Hỗ trợ Base64 để hiển thị ảnh trong WebView
-- 🔑 Hệ thống quản lý License
 
 ## 🛠️ Yêu cầu
 
