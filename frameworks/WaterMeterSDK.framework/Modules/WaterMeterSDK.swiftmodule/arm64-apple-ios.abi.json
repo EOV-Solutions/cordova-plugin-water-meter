@@ -23130,105 +23130,105 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 953,
+      "offset": 1022,
       "length": 18,
       "value": "\"WMLicenseManager\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1007,
+      "offset": 1076,
       "length": 21,
       "value": "\"water_meter_license\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1070,
+      "offset": 1139,
       "length": 15,
       "value": "\"offline_token\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1125,
+      "offset": 1194,
       "length": 13,
       "value": "\"license_key\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1176,
+      "offset": 1245,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1225,
+      "offset": 1294,
       "length": 11,
       "value": "\"last_sync\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1278,
+      "offset": 1347,
       "length": 15,
       "value": "\"pending_usage\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1340,
+      "offset": 1409,
       "length": 22,
       "value": "\"blocked_due_to_quota\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1543,
+      "offset": 1612,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1583,
+      "offset": 1652,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1622,
+      "offset": 1691,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1673,
+      "offset": 1742,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 1772,
+      "offset": 1841,
       "length": 26,
       "value": "\"com.eovsolutions.license\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 5225,
+      "offset": 5294,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 24059,
+      "offset": 25829,
       "length": 27,
       "value": "\"com.eov.watermeter.shared\""
     },
