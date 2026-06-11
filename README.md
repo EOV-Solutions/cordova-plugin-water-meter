@@ -118,17 +118,29 @@ document.addEventListener('deviceready', function() {
     );
 }, false);
 
-// HOẶC với metadata và device user (để theo dõi trên admin)
-// Lưu ý: metadataInfo và deviceUser là optional, có thể truyền 1 trong 2, cả 2, hoặc không truyền
+// HOẶC với metadata, device user và mã tổ chức (để theo dõi trên admin)
+// Lưu ý: metadataInfo, deviceUser và maToChuc là optional, có thể truyền 1 trong số đó, tất cả, hoặc không truyền
 WaterMeter.initializeLicense(
     {
         licenseKey: 'YOUR_LICENSE_KEY',
         metadataInfo: { location: 'Store A', customerId: '12345' }, // Optional
-        deviceUser: 'nhanvien@congty.com' // Optional
+        deviceUser: 'nhanvien@congty.com', // Optional
+        maToChuc: 'MA_TO_CHUC_123' // Optional - Mã tổ chức
     },
     function(result) { console.log('Success:', result); },
     function(error) { console.error('Error:', error); }
 );
+
+// Hoặc chỉ setup mã tổ chức:
+/*
+WaterMeter.initializeLicense(
+    {
+        licenseKey: 'YOUR_LICENSE_KEY',
+        maToChuc: 'MA_TO_CHUC_123'
+    },
+    success, error
+);
+*/
 
 // Hoặc chỉ setup device user:
 /*
@@ -374,6 +386,7 @@ WaterMeter.scan(
     - `options.licenseKey` (string, bắt buộc) - License key từ backend
     - `options.metadataInfo` (object, tùy chọn) - Metadata gửi lên server để admin theo dõi
     - `options.deviceUser` (string, tùy chọn) - Email/ID người dùng thiết bị
+    - `options.maToChuc` (string, tùy chọn) - Mã tổ chức của thiết bị
 - `successCallback(result)` - Được gọi khi kích hoạt thành công
   - `result.valid` (boolean) - License có hợp lệ không
   - `result.status` (number) - Mã trạng thái license (xem bảng Status Codes bên dưới)
@@ -392,7 +405,7 @@ WaterMeter.initializeLicense(
     }
 );
 
-// Cách 2: Với metadata và device user
+// Cách 2: Với metadata, device user và mã tổ chức
 WaterMeter.initializeLicense(
     {
         licenseKey: 'YOUR_LICENSE_KEY',
@@ -401,7 +414,8 @@ WaterMeter.initializeLicense(
             customerId: '12345',
             department: 'Phòng Thu Ngân'
         },
-        deviceUser: 'nhanvien@congty.com'
+        deviceUser: 'nhanvien@congty.com',
+        maToChuc: 'MA_TO_CHUC_123'
     },
     function(result) {
         console.log('License activated:', result.valid);

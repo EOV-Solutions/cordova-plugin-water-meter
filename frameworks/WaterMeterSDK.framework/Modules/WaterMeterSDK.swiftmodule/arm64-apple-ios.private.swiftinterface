@@ -30,10 +30,13 @@ import _SwiftConcurrencyShims
   @objc(initializeLicenseWithLicenseKey:metadataInfo:deviceUser:completion:) final public func initializeLicenseObjC(licenseKey: Swift.String, metadataInfo: Foundation.NSDictionary?, deviceUser: Swift.String?, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  final public func initializeLicense(licenseKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  @objc(initializeLicenseWithLicenseKey:metadataInfo:deviceUser:maToChuc:completion:) final public func initializeLicenseObjC(licenseKey: Swift.String, metadataInfo: Foundation.NSDictionary?, deviceUser: Swift.String?, maToChuc: Swift.String?, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  final public func initializeLicense(licenseKey: Swift.String, secretKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public func initializeLicense(licenseKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, maToChuc: Swift.String? = nil, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func initializeLicense(licenseKey: Swift.String, secretKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, maToChuc: Swift.String? = nil, completion: @escaping WaterMeterSDK.WMLicenseCallback)
   #endif
   final public var isLicenseValid: Swift.Bool {
     get
@@ -43,12 +46,6 @@ import _SwiftConcurrencyShims
   }
   final public func incrementUsage(_ amount: Swift.Int = 1)
   final public func clearLicense()
-  final public var isTrialMode: Swift.Bool {
-    get
-  }
-  final public var trialActivationsRemaining: Swift.Int {
-    get
-  }
   final public func recognize(image: UIKit.UIImage) throws -> WaterMeterSDK.WMOCRScanResult
   @available(iOS 13.0, *)
   final public func recognize(image: UIKit.UIImage) async throws -> WaterMeterSDK.WMOCRScanResult
@@ -667,6 +664,9 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func initializeLicense(licenseKey: Swift.String, metadataInfo: Foundation.NSDictionary?, deviceUser: Swift.String?, completion: @escaping WaterMeterSDK.WaterMeterSDK.LicenseCallback)
   #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func initializeLicense(licenseKey: Swift.String, metadataInfo: Foundation.NSDictionary?, deviceUser: Swift.String?, maToChuc: Swift.String?, completion: @escaping WaterMeterSDK.WaterMeterSDK.LicenseCallback)
+  #endif
   @objc public var isLicenseValid: Swift.Bool {
     @objc get
   }
@@ -699,7 +699,7 @@ public typealias WMLicenseCallback = (WaterMeterSDK.WMLicenseResult) -> Swift.Vo
   final public func setSecretKey(_ secretKey: Swift.String)
   final public func activate(licenseKey: Swift.String, completion: @escaping WaterMeterSDK.WMLicenseCallback)
   #if compiler(>=5.3) && $NonescapableTypes
-  final public func activate(licenseKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, completion: @escaping WaterMeterSDK.WMLicenseCallback)
+  final public func activate(licenseKey: Swift.String, metadataInfo: [Swift.String : Any]?, deviceUser: Swift.String?, maToChuc: Swift.String? = nil, completion: @escaping WaterMeterSDK.WMLicenseCallback)
   #endif
   final public var isValid: Swift.Bool {
     get
@@ -723,9 +723,6 @@ public typealias WMLicenseCallback = (WaterMeterSDK.WMLicenseResult) -> Swift.Vo
   }
   final public func syncNow(completion: @escaping WaterMeterSDK.WMLicenseCallback)
   final public var isTrialMode: Swift.Bool {
-    get
-  }
-  final public var trialActivationsRemaining: Swift.Int {
     get
   }
   @objc deinit

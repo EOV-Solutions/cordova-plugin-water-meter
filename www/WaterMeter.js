@@ -49,17 +49,19 @@ var WaterMeter = {
      * );
      */
     initializeLicense: function (options, success, error) {
-        var licenseKey, metadataInfo, deviceUser;
+        var licenseKey, metadataInfo, deviceUser, maToChuc;
 
         // Backward compatible: support both string and object
         if (typeof options === 'string') {
             licenseKey = options;
             metadataInfo = null;
             deviceUser = null;
+            maToChuc = null;
         } else if (typeof options === 'object' && options !== null) {
             licenseKey = options.license || options.licenseKey;
             metadataInfo = options.metadataInfo || null;
             deviceUser = options.deviceUser || null;
+            maToChuc = options.maToChuc || null;
         } else {
             error && error('License key is required');
             return;
@@ -69,7 +71,7 @@ var WaterMeter = {
             error && error('License key is required');
             return;
         }
-        exec(success, error, 'WaterMeter', 'initializeLicense', [licenseKey, metadataInfo, deviceUser]);
+        exec(success, error, 'WaterMeter', 'initializeLicense', [licenseKey, metadataInfo, deviceUser, maToChuc]);
     },
 
     /**

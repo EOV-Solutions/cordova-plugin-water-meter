@@ -520,6 +520,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) WaterMeterSD
 /// \param completion Callback with (success: Bool, errorMessage: String?)
 ///
 - (void)initializeLicenseWithLicenseKey:(NSString * _Nonnull)licenseKey metadataInfo:(NSDictionary * _Nullable)metadataInfo deviceUser:(NSString * _Nullable)deviceUser completion:(void (^ _Nonnull)(BOOL, NSString * _Nullable))completion;
+- (void)initializeLicenseWithLicenseKey:(NSString * _Nonnull)licenseKey metadataInfo:(NSDictionary * _Nullable)metadataInfo deviceUser:(NSString * _Nullable)deviceUser maToChuc:(NSString * _Nullable)maToChuc completion:(void (^ _Nonnull)(BOOL, NSString * _Nullable))completion;
 /// Check if license is currently valid
 ///
 /// returns:

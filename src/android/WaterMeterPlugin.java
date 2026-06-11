@@ -49,7 +49,8 @@ public class WaterMeterPlugin extends CordovaPlugin {
             String licenseKey = args.getString(0);
             JSONObject metadataInfo = args.optJSONObject(1);
             String deviceUser = args.isNull(2) ? null : args.optString(2, null);
-            this.initializeLicense(licenseKey, metadataInfo, deviceUser, callbackContext);
+            String maToChuc = args.isNull(3) ? null : args.optString(3, null);
+            this.initializeLicense(licenseKey, metadataInfo, deviceUser, maToChuc, callbackContext);
             return true;
         }
         
@@ -110,16 +111,17 @@ public class WaterMeterPlugin extends CordovaPlugin {
     /**
      * Initialize SDK with license key
      */
-    private void initializeLicense(String licenseKey, JSONObject metadataInfo, String deviceUser, CallbackContext callbackContext) {
+    private void initializeLicense(String licenseKey, JSONObject metadataInfo, String deviceUser, String maToChuc, CallbackContext callbackContext) {
         cordova.getActivity().runOnUiThread(() -> {
             try {
-                Log.d(TAG, "initializeLicense: licenseKey=" + licenseKey + ", metadataInfo=" + metadataInfo + ", deviceUser=" + deviceUser);
+                Log.d(TAG, "initializeLicense: licenseKey=" + licenseKey + ", metadataInfo=" + metadataInfo + ", deviceUser=" + deviceUser + ", maToChuc=" + maToChuc);
                 
                 WaterMeterSDK.initialize(
                     cordova.getActivity().getApplicationContext(),
                     licenseKey,
                     metadataInfo,
                     deviceUser,
+                    maToChuc,
                     new WaterMeterSDK.LicenseCallback() {
                         @Override
                         public void onSuccess() {
@@ -183,12 +185,6 @@ public class WaterMeterPlugin extends CordovaPlugin {
         // Note: License check removed - camera always opens
         // License is checked in CameraScanActivity.processImage() before running OCR
         // If license invalid: camera works, but OCR skipped - only image returned
-        
-        // Check permission
-        if (!hasPermission()) {
-            callbackContext.error("Camera permission not granted. Call requestPermission() first.");
-            return;
-        }
         
         // Launch scanner activity
         cordova.getActivity().runOnUiThread(new Runnable() {

@@ -129,15 +129,23 @@
       deviceUser = command.arguments[2];
     }
 
+    // Parse optional maToChuc (fourth argument)
+    NSString *maToChuc = nil;
+    if (command.arguments.count > 3 &&
+        [command.arguments[3] isKindOfClass:[NSString class]]) {
+      maToChuc = command.arguments[3];
+    }
+
     NSLog(@"[WaterMeter Plugin] Initializing license... metadataInfo=%@, "
-          @"deviceUser=%@",
-          metadataInfo, deviceUser);
+          @"deviceUser=%@, maToChuc=%@",
+          metadataInfo, deviceUser, maToChuc);
 
     // Call SDK's initializeLicense with metadata
     [[WaterMeterSDK shared]
         initializeLicenseWithLicenseKey:licenseKey
                            metadataInfo:metadataInfo
                              deviceUser:deviceUser
+                               maToChuc:maToChuc
                              completion:^(BOOL success,
                                           NSString *_Nullable errorMessage) {
                                CDVPluginResult *result;

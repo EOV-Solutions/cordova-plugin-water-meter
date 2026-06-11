@@ -587,8 +587,119 @@
           },
           {
             "kind": "Function",
+            "name": "initializeLicenseObjC",
+            "printedName": "initializeLicenseObjC(licenseKey:metadataInfo:deviceUser:maToChuc:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSDictionary?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool, Swift.String?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.Bool, Swift.String?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC21initializeLicenseObjC10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_So12NSDictionaryCSgSSSgAMySb_AMtctF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC21initializeLicenseObjC10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_So12NSDictionaryCSgSSSgAMySb_AMtctF",
+            "moduleName": "WaterMeterSDK",
+            "objc_name": "initializeLicenseWithLicenseKey:metadataInfo:deviceUser:maToChuc:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "initializeLicense",
-            "printedName": "initializeLicense(licenseKey:metadataInfo:deviceUser:completion:)",
+            "printedName": "initializeLicense(licenseKey:metadataInfo:deviceUser:maToChuc:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -643,6 +754,21 @@
                 "usr": "s:Sq"
               },
               {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
                 "kind": "TypeFunc",
                 "name": "Function",
                 "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
@@ -662,8 +788,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey12metadataInfo10deviceUser10completionySS_SDySSypGSgSSSgyAA15WMLicenseResultOctF",
-            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey12metadataInfo10deviceUser10completionySS_SDySSypGSgSSSgyAA15WMLicenseResultOctF",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_SDySSypGSgSSSgALyAA15WMLicenseResultOctF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_SDySSypGSgSSSgALyAA15WMLicenseResultOctF",
             "moduleName": "WaterMeterSDK",
             "declAttributes": [
               "Final",
@@ -675,7 +801,7 @@
           {
             "kind": "Function",
             "name": "initializeLicense",
-            "printedName": "initializeLicense(licenseKey:secretKey:metadataInfo:deviceUser:completion:)",
+            "printedName": "initializeLicense(licenseKey:secretKey:metadataInfo:deviceUser:maToChuc:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -736,6 +862,21 @@
                 "usr": "s:Sq"
               },
               {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
                 "kind": "TypeFunc",
                 "name": "Function",
                 "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
@@ -755,8 +896,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH012metadataInfo10deviceUser10completionySS_SSSDySSypGSgSSSgyAA15WMLicenseResultOctF",
-            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH012metadataInfo10deviceUser10completionySS_SSSDySSypGSgSSSgyAA15WMLicenseResultOctF",
+            "usr": "s:13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH012metadataInfo10deviceUser8maToChuc10completionySS_SSSDySSypGSgSSSgAMyAA15WMLicenseResultOctF",
+            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC17initializeLicense10licenseKey06secretH012metadataInfo10deviceUser8maToChuc10completionySS_SSSDySSypGSgSSSgAMyAA15WMLicenseResultOctF",
             "moduleName": "WaterMeterSDK",
             "declAttributes": [
               "Final",
@@ -905,96 +1046,6 @@
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "isTrialMode",
-            "printedName": "isTrialMode",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13WaterMeterSDK12WMSDKManagerC11isTrialModeSbvp",
-            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC11isTrialModeSbvp",
-            "moduleName": "WaterMeterSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13WaterMeterSDK12WMSDKManagerC11isTrialModeSbvg",
-                "mangledName": "$s13WaterMeterSDK12WMSDKManagerC11isTrialModeSbvg",
-                "moduleName": "WaterMeterSDK",
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "trialActivationsRemaining",
-            "printedName": "trialActivationsRemaining",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13WaterMeterSDK12WMSDKManagerC25trialActivationsRemainingSivp",
-            "mangledName": "$s13WaterMeterSDK12WMSDKManagerC25trialActivationsRemainingSivp",
-            "moduleName": "WaterMeterSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13WaterMeterSDK12WMSDKManagerC25trialActivationsRemainingSivg",
-                "mangledName": "$s13WaterMeterSDK12WMSDKManagerC25trialActivationsRemainingSivg",
-                "moduleName": "WaterMeterSDK",
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
           },
           {
             "kind": "Function",
@@ -19669,6 +19720,115 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Function",
+            "name": "initializeLicense",
+            "printedName": "initializeLicense(licenseKey:metadataInfo:deviceUser:maToChuc:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSDictionary?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool, Swift.String?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.Bool, Swift.String?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@WaterMeterSDK@objc(cs)WaterMeterSDK(im)initializeLicenseWithLicenseKey:metadataInfo:deviceUser:maToChuc:completion:",
+            "mangledName": "$s13WaterMeterSDKAAC17initializeLicense10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_So12NSDictionaryCSgSSSgALySb_ALtXLtF",
+            "moduleName": "WaterMeterSDK",
+            "objc_name": "initializeLicenseWithLicenseKey:metadataInfo:deviceUser:maToChuc:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Var",
             "name": "isLicenseValid",
             "printedName": "isLicenseValid",
@@ -20422,7 +20582,7 @@
           {
             "kind": "Function",
             "name": "activate",
-            "printedName": "activate(licenseKey:metadataInfo:deviceUser:completion:)",
+            "printedName": "activate(licenseKey:metadataInfo:deviceUser:maToChuc:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -20477,6 +20637,21 @@
                 "usr": "s:Sq"
               },
               {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
                 "kind": "TypeFunc",
                 "name": "Function",
                 "printedName": "(WaterMeterSDK.WMLicenseResult) -> ()",
@@ -20496,8 +20671,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey12metadataInfo10deviceUser10completionySS_SDySSypGSgSSSgyAA0D6ResultOctF",
-            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey12metadataInfo10deviceUser10completionySS_SDySSypGSgSSSgyAA0D6ResultOctF",
+            "usr": "s:13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_SDySSypGSgSSSgALyAA0D6ResultOctF",
+            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC8activate10licenseKey12metadataInfo10deviceUser8maToChuc10completionySS_SDySSypGSgSSSgALyAA0D6ResultOctF",
             "moduleName": "WaterMeterSDK",
             "declAttributes": [
               "Final",
@@ -20904,51 +21079,6 @@
                 "declKind": "Accessor",
                 "usr": "s:13WaterMeterSDK16WMLicenseManagerC11isTrialModeSbvg",
                 "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC11isTrialModeSbvg",
-                "moduleName": "WaterMeterSDK",
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "trialActivationsRemaining",
-            "printedName": "trialActivationsRemaining",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13WaterMeterSDK16WMLicenseManagerC25trialActivationsRemainingSivp",
-            "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC25trialActivationsRemainingSivp",
-            "moduleName": "WaterMeterSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13WaterMeterSDK16WMLicenseManagerC25trialActivationsRemainingSivg",
-                "mangledName": "$s13WaterMeterSDK16WMLicenseManagerC25trialActivationsRemainingSivg",
                 "moduleName": "WaterMeterSDK",
                 "declAttributes": [
                   "Final"
@@ -21696,21 +21826,21 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "IntegerLiteral",
-      "offset": 8546,
+      "offset": 8662,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 19889,
+      "offset": 19236,
       "length": 8,
       "value": "\"models\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WaterMeterSDK.swift",
       "kind": "StringLiteral",
-      "offset": 19934,
+      "offset": 19281,
       "length": 19,
       "value": "\"ppocr_keys_v1.txt\""
     },
@@ -24083,63 +24213,63 @@
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 2560,
+      "offset": 2594,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 2611,
+      "offset": 2645,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 2794,
+      "offset": 2828,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 2845,
+      "offset": 2879,
       "length": 26,
       "value": "\"com.eovsolutions.license\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 3037,
+      "offset": 3071,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 3094,
+      "offset": 3128,
       "length": 34,
       "value": "\"com.eovsolutions.license.network\""
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 3195,
+      "offset": 3229,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 8180,
+      "offset": 8362,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/eov-mac\/code\/sdk\/ios\/iOS-SDK-Water-Meter\/WaterMeterSDK\/Swift\/WMLicenseManager.swift",
       "kind": "StringLiteral",
-      "offset": 40751,
+      "offset": 41676,
       "length": 27,
       "value": "\"com.eov.watermeter.shared\""
     },
