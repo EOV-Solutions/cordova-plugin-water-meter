@@ -113,7 +113,13 @@ var WaterMeter = {
      * @param {number} options.minConfidence - Minimum confidence threshold (default: 0.7)
      * @param {number} options.imageMaxWidth - Max width for saved image in pixels
      * @param {number} options.imageMaxHeight - Max height for saved image in pixels
-     * 
+     * @param {string} options.imageSaveDir - Directory to save the captured image: absolute path
+     *        or file:// URL (e.g. cordova.file.dataDirectory). Must be writable by the app;
+     *        falls back to the SDK default directory if not writable.
+     * @param {string} options.imageFileName - File name only (e.g. "KH001_202610.jpg"); ".jpg" is
+     *        appended if missing and an existing file with the same name is overwritten.
+     *        Always use result.imagePath for the actual saved location.
+     *
      * @example
      * WaterMeter.scan(
      *     function(result) {
@@ -175,6 +181,14 @@ var WaterMeter = {
         }
         if (options.imageMaxHeight && typeof options.imageMaxHeight === 'number') {
             config.imageMaxHeight = Math.floor(options.imageMaxHeight);
+        }
+
+        // Add custom image save location if specified (non-empty strings only)
+        if (typeof options.imageSaveDir === 'string' && options.imageSaveDir.trim()) {
+            config.imageSaveDir = options.imageSaveDir.trim();
+        }
+        if (typeof options.imageFileName === 'string' && options.imageFileName.trim()) {
+            config.imageFileName = options.imageFileName.trim();
         }
 
         exec(successCallback, errorCallback, 'WaterMeter', 'scan', [config]);

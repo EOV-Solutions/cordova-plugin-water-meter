@@ -477,6 +477,18 @@
                                  ? [options[@"imageMaxHeight"] integerValue]
                                  : 0;
 
+  // Custom image save location (nil = SDK default directory / file name)
+  NSString *imageSaveDir = nil;
+  if ([options[@"imageSaveDir"] isKindOfClass:[NSString class]] &&
+      [(NSString *)options[@"imageSaveDir"] length] > 0) {
+    imageSaveDir = options[@"imageSaveDir"];
+  }
+  NSString *imageFileName = nil;
+  if ([options[@"imageFileName"] isKindOfClass:[NSString class]] &&
+      [(NSString *)options[@"imageFileName"] length] > 0) {
+    imageFileName = options[@"imageFileName"];
+  }
+
   NSLog(@"[WaterMeter Plugin] presentScanner - UI options only, behavior from "
         @"SDK settings");
   NSLog(@"[WaterMeter Plugin] title=%@, showCloseButton=%d", title,
@@ -506,6 +518,9 @@
                          title:title
                  imageMaxWidth:imageMaxWidth
                 imageMaxHeight:imageMaxHeight];
+    // Custom save location for captured image (nil = SDK default)
+    config.imageSaveDir = imageSaveDir;
+    config.imageFileName = imageFileName;
 
     // Present scanner
     NSError *error = nil;

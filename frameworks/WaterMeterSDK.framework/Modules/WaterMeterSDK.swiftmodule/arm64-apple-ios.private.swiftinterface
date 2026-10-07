@@ -107,6 +107,8 @@ public class WMPredictor {
 public struct WMScannerConfiguration {
   public var imageMaxWidth: Swift.Int?
   public var imageMaxHeight: Swift.Int?
+  public var imageSaveDir: Swift.String?
+  public var imageFileName: Swift.String?
   public var autoCapture: Swift.Bool
   public var confidenceThreshold: Swift.Float
   public var iouThreshold: Swift.Float
@@ -570,6 +572,8 @@ public protocol WMSettingsViewControllerDelegate : AnyObject {
   @objc public var title: Swift.String?
   @objc public var imageMaxWidth: Swift.Int
   @objc public var imageMaxHeight: Swift.Int
+  @objc public var imageSaveDir: Swift.String?
+  @objc public var imageFileName: Swift.String?
   @objc public var autoCaptureOverride: Swift.Bool
   @objc public var minConfidenceOverride: Swift.Bool
   @objc public var flashEnabledOverride: Swift.Bool

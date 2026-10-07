@@ -247,10 +247,45 @@ WaterMeter.scan(
         showCloseButton: true,          // Hiện nút đóng (X)
         autoCloseOnResult: true,        // Tự động đóng khi quét thành công
         imageMaxWidth: 1920,            // Resize ảnh về max width (giữ tỷ lệ)
-        imageMaxHeight: 1080            // Resize ảnh về max height (giữ tỷ lệ)
+        imageMaxHeight: 1080,           // Resize ảnh về max height (giữ tỷ lệ)
+        imageSaveDir: cordova.file.dataDirectory + 'meter_photos/', // Thư mục lưu ảnh (cần cordova-plugin-file)
+        imageFileName: 'KH001_202610.jpg'  // Tên file ảnh (chỉ tên file)
     }
 );
 ```
+
+### Tuỳ chọn nơi lưu ảnh
+
+Mặc định SDK lưu ảnh chụp vào thư mục riêng của SDK, tên file là timestamp (ms). Ứng dụng có thể tự chọn thư mục và tên file bằng `imageSaveDir` / `imageFileName`:
+
+```javascript
+// cordova.file.* cần cài cordova-plugin-file
+WaterMeter.scan(
+    function(result) {
+        // Luôn dùng result.imagePath - không tự ghép đường dẫn
+        console.log('Ảnh đã lưu tại:', result.imagePath);
+    },
+    function(error) {
+        console.error('Lỗi:', error);
+    },
+    {
+        imageSaveDir: cordova.file.dataDirectory + 'meter_photos/', // Đường dẫn tuyệt đối hoặc URL file://
+        imageFileName: 'KH001_202610.jpg'                           // Chỉ tên file
+    }
+);
+```
+
+**Lưu ý:**
+
+- `imageSaveDir` nhận đường dẫn tuyệt đối hoặc URL `file://` (dùng trực tiếp được `cordova.file.dataDirectory`). Thư mục sẽ được tự tạo nếu chưa có.
+- Thư mục phải là nơi ứng dụng có quyền ghi:
+  - **Android**: thư mục riêng của app (vd. `cordova.file.dataDirectory`, `cordova.file.externalDataDirectory`). Từ Android 10+ không thể ghi trực tiếp vào thư mục dùng chung như `/sdcard/DCIM`.
+  - **iOS**: bên trong sandbox của app (vd. `cordova.file.dataDirectory`, `cordova.file.documentsDirectory`).
+- `imageFileName` chỉ là tên file: tự thêm `.jpg` nếu tên không kết thúc bằng `.jpg`/`.jpeg`; phần thư mục trong tên (nếu có) bị bỏ qua; file trùng tên sẽ bị ghi đè.
+- Nếu không ghi được vào `imageSaveDir`, SDK sẽ lưu vào thư mục mặc định. Vì vậy **luôn dùng `result.imagePath`** trả về thay vì tự ghép đường dẫn.
+- Chỉ truyền khi là chuỗi không rỗng; nếu bỏ qua, SDK dùng vị trí mặc định:
+  - Android: `<externalFilesDir>/Pictures/WaterMeter/<epoch ms>.jpg`
+  - iOS: `<Application Support>/NoCloud/scanned_images/<epoch ms>.jpg`
 
 ### Tích hợp hoàn chỉnh
 
@@ -479,6 +514,8 @@ Mở camera để quét số đồng hồ nước.
 - `options` (tuỳ chọn):
   - `imageMaxWidth` (number) - Chiều rộng tối đa ảnh lưu (px)
   - `imageMaxHeight` (number) - Chiều cao tối đa ảnh lưu (px)
+  - `imageSaveDir` (string) - Thư mục lưu ảnh: đường dẫn tuyệt đối hoặc URL `file://` (vd. `cordova.file.dataDirectory`)
+  - `imageFileName` (string) - Tên file ảnh, chỉ tên file (vd. `"KH001_202610.jpg"`)
 
 **Kết quả thành công:**
 
@@ -594,8 +631,12 @@ WaterMeter.isInitialized(
 |----------|------|----------|-------|
 | `imageMaxWidth` | number | 0 (ảnh gốc) | Chiều rộng tối đa ảnh (px) |
 | `imageMaxHeight` | number | 0 (ảnh gốc) | Chiều cao tối đa ảnh (px) |
+| `imageSaveDir` | string | Thư mục mặc định của SDK | Thư mục lưu ảnh: đường dẫn tuyệt đối hoặc URL `file://` (vd. `cordova.file.dataDirectory`). Tự tạo nếu chưa có |
+| `imageFileName` | string | `<epoch ms>.jpg` | Tên file ảnh (chỉ tên file). Tự thêm `.jpg` nếu thiếu, ghi đè file trùng tên |
 
 **Lưu ý:** Resize ảnh giữ tỷ lệ. Nếu chỉ định cả width và height, ảnh sẽ fit trong bounds.
+
+**Lưu ý:** Nếu không ghi được vào `imageSaveDir`, SDK lưu vào thư mục mặc định - luôn dùng `result.imagePath` trả về. Xem chi tiết tại [Tuỳ chọn nơi lưu ảnh](#tuỳ-chọn-nơi-lưu-ảnh).
 
 ## 📱 Đặc điểm theo nền tảng
 

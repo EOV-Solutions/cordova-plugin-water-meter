@@ -456,6 +456,10 @@ SWIFT_CLASS("_TtC13WaterMeterSDK27WMScannerConfiguration_ObjC")
 @property (nonatomic) NSInteger imageMaxWidth;
 /// Maximum height for saved images (0 = no resize)
 @property (nonatomic) NSInteger imageMaxHeight;
+/// Directory to save captured image: absolute path or file:// URL (nil/empty = SDK default)
+@property (nonatomic, copy) NSString * _Nullable imageSaveDir;
+/// File name of captured image, “.jpg” appended if missing (nil/empty = <timestamp ms>.jpg)
+@property (nonatomic, copy) NSString * _Nullable imageFileName;
 /// Flags to track which options were explicitly set by plugin
 /// If false, use SDK settings instead
 @property (nonatomic) BOOL autoCaptureOverride;

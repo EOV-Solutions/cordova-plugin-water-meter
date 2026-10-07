@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### 🎨 New Features
+
+#### Custom Image Save Location
+- ✅ **Choose save directory**: New `imageSaveDir` scan option - absolute path or `file://` URL (e.g. `cordova.file.dataDirectory` from cordova-plugin-file)
+- ✅ **Choose file name**: New `imageFileName` scan option - file name only (e.g. `"KH001_202610.jpg"`)
+- ✅ **Auto-create directory**: Directory is created if missing
+- ✅ **Safe file names**: `.jpg` appended if the name doesn't end with `.jpg`/`.jpeg`; any directory part is ignored; an existing file with the same name is overwritten
+- ✅ **Fallback**: If the directory is not writable, the SDK saves to its default directory - always use the returned `imagePath`
+- ✅ **Optional feature**: Default behavior unchanged when options are omitted
+  - Android: `<externalFilesDir>/Pictures/WaterMeter/<epoch ms>.jpg`
+  - iOS: `<Application Support>/NoCloud/scanned_images/<epoch ms>.jpg`
+
+#### JavaScript API
+```javascript
+WaterMeter.scan(success, error, {
+    imageSaveDir: cordova.file.dataDirectory + 'meter_photos/',
+    imageFileName: 'KH001_202610.jpg'
+});
+// Always read the actual location from result.imagePath
+```
+
+#### Platform Notes
+- **Android**: Use app-specific directories (e.g. `cordova.file.dataDirectory`, `cordova.file.externalDataDirectory`). Android 10+ cannot write directly into shared folders like `/sdcard/DCIM`.
+- **iOS**: Directory must be inside the app sandbox (e.g. `cordova.file.dataDirectory`, `cordova.file.documentsDirectory`).
+
+#### Technical Changes
+- Updated `WaterMeter.js` to pass `imageSaveDir` / `imageFileName` only when they are non-empty strings
+- Updated `WaterMeterPlugin.java` to forward them as `CameraScanActivity.EXTRA_IMAGE_SAVE_DIR` / `CameraScanActivity.EXTRA_IMAGE_FILE_NAME`
+- Updated `WaterMeter.m` to set `WMScannerConfiguration_ObjC.imageSaveDir` / `imageFileName`
+- Requires the updated native SDKs (`water_meter_sdk.aar`, `WaterMeterSDK.framework`) that support these options
+
+#### Documentation
+- Updated README.md and docs/USAGE_GUIDE.md with the new options and examples
+
+---
+
 ## [1.2.0] - 2025-11-11
 
 ### 🎨 New Features
